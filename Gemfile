@@ -1,3 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'cucumber', '1.3.18'
+gem 'capybara'
+gem 'cucumber'
+gem 'poltergeist'
+gem 'test-unit'
+gem 'rspec'
+gem 'rubocop'
