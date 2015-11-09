@@ -4,8 +4,6 @@ currentLocation="$(cd "$(dirname "$0")"; pwd)"
 
 gemfile=$currentLocation/Gemfile
 
-echo $currentLocation
-
 set -e
 
 rm -f sshot*
