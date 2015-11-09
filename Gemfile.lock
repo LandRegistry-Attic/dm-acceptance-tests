@@ -75,12 +75,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara
-  cucumber
-  poltergeist
-  rspec
+  capybara (= 2.4.1)
+  cucumber (= 2.0.0)
+  poltergeist (= 1.5.1)
+  rspec (= 3.3.0)
   rubocop
-  test-unit
+  test-unit (= 3.1.1)
 
 BUNDLED WITH
    1.10.6
