@@ -1,20 +1,18 @@
-#!/bin/bash
+#!/bin/bash -l
+
+currentLocation="$(cd "$(dirname "$0")"; pwd)"
+
+gemfile=$currentLocation/Gemfile
 
 set -e
 
-rm -rf diff2*
-rm -rf tmpimg*
-rm -rf data/test-generated/screenshots/*
-rm -rf data/test-generated/pdf/*
+rm -f sshot*
 
-source environment.sh
+BUNDLE_GEMFILE=$gemfile bundle install
 
-RAILS_ENV=test
-bundle install
-
-if [ -z "$1" ]
- then
-   cucumber --tags ~@wip --tags ~@removed --tags ~@pdf-off --tags ~@private-indiv-off --tags ~@w3cvalidation
+if [ -z "$@"]
+  then
+  BUNDLE_GEMFILE=$gemfile bundle exec cucumber $currentLocation --tags ~@wip
 else
-   cucumber $@
+  BUNDLE_GEMFILE=$gemfile bundle exec cucumber $currentLocation $@
 fi
