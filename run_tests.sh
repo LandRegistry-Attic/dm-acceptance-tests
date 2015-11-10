@@ -1,5 +1,6 @@
 #!/bin/bash -l
 
+
 currentLocation=$dirname $0
 
 gemfile=$currentLocation/Gemfile

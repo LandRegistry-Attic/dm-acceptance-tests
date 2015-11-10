@@ -1,5 +1,6 @@
 #!/bin/bash -l
 
+
 export PATH=$PATH:/usr/local/bin
 
 currentLocation="$(cd "$(dirname "$0")"; pwd)"
