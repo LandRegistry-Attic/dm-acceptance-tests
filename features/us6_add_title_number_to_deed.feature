@@ -11,8 +11,8 @@ Acceptance Criteria
 Scenario:   Add Valid Title Number
     Given I have a valid title number
     When I send a valid title number
-    Then a status code of "200" is returned
-    Then a url link to retrieve the title number is returned
+    Then a status code of "201" is returned
+    And a url link to retrieve the title number is returned
 
 Scenario:   Add Multiple Title Numbers
     Given I have a valid title number
