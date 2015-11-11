@@ -4,3 +4,7 @@
 ### screenshot if a scenario fails or getting through any initial            ###
 ### authentication for the app before running the tests.                     ###
 ################################################################################
+
+After do |scenario|
+  save_screenshot("sshot-#{Time.new.to_i}.png", full: true) if scenario.failed?
+end
