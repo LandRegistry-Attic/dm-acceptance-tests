@@ -8,6 +8,6 @@
 class Env
   def self.deed_api
     (ENV['DEED_API_URL'] ||
-        'http://localhost:5000')
+        'http://0.0.0.0:9020')
   end
 end

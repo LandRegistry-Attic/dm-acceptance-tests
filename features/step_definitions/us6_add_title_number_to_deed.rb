@@ -1,19 +1,19 @@
-Given(/^I have a valid title$/) do
-  @title = create_title_hash.to_json
+Given(/^I have a valid deed$/) do
+  @title = create_deed_hash
 end
 
-Given(/^I have a title with two title numbers$/) do
+Given(/^I have a deed with two title numbers$/) do
   @title = {
-    'title-number' => [generate_title_no, generate_title_no]
-  }.to_json
+    title_number: [generate_title_number, generate_title_number]
+  }
 end
 
-Given(/^I have a title with an invalid title number$/) do
-  @title = create_title_hash('ABCD123/EF').to_json
+Given(/^I have a deed with an invalid title number$/) do
+  @title = create_deed_hash('ABCD123/EF')
 end
 
-When(/^I send a valid title number$/) do
-  @response = HTTP.post(Env.deed_api + "/deed/", :json => { "title-number" => "DN101" })
+When(/^I create a deed using Deed API$/) do
+  @response = create_deed(@title)
 end
 
 Then(/^a status code of "([^"]*)" is returned$/) do |code|
@@ -21,6 +21,6 @@ Then(/^a status code of "([^"]*)" is returned$/) do |code|
 end
 
 Then(/^a url link to retrieve the title number is returned$/) do
-  #still working on this
-  puts @response
+  # still working on this
+  puts @response.body
 end
