@@ -9,17 +9,17 @@ Acceptance Criteria
     A link to the resource must be returned as part of the response
 
 Scenario:   Add Valid Title Number
-    Given I have a valid title number
+    Given I have a valid title
     When I send a valid title number
     Then a status code of "201" is returned
     And a url link to retrieve the title number is returned
 
 Scenario:   Add Multiple Title Numbers
-    Given I have a valid title number
+    Given I have a title with two title numbers
     When I send two title numbers
     Then a status code of "400" is returned
 
 Scenario:   Add Invalid Title Number
-    Given I have an invalid title number
+    Given I have a title with an invalid title number
     When I send an invalid title number
     Then a status code of "400" is returned
