@@ -21,6 +21,5 @@ Then(/^a status code of "([^"]*)" is returned$/) do |code|
 end
 
 Then(/^a url link to retrieve the title number is returned$/) do
-  # still working on this
-  puts @response.body
+  assert_match(Env.deed_api + '/deed/', @response.body)
 end
