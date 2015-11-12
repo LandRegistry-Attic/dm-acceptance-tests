@@ -26,3 +26,5 @@ require 'rspec'
 require 'pxeger'
 
 require 'http'
+
+require 'pg'
