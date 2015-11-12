@@ -17,7 +17,7 @@ When(/^I create a deed using Deed API$/) do
 end
 
 Then(/^a status code of "([^"]*)" is returned$/) do |code|
-  assert_equal(@response.code.to_s, code)
+  assert_equal(code, @response.code.to_s)
 end
 
 Then(/^a url link to retrieve the title number is returned$/) do
