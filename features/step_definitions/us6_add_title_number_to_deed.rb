@@ -13,7 +13,8 @@ Given(/^I have a deed with an invalid title number$/) do
 end
 
 When(/^I create a deed using Deed API$/) do
-  @response = HTTP.post(Env.deed_api + '/deed/', json: @deed)
+  deed_end_point = Env.deed_api + '/deed/'
+  @response = HTTP.post(deed_end_point, json: @deed)
 end
 
 Then(/^a status code of "([^"]*)" is returned$/) do |code|
@@ -21,5 +22,6 @@ Then(/^a status code of "([^"]*)" is returned$/) do |code|
 end
 
 Then(/^a url link to retrieve the title number is returned$/) do
-  assert_match(Env.deed_api + '/deed/', @response.body)
+  deed_end_point = Env.deed_api + '/deed/'
+  assert_match(deed_end_point, @response.body)
 end
