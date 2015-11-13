@@ -6,8 +6,8 @@
 
 ### Class holding environment variables for digital mortgage APIs and Frontends
 class Env
-  def self.test
-    (ENV['TEST_URL'] ||
-        'http://nigelpainphotography.com')
+  def self.deed_api
+    (ENV['DEED_API_URL'] ||
+        'http://0.0.0.0:9020')
   end
 end
