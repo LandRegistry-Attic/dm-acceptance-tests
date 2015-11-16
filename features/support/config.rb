@@ -22,5 +22,5 @@ require 'test/unit'
 include Test::Unit::Assertions
 
 require 'rspec'
-
+#require 'pg_json'
 require 'pg'
