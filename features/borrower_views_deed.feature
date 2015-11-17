@@ -15,7 +15,7 @@ Feature: Borrower Views the Deed
              - Borrowers
              - Title number
 
-      Given I navigate to the borrower frontend "/deed/search" page
+      Given I navigate to the borrower frontend "/searchdeed" page
       When I search for the created deed
       Then the “Your mortgage deed" page is displayed
 
@@ -23,6 +23,6 @@ Feature: Borrower Views the Deed
 
       - information message displayed when incorrect id entered
 
-  Given I navigate to the borrower frontend "/deed/search" page
-  When I search for an invalid deed
-  Then the "Deed was not found for:" page is displayed
+      Given I navigate to the borrower frontend "/searchdeed" page
+      When I search for an invalid deed
+      Then the "Deed was not found for:" page is displayed

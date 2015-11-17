@@ -13,6 +13,6 @@ class Env
 
   def self.borrower_frontend
     (ENV['BORROWER_FRONTEND_URL'] ||
-        'http://10.10.10.10:9030/searchdeed?')
+        'http://10.10.10.10:9030')
   end
 end

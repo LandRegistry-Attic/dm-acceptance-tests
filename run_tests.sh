@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
 
-currentLocation="$(cd "$(dirname "$0")"; pwd)"
+currentLocation=$dirname $0
 
 gemfile=$currentLocation/Gemfile
 
