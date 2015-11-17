@@ -1,26 +1,30 @@
 
 Given(/^I have created a deed with two borrowers$/) do
-  $db_connection = PG::Connection.open(
-  host: "0.0.0.0",
-  dbname: "deed_api",
-  user: "vagrant",
-  password: "vagrant"
-)
-$db_connection[:public.deed].insert[:deed]=>sequel.pg_json("title_number": "DN1"})
-#$db_connection.exec("INSERT INTO public.deed(id, deed)VALUES (1, #{{"title_number": "DN1"}});")
-
-$db_connection.close
-
+  step %(I have a valid deed)
+  step %(I create a deed using Deed API)
+  url = @response.body.to_s
+  split_url = url.split('/')
+  @deed_id = split_url[4]
 end
 
 Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
   visit(Env.borrower_frontend + path)
 end
 
-When(/^I search for an invalid deed$/) do
-  click_button ('Search') # Write code here that turns the phrase above into concrete actions
+When(/^I search for the created deed$/) do
+  fill_in 'deed_reference', with: @deed_id
+  click_button('Search')
 end
 
-Then(/^the "([^"]*)" page is displayed$/) do |arg1|
-  page.should have_content('Deed was not found for:')
+Then(/^the “Your mortgage deed" page is displayed$/) do
+  page.should have_content('Your mortgage deed')
+  page.should have_content(@deed[:title_number])
+end
+
+When(/^I search for an invalid deed$/) do
+  click_button('Search')
+end
+
+Then(/^the "([^"]*)" page is displayed$/) do |page_title|
+  page.should have_content(page_title)
 end
