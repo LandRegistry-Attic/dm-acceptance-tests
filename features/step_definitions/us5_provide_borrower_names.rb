@@ -7,8 +7,9 @@ Given(/^I have a deed with a borrower with a middle name$/) do
 end
 
 Given(/^I have a deed with no borrowers$/) do
-  @deed = {
-      title_number: generate_title_number,
-      borrowers: {}
+  @deed =
+  {
+    title_number: generate_title_number,
+    borrowers: {}
   }
 end
