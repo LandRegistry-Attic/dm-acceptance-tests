@@ -8,7 +8,7 @@ Acceptance Criteria
     Response code returned for successful and unsuccessful request
     A link to the resource must be returned as part of the response
 
-Scenario:   Add Valid Title Number
+Scenario: Add Valid Title Number
     Given I have a valid deed
     When I create a deed using Deed API
     Then a status code of "201" is returned
