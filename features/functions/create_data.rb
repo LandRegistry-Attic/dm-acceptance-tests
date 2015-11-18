@@ -22,3 +22,16 @@ def create_deed_hash(title_number = generate_title_number, new_borrower1=generat
     borrowers: [new_borrower1]
   }
 end
+
+def create_deed_hash_no_mid(title_number = generate_title_number, new_borrower1=generate_new_borrower_no_middle)
+  {
+      title_number: title_number,
+      borrowers: [new_borrower1]
+  }
+end
+def create_deed_hash_with_mid(title_number = generate_title_number, new_borrower1=generate_new_borrower_with_middle)
+  {
+      title_number: title_number,
+      borrowers: [new_borrower1]
+  }
+end
