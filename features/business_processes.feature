@@ -7,4 +7,4 @@ Scenario: Create Deed with Valid Data
     Given I have a valid deed
     When I create a deed using Deed API
     Then a status code of "201" is returned
-    And a url link to retrieve the title number is returned
+    And a url link to retrieve the deed is returned
