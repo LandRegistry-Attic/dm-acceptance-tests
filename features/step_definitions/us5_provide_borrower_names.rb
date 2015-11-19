@@ -13,3 +13,7 @@ Given(/^I have a deed with no borrowers$/) do
     borrowers: {}
   }
 end
+
+Given(/^I have a deed with an invalid borrower$/) do
+  @deed = create_deed_hash('DN1001', {forename: 'James'})
+end

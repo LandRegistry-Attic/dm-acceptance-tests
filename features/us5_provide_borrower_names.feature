@@ -24,3 +24,8 @@ Scenario: Create Deed with No Borrowers
   Given I have a deed with no borrowers
   When I create a deed using Deed API
   Then a status code of "400" is returned
+
+Scenario: Create Deed with Invalid Borrower
+  Given I have a deed with an invalid borrower
+  When I create a deed using Deed API
+  Then a status code of "400" is returned
