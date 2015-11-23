@@ -1,4 +1,4 @@
-Given(/^I reach the borrower identity verified page$/) do
+Given(/^I reach the Borrower Identity Verified Page$/) do
   visit(Env.borrower_frontend)
 end
 
