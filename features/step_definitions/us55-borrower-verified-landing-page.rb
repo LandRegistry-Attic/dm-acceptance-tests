@@ -1,11 +1,11 @@
 Given(/^I reach the Borrower Identity Verified Page$/) do
-  visit(Env.borrower_landing_page)
+  visit(Env.borrower_frontend)
 end
 
-Then(/^I should see Continue to mortgage$/) do
-  page.should have_selector(:link_or_button, 'Continue to mortgage')
+Then(/^I should see "([^"]*)"$/) do |arg1|
+  page.should have_selector(:link_or_button, arg1)
 end
 
-Then(/^the following Read your mortgage details$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^the following "([^"]*)"$/) do |arg2|
+  expect(page).to have_content(arg2)
 end
