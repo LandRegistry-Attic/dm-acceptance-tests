@@ -23,14 +23,18 @@ Business Rules
   BRL-DM-10 Gender will be M, F or U
 
 Scenario: Create a deed with borrowers personal details
-    Given I have two borrowers
+    Given I create a Deed with the following data:
+
+      | GENDER   | ADDRESS                               | DOB          | PHONE NUMBER  |
+      | M        | 1 High Street Plymouth PL7 6TG        | 11/01/1987   | 07528670998   |
+
     When I submit a deed using Deed API
     Then a status code of "201" is returned
     And a url link to retrieve the deed is returned
     And check those details are recorded correctly
 
 Scenario: Create a deed with multiple UK addresses
-    Given I have a multiple UK addresses for the borrower
+    Given I have multiple UK addresses for the borrower
     When I submit a deed using Deed API
     Then a status code of "400 with an error message" is returned
 
