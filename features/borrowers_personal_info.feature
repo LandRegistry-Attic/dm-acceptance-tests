@@ -23,25 +23,65 @@ Business Rules
   BRL-DM-10 Gender will be M, F or U
 
 Scenario: Create a deed with borrowers personal details
-    Given I create a Deed with the following data:
-
-      | GENDER   | ADDRESS                               | DOB          | PHONE NUMBER  |
-      | M        | 1 High Street Plymouth PL7 6TG        | 11/01/1987   | 07528670998   |
-
-    When I submit a deed using Deed API
+    Given I add the following deed:
+    """
+    {
+    "title_number": "DT567568",
+   "borrowers": [
+       {
+           "forename": "Amanda",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "11/01/2000",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "01/10/1976",
+           "phone_number": "07502154062"
+       }
+   ]
+    }
+    """
     Then a status code of "201" is returned
     And a url link to retrieve the deed is returned
-    And check those details are recorded correctly
 
-Scenario: Create a deed with multiple UK addresses
-    Given I have multiple UK addresses for the borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
-
+########################
 Scenario: Create a deed without an address
-    Given I do not have an address for the borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+Given I add the following deed:
+"""
+{
+"title_number": "DT567568",
+"borrowers": [
+   {
+       "forename": "Amanda",
+       "middle_name": "Elizabeth",
+       "surname": "Smythe",
+       "gender": "M",
+       "address": "",
+       "dob": "11/01/2000",
+       "phone_number": "07507154077"
+   },
+   {
+       "forename": "Paul",
+       "middle_name": "",
+       "surname": "Smythe",
+       "gender": "M",
+       "address": "1 The High Street Highley PL6 7TG",
+       "dob": "01/10/1976",
+       "phone_number": "07502154062"
+   }
+]
+}
+"""
+    Then a status code of "400" is returned
+    And a message for failure is given "Filed validating 'pattern' in schema['properties']['borrowers']['items'][0]['properties']['address']:"
 
 Scenario: Create a deed with single address but no postcode
     Given I have a single address without a postcode for the borrower
