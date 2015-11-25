@@ -15,7 +15,7 @@ Acceptance Criteria
 Business Rules
   BRL-DM-03 - Borrowers address must be a single  postal address
   BRL-DM-04 Each Borrower can only have 1 mobile phone number
-  BRL - DM-05 Each mobile phone number must be unique to the individual borrower within a single transaction.
+  BRL-DM-05 Each mobile phone number must be unique to the individual borrower within a single transaction.
   BRL-DM-06 - A borrowers date of birth cannot be a future date
   BRL-DM-07 The format of a date of birth must be DD/MM/YYYY and it must be a valid date.
   BRL-DM-08 Address is free format and must contain a UK postcode
@@ -29,7 +29,7 @@ Scenario: Create a deed with borrowers personal details
     "title_number": "DT567568",
    "borrowers": [
        {
-           "forename": "Amanda",
+           "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
            "gender": "M",
@@ -52,106 +52,466 @@ Scenario: Create a deed with borrowers personal details
     Then a status code of "201" is returned
     And a url link to retrieve the deed is returned
 
-########################
 Scenario: Create a deed without an address
-Given I add the following deed:
-"""
-{
-"title_number": "DT567568",
-"borrowers": [
-   {
-       "forename": "Amanda",
-       "middle_name": "Elizabeth",
-       "surname": "Smythe",
-       "gender": "M",
-       "address": "",
-       "dob": "11/01/2000",
-       "phone_number": "07507154077"
-   },
-   {
-       "forename": "Paul",
-       "middle_name": "",
-       "surname": "Smythe",
-       "gender": "M",
-       "address": "1 The High Street Highley PL6 7TG",
-       "dob": "01/10/1976",
-       "phone_number": "07502154062"
-   }
-]
-}
-"""
+    Given I add the following deed:
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "",
+           "dob": "11/01/2000",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "01/10/1976",
+           "phone_number": "07502154062"
+       }
+    ]
+    }
+    """
     Then a status code of "400" is returned
-    And a message for failure is given "Filed validating 'pattern' in schema['properties']['borrowers']['items'][0]['properties']['address']:"
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items'][0]['properties']['address']:"
 
 Scenario: Create a deed with single address but no postcode
-    Given I have a single address without a postcode for the borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley",
+           "dob": "11/01/2000",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "01/10/1976",
+           "phone_number": "07502154062"
+       }
+    ]
+    }
+    """
+    Then a status code of "400" is returned
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items'][0]['properties']['address']:"
 
 Scenario: Create a deed with single address and non UK postcode
-    Given I have a single address with a postcode that is non UK for the borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley 12345",
+           "dob": "11/01/2000",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "01/10/1976",
+           "phone_number": "07502154062"
+       }
+    ]
+    }
+    """
+    Then a status code of "400" is returned
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items'][0]['properties']['address']:"
 
 Scenario: Create a deed with multiple UK mobile phone numbers
-    Given I have multiple UK mobile phone numbers for the borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley CR0 9YH",
+           "dob": "11/01/2000",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "01/10/1976",
+           "phone_number": "07507154072, 07528670998"
+       }
+    ]
+    }
+    """
+
+    Then a status code of "400" is returned
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items'][0]['properties']['phone_number']:"
 
 Scenario: Create a deed without a mobile phone number
-    Given I do not have a mobile phone number for the borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley CR0 9YH",
+           "dob": "11/01/2000",
+           "phone_number": "07528670998"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "01/10/1976",
+           "phone_number": ""
+       }
+    ]
+    }
+    """
+    Then a status code of "400" is returned
+    And a message for failure is given "
 
 Scenario: Create a deed where both borrowers have a unique mobile phone number
-    Given I have 2 borrowers with unique mobile phone numbers
-    When I submit a deed using Deed API
+    Given I add the following deed:
+
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley CR0 9YH",
+           "dob": "11/01/2000",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "01/10/1976",
+           "phone_number": "07502154062"
+       }
+    ]
+    }
+    """
+
     Then a status code of "201" is returned
     And a url link to retrieve the deed is returned
 
 Scenario: Create a deed where both borrowers have the same mobile phone number
-    Given I have the same mobile phone number for both borrowers
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "F",
+           "address": "1 The High Street Highley CR0 9YH",
+           "dob": "11/01/2000",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "blah",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "01/10/1976",
+           "phone_number": "07507154077"
+       }
+    ]
+    }
+    """
+
+    Then a status code of "400" is returned
+    And a message for failure is given "
 
 Scenario: Create a deed without the DOB
-    Given I do not have the DOB for the borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "F",
+           "address": "1 The High Street Highley CR0 9YH",
+           "dob": "",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "F",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "21/09/2000",
+           "phone_number": "07507154076"
+       }
+    ]
+    }
+    """
+
+    Then a status code of "400" is returned
+    And a message for failure is given "
 
 Scenario: Create a deed with multiple DOBs for the same borrower
-    Given I have two DOBs for the same borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "F",
+           "address": "1 The High Street Highley CR0 9YH",
+           "dob": "21/09/1965, 24/07/2000",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "U",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "21/09/2000",
+           "phone_number": "07507154076"
+       }
+    ]
+    }
+    """
+
+    Then a status code of "400" is returned
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items'][0]['properties']['dob']:"
 
 Scenario: Create a deed with an invalid DOB
-    Given I do have an invalid future DOB for the borrower
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
 
-Scenario: Create a deed with an invalid DOB - date out of range
-    Given I have an invalid DOB for the borrower of "32/01/1993"
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "F",
+           "address": "1 The High Street Highley CR0 9YH",
+           "dob": "21/09",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "U",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "21/09/2000",
+           "phone_number": "07507154076"
+       }
+    ]
+    }
+    """
+
+    Then a status code of "400" is returned
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items'][0]['properties']['dob']:"
+
+
+Scenario: Create a deed with an invalid DOB date out of range
+    Given I add the following deed:
+
+    """
+        {
+        "title_number": "DT567568",
+        "borrowers": [
+           {
+               "forename": "Katie",
+               "middle_name": "Elizabeth",
+               "surname": "Smythe",
+               "gender": "F",
+               "address": "1 The High Street Highley CR0 9YH",
+               "dob": "32/09/1965",
+               "phone_number": "07507154077"
+           },
+           {
+               "forename": "Paul",
+               "middle_name": "",
+               "surname": "Smythe",
+               "gender": "U",
+               "address": "1 The High Street Highley PL6 7TG",
+               "dob": "29/09/2000",
+               "phone_number": "07507154076"
+           }
+        ]
+        }
+        """
+
+    Then a status code of "400" is returned
+    And a message for failure is given "
 
 Scenario: Create a deed with one Male borrower and one female borrower
-    Given I have two borrowers where one is "M" and one "F"
-    When I submit a deed using Deed API
+    Given I add the following deed:
+
+    """
+        {
+        "title_number": "DT567568",
+        "borrowers": [
+           {
+               "forename": "Katie",
+               "middle_name": "Elizabeth",
+               "surname": "Smythe",
+               "gender": "F",
+               "address": "1 The High Street Highley CR0 9YH",
+               "dob": "29/09/1965",
+               "phone_number": "07507154077"
+           },
+           {
+               "forename": "Paul",
+               "middle_name": "",
+               "surname": "Smythe",
+               "gender": "M",
+               "address": "1 The High Street Highley PL6 7TG",
+               "dob": "29/09/2000",
+               "phone_number": "07507154076"
+           }
+        ]
+        }
+        """
+
     Then a status code of "201" is returned
     And a url link to retrieve the deed is returned
 
 Scenario: Create a deed with one Male borrower and one Unknown borrower
-    Given I have two borrowers where one is "M" and one is "U"
-    When I submit a deed using Deed API
+    Given I add the following deed:
+
+    """
+    {
+    "title_number": "DT567568",
+    "borrowers": [
+       {
+           "forename": "Katie",
+           "middle_name": "Elizabeth",
+           "surname": "Smythe",
+           "gender": "M",
+           "address": "1 The High Street Highley CR0 9YH",
+           "dob": "29/09/1965",
+           "phone_number": "07507154077"
+       },
+       {
+           "forename": "Paul",
+           "middle_name": "",
+           "surname": "Smythe",
+           "gender": "F",
+           "address": "1 The High Street Highley PL6 7TG",
+           "dob": "29/09/2000",
+           "phone_number": "07507154076"
+       }
+    ]
+    }
+    """
+
     Then a status code of "201" is returned
     And a url link to retrieve the deed is returned
 
 Scenario: Create a deed with one Male borrower and one invalid gender borrower
-    Given I have two borrowers where one is "M" and one is "Female"
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+
+    """
+        {
+        "title_number": "DT567568",
+        "borrowers": [
+           {
+               "forename": "Katie",
+               "middle_name": "Elizabeth",
+               "surname": "Smythe",
+               "gender": "MFU",
+               "address": "1 The High Street Highley CR0 9YH",
+               "dob": "29/09/1965",
+               "phone_number": "07507154077"
+           },
+           {
+               "forename": "Paul",
+               "middle_name": "",
+               "surname": "Smythe",
+               "gender": "M",
+               "address": "1 The High Street Highley PL6 7TG",
+               "dob": "29/09/2000",
+               "phone_number": "07507154076"
+           }
+        ]
+        }
+        """
+
+        Then a status code of "400" is returned
+        And a message for failure is given "
 
 Scenario: Create a deed with one Female borrower and one borrower without gender
-    Given I have two borrowers where one is "M" and one is not provided
-    When I submit a deed using Deed API
-    Then a status code of "400 with an error message" is returned
+    Given I add the following deed:
+
+    """
+        {
+        "title_number": "DT567568",
+        "borrowers": [
+           {
+               "forename": "Katie",
+               "middle_name": "Elizabeth",
+               "surname": "Smythe",
+               "gender": "FEMALE",
+               "address": "1 The High Street Highley CR0 9YH",
+               "dob": "29/02/1965",
+
+               "phone_number": "07507154077"
+           }
+        ]
+        }
+        """
+
+        Then a status code of "400" is returned
