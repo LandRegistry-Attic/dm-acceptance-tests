@@ -32,7 +32,7 @@ Scenario: Create a deed with borrowers personal details
            "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Male",
            "address": "1 The High Street Highley PL6 7TG",
            "dob": "11/01/2000",
            "phone_number": "07507154077"
@@ -53,7 +53,7 @@ Scenario: Create a deed without an address
            "forename": "Paul",
            "middle_name": "",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Male",
            "address": "",
            "dob": "01/10/1976",
            "phone_number": "07502154062"
@@ -75,7 +75,7 @@ Scenario: Create a deed with single address but no postcode
            "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Male",
            "address": "1 The High Street Highley",
            "dob": "11/01/2000",
            "phone_number": "07507154077"
@@ -97,7 +97,7 @@ Scenario: Create a deed with single address and non UK postcode
            "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Male",
            "address": "1 The High Street Highley 12345",
            "dob": "11/01/2000",
            "phone_number": "07507154077"
@@ -119,7 +119,7 @@ Scenario: Create a deed with multiple UK mobile phone numbers
            "forename": "Paul",
            "middle_name": "",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Male",
            "address": "1 The High Street Highley PL6 7TG",
            "dob": "01/10/1976",
            "phone_number": "07507154072, 07528670998"
@@ -142,7 +142,7 @@ Scenario: Create a deed without a mobile phone number
            "forename": "Paul",
            "middle_name": "",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Male",
            "address": "1 The High Street Highley PL6 7TG",
            "dob": "01/10/1976",
            "phone_number": ""
@@ -164,7 +164,7 @@ Scenario: Create a deed where both borrowers have a unique mobile phone number
            "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Female",
            "address": "1 The High Street Highley CR0 9YH",
            "dob": "11/01/2000",
            "phone_number": "07507154077"
@@ -173,7 +173,7 @@ Scenario: Create a deed where both borrowers have a unique mobile phone number
            "forename": "Paul",
            "middle_name": "",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Male",
            "address": "1 The High Street Highley PL6 7TG",
            "dob": "01/10/1976",
            "phone_number": "07502154062"
@@ -195,26 +195,26 @@ Scenario: Create a deed where both borrowers have the same mobile phone number
            "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
-           "gender": "F",
+           "gender": "Female",
            "address": "1 The High Street Highley CR0 9YH",
-           "dob": "11/01/2000",
-           "phone_number": "07507154077"
+           "dob": "11/01/2015",
+           "phone_number": "07507154076"
        },
        {
            "forename": "Paul",
            "middle_name": "",
            "surname": "Smythe",
-           "gender": "blah",
+           "gender": "Male",
            "address": "1 The High Street Highley PL6 7TG",
-           "dob": "01/10/1976",
-           "phone_number": "07507154077"
+           "dob": "01/09/2015",
+           "phone_number": "07507154076"
        }
     ]
     }
     """
 
     Then a status code of "400" is returned
-    And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['gender']:"
+
 
 Scenario: Create a deed without the DOB
     Given I add the following deed:
@@ -226,7 +226,7 @@ Scenario: Create a deed without the DOB
            "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
-           "gender": "F",
+           "gender": "Female",
            "address": "1 The High Street Highley CR0 9YH",
            "dob": "",
            "phone_number": "07507154077"
@@ -248,7 +248,7 @@ Scenario: Create a deed with multiple DOBs for the same borrower
            "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
-           "gender": "F",
+           "gender": "Female",
            "address": "1 The High Street Highley CR0 9YH",
            "dob": "21/09/1965, 24/07/2000",
            "phone_number": "07507154077"
@@ -318,16 +318,16 @@ Scenario: Create a deed with one Male borrower and one female borrower
                "forename": "Katie",
                "middle_name": "Elizabeth",
                "surname": "Smythe",
-               "gender": "F",
+               "gender": "Female",
                "address": "1 The High Street Highley CR0 9YH",
                "dob": "29/09/1965",
-               "phone_number": "07507154077"
+               "phone_number": "07507154087"
            },
            {
                "forename": "Paul",
                "middle_name": "",
                "surname": "Smythe",
-               "gender": "M",
+               "gender": "Male",
                "address": "1 The High Street Highley PL6 7TG",
                "dob": "29/09/2000",
                "phone_number": "07507154076"
@@ -350,7 +350,7 @@ Scenario: Create a deed with one Male borrower and one Unknown borrower
            "forename": "Katie",
            "middle_name": "Elizabeth",
            "surname": "Smythe",
-           "gender": "U",
+           "gender": "Not Specified",
            "address": "1 The High Street Highley CR0 9YH",
            "dob": "29/09/1965",
            "phone_number": "07507154077"
@@ -359,7 +359,7 @@ Scenario: Create a deed with one Male borrower and one Unknown borrower
            "forename": "Paul",
            "middle_name": "",
            "surname": "Smythe",
-           "gender": "M",
+           "gender": "Male",
            "address": "1 The High Street Highley PL6 7TG",
            "dob": "29/09/2000",
            "phone_number": "07507154076"
@@ -401,7 +401,7 @@ Scenario: Create a deed with one Male borrower and one invalid gender borrower
         """
 
         Then a status code of "400" is returned
-        And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['gender']:"
+        And a message for failure is given "Failed validating 'enum' in schema['properties']['borrowers']['items']['properties']['gender']:"
 
 Scenario: Create a deed with one Female borrower and one borrower without gender
     Given I add the following deed:
@@ -414,16 +414,16 @@ Scenario: Create a deed with one Female borrower and one borrower without gender
            "forename": "amanda",
            "middle_name": "",
            "surname": "Blah",
-           "gender": "F",
-           "address": "1 High Street cr07YH",
+           "gender": "Female",
+           "address": "5 high street DN55 1PT",
            "dob": "11/01/2010",
-           "phone_number": "075436789089"
+           "phone_number": "07383412346"
        },
        {
            "forename": "A",
            "middle_name": "b",
            "surname": "blah",
-           "address": "blah blah blah pl98ug",
+           "address": "blah blah blah PL9 8UG",
            "dob": "01/01/2015",
            "phone_number": "07300000009"
        }
@@ -433,3 +433,26 @@ Scenario: Create a deed with one Female borrower and one borrower without gender
 
     Then a status code of "201" is returned
     And a url link to retrieve the deed is returned
+
+    Scenario: Create a deed with one borrower with a mobile number that is not UK format
+        Given I add the following deed:
+
+        """
+            {
+            "title_number": "DT567568",
+            "borrowers": [
+               {
+                   "forename": "Katie",
+                   "middle_name": "Elizabeth",
+                   "surname": "Smythe",
+                   "gender": "Not Specified",
+                   "address": "1 The High Street Highley CR0 9YH",
+                   "dob": "29/09/1965",
+                   "phone_number": "12345123456"
+               }
+            ]
+            }
+            """
+
+            Then a status code of "400" is returned
+            And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['phone_number']:"
