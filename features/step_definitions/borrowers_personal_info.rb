@@ -5,5 +5,5 @@ Given(/^I add the following deed:$/) do |deed|
 end
 
 And(/^a message for failure is given "([^"]*)"$/) do |failure_reason|
-   assert_match(failure_reason, @response)
- end
+  assert_match(failure_reason, @response)
+end
