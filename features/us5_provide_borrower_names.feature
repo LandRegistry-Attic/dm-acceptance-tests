@@ -14,6 +14,7 @@ Scenario: Create Deed with a Borrower with No Middle Name
   """
   {
     "title_number": "DT567568",
+    "md_ref": "e-MD123G",
     "borrowers": [
       {
            "forename": "Paul",
@@ -35,6 +36,7 @@ Scenario: Create Deed with a Borrower with a Middle Name
   """
   {
     "title_number": "DT567568",
+    "md_ref": "e-MD123G",
     "borrowers": [
       {
            "forename": "Paul",
@@ -56,16 +58,19 @@ Scenario: Create Deed with No Borrowers
   """
   {
     "title_number": "DT567568",
+    "md_ref": "e-MD123G",
     "borrowers": []
-  }
+    }
   """
   Then a status code of "400" is returned
+  And a message for failure is given "Failed validating 'minItems' in schema['properties']['borrowers']:"
 
 Scenario: Create Deed with Invalid Borrower
   Given I add the following deed:
   """
   {
     "title_number": "DT567568",
+    "md_ref": "e-MD123G",
     "borrowers": [
       {
            "forename": "",
@@ -80,3 +85,5 @@ Scenario: Create Deed with Invalid Borrower
   }
   """
   Then a status code of "400" is returned
+  And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['surname']:"
+  And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['forename']:"

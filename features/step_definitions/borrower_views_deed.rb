@@ -10,9 +10,10 @@ When(/^I search for the created deed$/) do
   click_button('Search')
 end
 
-Then(/^the “Your mortgage deed" page is displayed$/) do
+Then(/^the Your mortgage deed page is displayed$/) do
   page.should have_content('Your mortgage deed')
-  page.should have_content(@deed[:title_number])
+  page.should have_content(@deed['title_number'])
+  page.should have_content(@deed['md_ref'])
 end
 
 When(/^I search for an invalid deed$/) do

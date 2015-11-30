@@ -14,6 +14,7 @@ Scenario: Add Valid Title Number
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
         {
              "forename": "Paul",
@@ -35,6 +36,7 @@ Scenario: Add Multiple Title Numbers
     """
     {
       "title_number": "DT567568DN573253",
+      "md_ref": "e-MD123G",
       "borrowers": [
         {
              "forename": "Paul",
@@ -55,6 +57,7 @@ Scenario: Add Invalid Title Number
     """
     {
       "title_number": "ABCD1234/D",
+      "md_ref": "e-MD123G",
       "borrowers": [
         {
              "forename": "Paul",

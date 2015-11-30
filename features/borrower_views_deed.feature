@@ -10,6 +10,7 @@ Feature: Borrower Views the Deed
       """
       {
         "title_number": "DT567568",
+        "md_ref": "e-MD123G",
         "borrowers": [
           {
                "forename": "Paul",
@@ -39,10 +40,11 @@ Feature: Borrower Views the Deed
             Deed must display:
              - Borrowers
              - Title number
+             - e-MD ref
 
       Given I navigate to the borrower frontend "/searchdeed" page
       When I search for the created deed
-      Then the "Your mortgage deed" page is displayed
+      Then the Your mortgage deed page is displayed
 
   Scenario: Borrower enters invalid deed reference
 

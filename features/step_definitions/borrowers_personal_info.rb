@@ -1,6 +1,7 @@
 Given(/^I add the following deed:$/) do |deed|
+  @deed = JSON.parse(deed)
   deed_end_point = Env.deed_api + '/deed/'
-  @response = HTTP.post(deed_end_point, json: JSON.parse(deed))
+  @response = HTTP.post(deed_end_point, json: @deed)
 end
 
 And(/^a message for failure is given "([^"]*)"$/) do |failure_reason|
