@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - 'Gemfile'
     - 'Gemfile.lock'
+    - 'features/support/hooks.rb'
 
 Metrics/MethodLength:
   Enabled: false
