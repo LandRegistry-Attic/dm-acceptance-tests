@@ -27,6 +27,7 @@ Scenario: Create a deed with borrowers personal details
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -48,6 +49,7 @@ Scenario: Create a deed without an address
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Paul",
@@ -69,6 +71,7 @@ Scenario: Create a deed with single address but no postcode
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -91,6 +94,7 @@ Scenario: Create a deed with single address and non UK postcode
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -112,6 +116,7 @@ Scenario: Create a deed with multiple UK mobile phone numbers
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Paul",
@@ -133,6 +138,7 @@ Scenario: Create a deed without a mobile phone number
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
         {
              "forename": "Paul",
@@ -155,6 +161,7 @@ Scenario: Create a deed where both borrowers have a unique mobile phone number
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -186,6 +193,7 @@ Scenario: Create a deed where both borrowers have the same mobile phone number
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -215,6 +223,7 @@ Scenario: Create a deed without the DOB
     """
       {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -236,6 +245,7 @@ Scenario: Create a deed with multiple DOBs for the same borrower
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -257,6 +267,7 @@ Scenario: Create a deed with an invalid DOB
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -279,6 +290,7 @@ Scenario: Create a deed with an invalid DOB date out of range
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -300,6 +312,7 @@ Scenario: Create a deed with one Male borrower and one female borrower
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -330,6 +343,7 @@ Scenario: Create a deed with one Male borrower and one Unknown borrower
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -360,6 +374,7 @@ Scenario: Create a deed with one Male borrower and one invalid gender borrower
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",
@@ -390,6 +405,7 @@ Scenario: Create a deed with one Female borrower and one borrower without gender
     """
     {
       "title_number": "DT567568",
+      "md_ref": "e-MD123G",
       "borrowers": [
          {
              "forename": "Katie",

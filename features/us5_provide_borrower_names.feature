@@ -14,6 +14,7 @@ Scenario: Create Deed with a Borrower with No Middle Name
   """
   {
     "title_number": "DT567568",
+    "md_ref": "e-MD123G",
     "borrowers": [
       {
            "forename": "Paul",
@@ -35,6 +36,7 @@ Scenario: Create Deed with a Borrower with a Middle Name
   """
   {
     "title_number": "DT567568",
+    "md_ref": "e-MD123G",
     "borrowers": [
       {
            "forename": "Paul",
@@ -66,6 +68,7 @@ Scenario: Create Deed with Invalid Borrower
   """
   {
     "title_number": "DT567568",
+    "md_ref": "e-MD123G",
     "borrowers": [
       {
            "forename": "",
