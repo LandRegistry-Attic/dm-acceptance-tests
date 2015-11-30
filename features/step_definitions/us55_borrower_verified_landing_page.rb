@@ -1,5 +1,5 @@
 Given(/^I reach the Borrower Identity Verified Page$/) do
-  visit(Env.borrower_frontend)
+  visit(Env.borrower_frontend + '/identity-verified')
 end
 
 Then(/^I should see the "([^"]*)" button$/) do |link|
