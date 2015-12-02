@@ -51,6 +51,7 @@ Scenario: Add Multiple Title Numbers
     }
     """
     Then a status code of "400" is returned
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['title_number']:"
 
 Scenario: Add Invalid Title Number
     Given I add the following deed:
@@ -72,3 +73,4 @@ Scenario: Add Invalid Title Number
     }
     """
     Then a status code of "400" is returned
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['title_number']:"

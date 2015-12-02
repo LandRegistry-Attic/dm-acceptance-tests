@@ -199,7 +199,7 @@ Scenario: Create a deed where both borrowers have the same mobile phone number
              "forename": "Katie",
              "middle_name": "Elizabeth",
              "surname": "Smythe",
-             "gender": "F",
+             "gender": "Female",
              "address": "1 The High Street Highley CR0 9YH",
              "dob": "11/01/2000",
              "phone_number": "07507154077"
@@ -208,7 +208,7 @@ Scenario: Create a deed where both borrowers have the same mobile phone number
              "forename": "Paul",
              "middle_name": "",
              "surname": "Smythe",
-             "gender": "blah",
+             "gender": "Male",
              "address": "1 The High Street Highley PL6 7TG",
              "dob": "01/10/1976",
              "phone_number": "07507154077"
@@ -218,10 +218,11 @@ Scenario: Create a deed where both borrowers have the same mobile phone number
     """
     Then a status code of "400" is returned
 
+
 Scenario: Create a deed without the DOB
     Given I add the following deed:
     """
-      {
+    {
       "title_number": "DT567568",
       "md_ref": "e-MD123G",
       "borrowers": [
