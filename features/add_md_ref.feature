@@ -59,6 +59,7 @@ Scenario: Create a deed with two Mortgage Document references
     }
     """
     Then a status code of "400" is returned
+    And a message for failure is given "Failed validating 'pattern' in schema['properties']['md_ref']:"
 
 Scenario: Create a deed with Mortgage Document reference consisting of 5 numerics
     Given I add the following deed:
