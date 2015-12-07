@@ -23,6 +23,6 @@ include Test::Unit::Assertions
 
 require 'rspec'
 
-require 'pxeger'
+require 'regexp-examples'
 
 require 'http'
