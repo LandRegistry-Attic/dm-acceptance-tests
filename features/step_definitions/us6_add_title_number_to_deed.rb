@@ -1,8 +1,11 @@
-Then(/^a status code of "([^"]*)" is returned$/) do |code|
-  assert_equal(code, @response.code.to_s)
+Given(/^I have deed data with two title numbers$/) do
+  @deed = Deed.new(1)
+  @deed.title_number = 'DT567568, DN573253'
+  @deed_hash = @deed.to_hash
 end
 
-Then(/^a url link to retrieve the deed is returned$/) do
-  deed_end_point = Env.deed_api + '/deed/'
-  assert_match(deed_end_point, @response.body)
+Given(/^I have deed data with an invalid format title number$/) do
+  @deed = Deed.new(1)
+  @deed.title_number = 'ABCD1234/D'
+  @deed_hash = @deed.to_hash
 end
