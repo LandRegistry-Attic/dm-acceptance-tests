@@ -13,8 +13,9 @@ Scenario: Create a deed with two Mortgage Document references
   Given I have deed data with two md refs
   When I create the deed via the Deed API
   Then a status code of "400" is returned
+  And a message for failure is given "Failed validating 'pattern' in schema['properties']['md_ref']:"
 
-Scenario: Create a deed with an invalid mortgage document reference
+  Scenario: Create a deed with an invalid mortgage document reference
   Given I have deed data with an md ref made of a six digit number
   When I create the deed via the Deed API
   Then a status code of "400" is returned
