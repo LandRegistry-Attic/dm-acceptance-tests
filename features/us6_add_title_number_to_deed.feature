@@ -13,8 +13,10 @@ Scenario: Add Multiple Title Numbers
   Given I have deed data with two title numbers
   When I create the deed via the Deed API
   Then a status code of "400" is returned
+  And a message for failure is given "Failed validating 'pattern' in schema['properties']['title_number']:"
 
 Scenario: Add Invalid Title Number
   Given I have deed data with an invalid format title number
   When I create the deed via the Deed API
   Then a status code of "400" is returned
+  And a message for failure is given "Failed validating 'pattern' in schema['properties']['title_number']:"
