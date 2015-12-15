@@ -1,4 +1,4 @@
-When(/^I delete the deed via the Deed API$/) do
+When(/^I delete the borrowers personal information via the Deed API$/) do
   deed_end_point = Env.deed_api + "/deed/borrowers/delete/#{@borrower_id}"
   @response = HTTP.delete(deed_end_point)
 end

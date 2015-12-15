@@ -28,7 +28,7 @@ end
 
 And(/^I know the borrower id$/) do
   deed_end_point = @response.body.to_s
-  @response = HTTP.get(deed_end_point, json: @deed_hash)
+  @response = HTTP.get(deed_end_point)
 
   data = JSON.parse(@response)
   @borrower_id = data['deed']['borrowers'][0]['id']
