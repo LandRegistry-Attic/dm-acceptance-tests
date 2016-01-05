@@ -81,7 +81,6 @@ Given(/^I have deed data with two borrowers one which has no gender$/) do
       },
       {
         forename: 'Paul',
-        middle_name: '',
         surname: 'Smythe',
         address: '1 The High Street Highley PL6 7TG',
         dob: '29/09/2000',
