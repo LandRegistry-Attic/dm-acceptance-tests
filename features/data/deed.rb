@@ -23,7 +23,6 @@ class Deed
     number_of_borrowers.times do |borrower_number|
       borrowers.push(
         forename: 'Jayne',
-        middle_name: '',
         surname: 'Cobb',
         gender: "#{/Male|Female|Not Specified/.random_example}",
         address: "#{borrower_number}B Borrower Street, Plymouth, PL3 2PP",
