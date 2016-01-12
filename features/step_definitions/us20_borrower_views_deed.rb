@@ -3,7 +3,7 @@ Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
 end
 
 When(/^I search for the created deed$/) do
-  url = @response.body.to_s
+  url = JSON[@response.body]["url"]
   split_url = url.split('/')
   @deed_id = split_url[4]
   fill_in 'deed_reference', with: @deed_id
