@@ -27,7 +27,7 @@ And(/^a message for failure is given "([^"]*)"$/) do |failure_reason|
 end
 
 And(/^I know the borrower id$/) do
-  deed_end_point = @response.body.to_s
+  deed_end_point = JSON[@response.body]["url"]
   @response = HTTP.get(deed_end_point)
 
   data = JSON.parse(@response)
