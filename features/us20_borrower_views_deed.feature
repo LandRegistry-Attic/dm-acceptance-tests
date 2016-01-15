@@ -17,7 +17,9 @@ Scenario: Borrower enters a valid deed reference
          - e-MD ref
 
   When I navigate to the borrower frontend "/searchdeed" page
-  And I search for the created deed
+  When I retrieve the deed id
+  And I retrieve the unique user id using the URL
+  And I search for the deed using the unique user id
   Then the Your mortgage deed page is displayed
 
 Scenario: Borrower enters invalid deed reference
