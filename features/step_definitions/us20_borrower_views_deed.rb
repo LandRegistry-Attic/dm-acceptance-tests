@@ -3,7 +3,8 @@ Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
 end
 
 When(/^I retrieve the deed id$/) do
-  @get_url = @response.body.to_s
+  response_hash = JSON.parse(@response.body)
+  @get_url = response_hash['url']
 end
 
 And(/^I retrieve the unique user id using the URL$/) do
