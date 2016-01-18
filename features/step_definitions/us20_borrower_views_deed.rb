@@ -2,18 +2,18 @@ Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
   visit(Env.borrower_frontend + path)
 end
 
-When(/^I retrieve the deed id$/) do
+And(/^I retrieve the deed id$/) do
   response_hash = JSON.parse(@response.body)
   @get_url = response_hash['url']
 end
 
 And(/^I retrieve the unique user id using the URL$/) do
   @response = HTTP.get(@get_url)
-  @deed_hash = JSON.parse(@response.body)
-  @borrower_token = @deed_hash['deed']['borrowers'][0]['token']
+  deed_hash = JSON.parse(@response.body)
+  @borrower_token = deed_hash['deed']['borrowers'][0]['token']
 end
 
-And(/^I search for the deed using the unique user id$/) do
+And(/^I search for the deed using the unique borrower token$/) do
   fill_in 'borrower_token', with: @borrower_token
   click_button('Search')
 end
