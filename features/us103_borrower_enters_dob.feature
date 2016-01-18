@@ -21,7 +21,7 @@ Scenario: Entered Date of Birth does not Match
 Scenario: Borrower Enters a Date in the Future
   Given I navigate to the borrower frontend "/searchdeed" page
   And I search for the deed using the unique borrower token
-  When I enter an incorrect date of birth
+  When I enter a date of birth that is in the future
   Then the error "Date is in the future" should be displayed
 
 Scenario: Borrower Enters an Invalid Date

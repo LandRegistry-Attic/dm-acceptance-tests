@@ -31,9 +31,8 @@ Scenario: Borrower enters a valid deed reference
 
 @us20
 Scenario: Borrower enters invalid deed reference
-
-  - information message displayed when incorrect id entered
-
+  Given I have valid deed data
+  And I create the deed via the Deed API
   When I navigate to the borrower frontend "/searchdeed" page
   And I search for an invalid deed
   Then the "Deed was not found for:" page is displayed
