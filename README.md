@@ -6,7 +6,7 @@ the digital mortgage project.
 
 ## Running the Acceptance Tests
 
-To run the acceptance tests, navigate into the develop/dm-acceptance-tests folder in
+To run the acceptance tests, navigate into the *develop/dm-acceptance-tests* folder in
 your VM and then execute the following command:
 
 `./run_tests.sh`
@@ -22,10 +22,17 @@ as in the following example:
 You should always run the linting script as part of the development of acceptance
 tests for a user story. Passing rubocop linting is part of the definition of done
 and it should be run and any issues fixed before a story is signed off, to run the
-linting script execute the following command in the develop/dm-acceptance-tests
+linting script execute the following command in the *develop/dm-acceptance-tests*
 folder of your VM:
 
 `./run_linting.sh`
+
+## Writing Scenarios
+
+The file *features/business_process.feature* contains all of the happy paths/main
+business flows through the system, if you have a scenario that adds to or amends
+one of these flows then consider refactoring these scenarios rather than creating
+a new scenario which exercises the same flow.
 
 ## Test Data
 
