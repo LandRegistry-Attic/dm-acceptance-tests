@@ -1,25 +1,23 @@
-=begin
-Given(/^I have deed data with a borrower with a middle name$/) do
+Given(/^conveyancer wants to confirm borrower identity check$/) do
   @deed = Deed.new(1)
-  @deed.borrowers[0][:middle_name] = 'Johnny'
+  @deed.identity_checked = 'Y'
   @deed_hash = @deed.to_hash
 end
 
-Given(/^I have deed data with no borrowers$/) do
-  @deed = Deed.new(0)
+Given(/^conveyancer is not confirming borrower identity check$/) do
+  @deed = Deed.new(1)
+  @deed.identity_checked = 'N'
   @deed_hash = @deed.to_hash
 end
 
-Given(/^I have deed data with a borrower with no name$/) do
+Given(/^conveyancer has submitted an invalid identity check value$/) do
   @deed = Deed.new(1)
-  @deed.borrowers[0][:forename] = ''
-  @deed.borrowers[0][:surname] = ''
+  @deed.identity_checked = 'Blah'
   @deed_hash = @deed.to_hash
 end
-=end
 
-Given(/^I have deed data where conveyancer has confirmed borrower identity check$/) do
-  #create deed
+Given(/^conveyancer has submitted an empty identity check value$/) do
   @deed = Deed.new(1)
+  @deed.identity_checked = ''
   @deed_hash = @deed.to_hash
 end
