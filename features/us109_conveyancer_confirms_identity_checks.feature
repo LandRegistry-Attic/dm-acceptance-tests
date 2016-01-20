@@ -7,12 +7,6 @@ Acceptance Criteria
   N returns the error message "not allowed to create"
   Anything else will fail as a Schema Failure.
 
-Scenario: Create Deed where the identity check is confirmed
-  Given conveyancer wants to confirm borrower identity check
-  When I create the deed via the Deed API
-  Then a status code of "201" is returned
-  And a url link to retrieve the deed is returned
-
 Scenario: Create Deed where the identity check has a value of N
   Given conveyancer is not confirming borrower identity check
   When I create the deed via the Deed API
