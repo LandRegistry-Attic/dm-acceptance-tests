@@ -4,12 +4,6 @@ Given(/^conveyancer is not confirming borrower identity check$/) do
   @deed_hash = @deed.to_hash
 end
 
-Given(/^conveyancer has submitted an invalid identity check value$/) do
-  @deed = Deed.new(1)
-  @deed.identity_checked = 'Blah'
-  @deed_hash = @deed.to_hash
-end
-
 Given(/^conveyancer has submitted an empty identity check value$/) do
   @deed = Deed.new(1)
   @deed.identity_checked = ''
