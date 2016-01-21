@@ -9,8 +9,8 @@ set -e
 
 rm -f sshot*
 
-pip3 install -r requirements.txt
-python3 setup_initial_data/data_importer.py /data/mortgage_document postgresql://localhost:5432/deed_api mortgage_document
+sudo pip3 install -r requirements.txt
+python3 setup_initial_data/data_importer.py /data/mortgage_document postgresql://vagrant:vagrant@localhost:5432/deed_api mortgage_document
 
 BUNDLE_GEMFILE=$gemfile bundle install
 

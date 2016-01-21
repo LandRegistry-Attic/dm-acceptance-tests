@@ -7,17 +7,13 @@ class Deed
 
   def initialize(number_of_borrowers)
     @title_number = generate_title_number
-    @md_ref = generate_md_ref
+    @md_ref = 'e-MD12344'
     @borrowers = generate_borrowers(number_of_borrowers)
     @identity_checked = 'Y'
   end
 
   def generate_title_number
     /[A-Z]{0,3}[1-9][0-9]{0,5}|[0-9]{1,6}[ZT]/.random_example
-  end
-
-  def generate_md_ref
-    /e-MD([1-9]{5}|([1-9]{3,4}[A-Z]{1}))/.random_example
   end
 
   def generate_borrowers(number_of_borrowers)

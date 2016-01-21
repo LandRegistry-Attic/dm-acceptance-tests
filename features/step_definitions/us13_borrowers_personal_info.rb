@@ -68,7 +68,7 @@ end
 Given(/^I have deed data with two borrowers one which has no gender$/) do
   @deed_hash = {
     title_number: 'DT567568',
-    md_ref: 'e-MD123G',
+    md_ref: 'e-MD12344',
     identity_checked: 'Y',
     borrowers: [
       {
