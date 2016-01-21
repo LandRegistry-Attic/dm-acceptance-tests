@@ -3,11 +3,13 @@ class Deed
   attr_accessor :title_number
   attr_accessor :md_ref
   attr_accessor :borrowers
+  attr_accessor :identity_checked
 
   def initialize(number_of_borrowers)
     @title_number = generate_title_number
     @md_ref = generate_md_ref
     @borrowers = generate_borrowers(number_of_borrowers)
+    @identity_checked = 'Y'
   end
 
   def generate_title_number
