@@ -8,6 +8,12 @@ Given(/^I have valid deed data wth two borrowers$/) do
   @deed_hash = @deed.to_hash
 end
 
+Given(/^I have valid deed data with <(\d+)> borrowers$/) do |num_borrowers|
+  borrowers = num_borrowers.to_i
+  @deed = Deed.new(borrowers)
+  @deed_hash = @deed.to_hash
+end
+
 When(/^I create the deed via the Deed API$/) do
   deed_end_point = Env.deed_api + '/deed/'
   @response = HTTP.post(deed_end_point, json: @deed_hash)
