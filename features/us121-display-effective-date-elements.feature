@@ -17,4 +17,4 @@ Scenario: Effective Date is displayed on the deed
   When I navigate to the borrower frontend "/searchdeed" page
   And I search for the deed using the unique borrower token
   Then the effective date element is present on page
-  And the text "This charge takes effect when the registrar receives notification from Pure Law that the charge is to take effect." is displayed
+  And the text "This charge takes effect when the registrar receives notification from Pure Law that the charge is to take effect." is displayed on the page
