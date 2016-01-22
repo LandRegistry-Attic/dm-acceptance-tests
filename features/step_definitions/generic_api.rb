@@ -1,13 +1,3 @@
-Given(/^I have valid deed data$/) do
-  @deed = Deed.new(1)
-  @deed_hash = @deed.to_hash
-end
-
-Given(/^I have valid deed data wth two borrowers$/) do
-  @deed = Deed.new(2)
-  @deed_hash = @deed.to_hash
-end
-
 Given(/^I have valid deed data with <(\d+)> borrowers$/) do |num_borrowers|
   borrowers = num_borrowers.to_i
   @deed = Deed.new(borrowers)
