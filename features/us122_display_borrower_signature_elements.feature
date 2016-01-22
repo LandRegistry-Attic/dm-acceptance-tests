@@ -17,7 +17,7 @@ Scenario: 1 Borrower signature box is displayed on the deed
   And I search for the deed using the unique borrower token
   Then <1> borrower signature element is on page
 
-Scenario: 4 Borrower signature box is displayed on the deed
+Scenario: 4 Borrower signature boxes are displayed on the deed
 
   Given I have valid deed data with <4> borrowers
   And I create the deed via the Deed API
