@@ -6,7 +6,7 @@ Feature: Delete borrower personal information once the deed has been submitted
   mortgage application has been registered.
 
 Background:
-  Given I have valid deed data
+  Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
   And I know the borrower id
 

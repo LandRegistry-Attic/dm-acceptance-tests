@@ -6,7 +6,7 @@ Feature: Borrower Views the Deed
   So that I can view it
 
 Background:
-  Given I have valid deed data
+  Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
 
 Scenario: Borrower enters a valid deed reference

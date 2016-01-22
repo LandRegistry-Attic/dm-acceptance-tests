@@ -16,7 +16,7 @@ Scenario: Create Deed with a Borrower with a Middle Name
   And a url link to retrieve the deed is returned
 
 Scenario: Create Deed with No Borrowers
-  Given I have deed data with no borrowers
+  Given I have valid deed data with <0> borrowers
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'minItems' in schema['properties']['borrowers']:"
