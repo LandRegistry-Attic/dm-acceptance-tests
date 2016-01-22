@@ -10,7 +10,7 @@ Acceptance Criteria
 
 Scenario: Effective Date is displayed on the deed
 
-  Given I have valid deed data
+  Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
