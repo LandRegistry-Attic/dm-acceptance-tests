@@ -33,32 +33,36 @@ Then(/^the "([^"]*)" page is displayed$/) do |page_title|
 end
 
 And(/^the Lender is displayed on the deed$/) do
-  page.should have_css('h3', :text => 'Lender')
+  page.should have_css('h3', text: 'Lender')
   page.should have_content(
-  'Lender Information will go here')
+    'Bank of England Plc
+    12 Trinity Place, Regents Street, London NW10 6TQ
+    Company registration number: 2347676'
+  )
 end
 
 And(/^the Additional provision is displayed on the deed$/) do
-  page.should have_css('h3', :text => 'Additional provisions:')
+  page.should have_css('h3', text: 'Additional provisions:')
   page.should have_content(
-  'This Mortgage Deed incorporates the Lenders Mortgage Conditions and
-   Explanation 2006, a copy of which the borrower has received.
+    'This Mortgage Deed incorporates the Lenders Mortgage Conditions and
+    Explanation 2006, a copy of which the borrower has received.
 
-   The lender is obliged to make further advances and applies for the obligation
-   to be entered in the register.
+    The lender is obliged to make further advances and applies for the
+    obligation to be entered in the register.
 
-   The borrower applies to enter a restriction in the register that no
-   disposition of the registered estate by the proprietor of the registered
-   estate is to be registered without a written consent signed by the proprietor
-   for the time being of the charge dated [the date of this charge] in favour
-   of Bank of England Plc referred to in the charges register.'
+    The borrower applies to enter a restriction in the register that no
+    disposition of the registered estate by the proprietor of the registered
+    estate is to be registered without a written consent signed by the
+    proprietor for the time being of the charge dated [the date of this charge]
+    in favour of Bank of England Plc referred to in the charges register.'
   )
 end
 
 And(/^the Charging clause is displayed on the deed$/) do
-  page.should have_css('h3', :text => 'Charging clause:')
+  page.should have_css('h3', text: 'Charging clause:')
   page.should have_content(
-  'The borrower, with full title guarantee, charges to the lender the property
-   by way of legal mortgage with payment of all money secured by this charge.'
+    'The borrower, with full title guarantee, charges to the lender the
+    property by way of legal mortgage with payment of all money secured by this
+    charge.'
   )
 end
