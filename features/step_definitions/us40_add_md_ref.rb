@@ -30,6 +30,6 @@ end
 
 Given(/^I have deed data where md ref is not on the mortgage document table$/) do
   @deed = Deed.new(1)
-  @deed.md_ref = 'e-MD123457'
+  @deed.md_ref = 'e-MD12345'
   @deed_hash = @deed.to_hash
 end

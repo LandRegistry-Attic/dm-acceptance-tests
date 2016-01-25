@@ -7,7 +7,6 @@ end
 When(/^I create the deed via the Deed API$/) do
   deed_end_point = Env.deed_api + '/deed/'
   @response = HTTP.post(deed_end_point, json: @deed_hash)
-  puts @response.body
 end
 
 Then(/^a status code of "([^"]*)" is returned$/) do |code|
