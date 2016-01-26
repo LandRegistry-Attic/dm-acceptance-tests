@@ -24,6 +24,7 @@ Scenario: Borrower enters a valid deed reference
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
   And I search for the deed using the unique borrower token
+  And I enter the borrowers date of birth
   Then the Your mortgage deed page is displayed
   And the Lender is displayed on the deed
   And the Additional provision is displayed on the deed
@@ -31,9 +32,7 @@ Scenario: Borrower enters a valid deed reference
 
 @us20
 Scenario: Borrower enters invalid deed reference
-
-  - information message displayed when incorrect id entered
-
   When I navigate to the borrower frontend "/searchdeed" page
   And I search for an invalid deed
+  And I enter the borrowers date of birth
   Then the "Deed was not found for:" page is displayed
