@@ -14,6 +14,7 @@ Given(/^I have deed data without an md ref$/) do
   @deed_hash = {
     title_number: 'DT567568',
     identity_checked: 'Y',
+    address: '34 Smith Street, PL8 7YH',
     borrowers: [
       {
         forename: 'Katie',
