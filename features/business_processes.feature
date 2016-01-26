@@ -17,7 +17,7 @@ Scenario: Create Deed with Two Borrowers
   And a url link to retrieve the deed is returned
 
 Scenario: Borrower views their deed
-  Given I have valid deed data
+  Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
