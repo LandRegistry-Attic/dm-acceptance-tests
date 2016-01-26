@@ -15,13 +15,3 @@ Scenario: Create Deed with Two Borrowers
   When I create the deed via the Deed API
   Then a status code of "201" is returned
   And a url link to retrieve the deed is returned
-
-Scenario: Borrower views their deed
-  Given I have valid deed data with <1> borrowers
-  And I create the deed via the Deed API
-  And I retrieve the deed id
-  And I retrieve the unique user id using the URL
-  When I navigate to the borrower frontend "/searchdeed" page
-  And I search for the deed using the unique borrower token
-  And I enter the borrowers date of birth
-  Then the Your mortgage deed page is displayed
