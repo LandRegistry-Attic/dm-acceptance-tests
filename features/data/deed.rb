@@ -4,12 +4,14 @@ class Deed
   attr_accessor :md_ref
   attr_accessor :borrowers
   attr_accessor :identity_checked
+  attr_accessor :address
 
   def initialize(number_of_borrowers)
     @title_number = generate_title_number
     @md_ref = 'e-MD12344'
     @borrowers = generate_borrowers(number_of_borrowers)
     @identity_checked = 'Y'
+    @address = '1 High Street, High Wycombe, CR0 6TY'
   end
 
   def generate_title_number
