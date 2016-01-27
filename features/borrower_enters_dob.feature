@@ -16,3 +16,13 @@ Scenario: Borrower Enters an Invalid Date
   When I enter a date of birth that is not in a uk date format
   Then the error "Please enter a valid date of birth" should be displayed
 
+@bug
+Scenario: Borrower Enters Date in Different Format
+  Given I have valid deed data with <1> borrowers
+  And I create the deed via the Deed API
+  And I retrieve the deed id
+  And I retrieve the unique user id using the URL
+  And I navigate to the borrower frontend "/searchdeed" page
+  And I search for the deed using the unique borrower token
+  When I enter a date of birth without leading zeros
+  Then the Your mortgage deed page is displayed
