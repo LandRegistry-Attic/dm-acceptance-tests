@@ -26,7 +26,7 @@ class Deed
         surname: 'Cobb',
         gender: "#{/Male|Female|Not Specified/.random_example}",
         address: "#{borrower_number}B Borrower Street, Plymouth, PL3 2PP",
-        dob: "#{Time.new.strftime('%d/%m/%Y')}",
+        dob: "#{Date.today.strftime('%d/%m/%Y')}",
         phone_number: "07#{/[0-9]{9}/.random_example}"
       )
     end
