@@ -14,9 +14,9 @@ When(/^I enter a date of birth that is not in a uk date format$/) do
 end
 
 When(/^I enter a date of birth that is in the future$/) do
-  fill_in 'dob-day', with: '23'
-  fill_in 'dob-month', with: '04'
-  fill_in 'dob-year', with: '2099'
+  fill_in 'dob-day', with: (Date.today + 1).strftime('%d')
+  fill_in 'dob-month', with: (Date.today + 1).strftime('%m')
+  fill_in 'dob-year', with: (Date.today + 1).strftime('%Y')
   click_button('Continue')
 end
 
