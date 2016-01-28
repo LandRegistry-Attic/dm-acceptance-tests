@@ -9,7 +9,7 @@ Background:
   Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
 
-@us20 @us119 @us85a
+@us20 @us119 @us85a @us133a
 Scenario: Borrower enters a valid deed reference
 
         Deed must display:
@@ -31,6 +31,7 @@ Scenario: Borrower enters a valid deed reference
   And the Lender is displayed on the deed
   And the Additional provision is displayed on the deed
   And the Charging clause is displayed on the deed
+  And confirm your deed information text is displayed on the deed page
 
 @us20 @us151
 Scenario: Borrower enters invalid deed reference
