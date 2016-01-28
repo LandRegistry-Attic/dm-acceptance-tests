@@ -27,6 +27,13 @@ When(/^I enter the borrowers date of birth without the leading zeros$/) do
   click_button('Continue')
 end
 
+When(/^I enter a date of birth that is in the future$/) do
+  fill_in 'dob-day', with: (Date.today + 1).strftime('%d')
+  fill_in 'dob-month', with: (Date.today + 1).strftime('%m')
+  fill_in 'dob-year', with: (Date.today + 1).strftime('%Y')
+  click_button('Continue')
+end
+
 Then(/^the error "([^"]*)" should be displayed$/) do |error_message|
   page.should have_content(error_message)
 end
