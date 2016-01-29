@@ -32,9 +32,14 @@ Scenario: Borrower enters a valid deed reference
   And the Additional provision is displayed on the deed
   And the Charging clause is displayed on the deed
 
-@us20
+@us20 @us151
 Scenario: Borrower enters invalid deed reference
+
+  (US151) Message must be displayed if no deed is found matching Borrower ID and Date of birth
+  (US151) Wording should be as in prototype.
+
   When I navigate to the borrower frontend "/searchdeed" page
   And I search for an invalid deed
   And I enter the borrowers date of birth
-  Then the "Deed was not found for:" page is displayed
+  Then the error "Unable to find your mortgage deed" should be displayed
+  And help text explaining why your deed was unable to be found is displayed
