@@ -42,4 +42,4 @@ Scenario: Borrower enters invalid deed reference
   And I search for an invalid deed
   And I enter the borrowers date of birth
   Then the error "Unable to find your mortgage deed" should be displayed
-  And help text explaining why your deed was unable to be found is displayed
+  And help text explaining why your deed wasn't found is displayed

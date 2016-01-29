@@ -51,4 +51,4 @@ Scenario: Borrower Enters Incorrect Date of Birth
   And I search for the deed using the unique borrower token
   When I enter a date of birth that is not the borrowers
   Then the error "Unable to find your mortgage deed" should be displayed
-  And help text explaining why your deed was unable to be found is displayed
+  And help text explaining why your deed wasn't found is displayed
