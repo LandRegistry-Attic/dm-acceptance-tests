@@ -27,7 +27,7 @@ Scenario: House number and street name separated with a comma
 
 @us106
 Scenario: Property address without formatting
-  Given I create a deed with an input of "Amberleigh House High Street London SE3 4TG" 
+  Given I create a deed with an input of "Amberleigh House High Street London SE3 4TG"
   When the borrower views the deed
   Then line 1 of the property address is displayed as "1 High Street"
   Then line 2 of the property address is displayed as "London"
