@@ -66,5 +66,5 @@ And(/^the Charging clause is displayed on the deed$/) do
 end
 
 Then(/^the property address is displayed on the deed$/) do
-  page.should have_content(@deed.address)
+  page.should have_content(@deed.property_address)
 end

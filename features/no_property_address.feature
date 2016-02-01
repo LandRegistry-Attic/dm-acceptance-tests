@@ -12,4 +12,4 @@ Scenario: No property address provided
   Given I do not have a property address to provide
   When I create the deed via the Deed API
   Then a status code of "400" is returned
-  And a message for failure is given "Failed validating 'pattern' in schema['properties']['address']:"
+  And a message for failure is given "Failed validating 'pattern' in schema['properties']['property_address']:"

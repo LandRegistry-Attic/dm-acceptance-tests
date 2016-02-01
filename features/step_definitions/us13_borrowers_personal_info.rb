@@ -70,7 +70,7 @@ Given(/^I have deed data with two borrowers one which has no gender$/) do
     title_number: 'DT567568',
     md_ref: 'e-MD12344',
     identity_checked: 'Y',
-    address: '1 High Street, High Wycombe, CR0 6TY',
+    property_address: '1 High Street, High Wycombe, CR0 6TY',
     borrowers: [
       {
         forename: 'Katie',
