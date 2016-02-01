@@ -34,6 +34,10 @@ When(/^I enter a date of birth that is in the future$/) do
   click_button('Continue')
 end
 
-Then(/^the error "([^"]*)" should be displayed$/) do |error_message|
-  page.should have_content(error_message)
+When(/^I enter a date of birth that is not the borrowers$/) do
+  incorrect_dob = Date.parse(@deed.borrowers[0][:dob]) - 1
+  fill_in 'dob-day', with: incorrect_dob.strftime('%d')
+  fill_in 'dob-month', with: incorrect_dob.strftime('%m')
+  fill_in 'dob-year', with: incorrect_dob.strftime('%Y')
+  click_button('Continue')
 end
