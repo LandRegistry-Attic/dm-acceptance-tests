@@ -10,7 +10,7 @@ Scenario Outline: Borrower Views How to Proceed Page
     And I create the deed via the Deed API
     And I retrieve the deed id
     And I retrieve the unique user id using the URL
-    When I navigate to the borrower frontend "/searchdeed" page
+    When I navigate to the borrower frontend "/borrower-reference" page
     And I search for the deed using the unique borrower token
     And I enter the borrowers date of birth
     Then the "Identity verified" page is displayed
