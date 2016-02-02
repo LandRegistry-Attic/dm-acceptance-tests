@@ -27,7 +27,7 @@ Scenario: Borrower enters a valid deed reference
   And I search for the deed using the unique borrower token
   And I enter the borrowers date of birth
   Then the Your mortgage deed page is displayed
-  And the property address is displayed on the deed
+  And the property address is formatted correctly
   And the Lender is displayed on the deed
   And the Additional provision is displayed on the deed
   And the Charging clause is displayed on the deed

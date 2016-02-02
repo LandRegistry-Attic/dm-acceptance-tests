@@ -64,7 +64,3 @@ And(/^the Charging clause is displayed on the deed$/) do
                            'mortgage with payment of all money secured by '\
                            'this charge.')
 end
-
-Then(/^the property address is displayed on the deed$/) do
-  page.should have_content(@deed.property_address)
-end
