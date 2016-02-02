@@ -8,7 +8,6 @@ Given(/^I have a property address that is formatted with commas$/) do
   @deed = Deed.new(1)
   @deed.property_address = '256 King Henrys Drive, New Addington, Croydon, '\
   'CR7 6TH'
-  @deed.borrowers[0][:dob] = '21/09/1971'
   @deed_hash = @deed.to_hash
 end
 
