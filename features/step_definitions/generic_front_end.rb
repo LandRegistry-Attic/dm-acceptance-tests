@@ -17,3 +17,7 @@ end
 Then(/^the error "([^"]*)" should be displayed$/) do |error_message|
   page.should have_content(error_message)
 end
+
+Then(/^the following "([^"]*)" should be displayed$/) do |words|
+  expect(page).to have_content(words)
+end
