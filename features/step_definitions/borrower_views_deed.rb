@@ -70,5 +70,8 @@ Then(/^the property address is displayed on the deed$/) do
 end
 
 And(/^confirm your deed information text is displayed on the deed page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  page.should have_content('If you are happy with the details shown on your '\
+                           'mortgage deed above, please continue.')
+  page.should have_content('If something is wrong you should contact your '\
+                           'conveyancer')
 end
