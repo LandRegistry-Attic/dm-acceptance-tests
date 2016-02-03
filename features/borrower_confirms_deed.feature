@@ -5,12 +5,8 @@ Feature: Borrower confirms the Deed
   I want to confirm my mortgage deed
   So that I can complete the remortgage process
 
-Background:
-  Given I have valid deed data with <1> borrowers
-  And I create the deed via the Deed API
-
 @us133a
-Scenario: Borrower enters a valid deed reference
+Scenario: Borrower confirms deed
 
         Deed must display:
          - Borrowers
@@ -27,5 +23,5 @@ Scenario: Borrower enters a valid deed reference
   And I search for the deed using the unique borrower token
   And I enter the borrowers date of birth
   Then the Your mortgage deed page is displayed
-  Then I confirm the mortgage deed
-  And a confirmation page is displayed
+  And I confirm the mortgage deed
+  Then a confirmation page is displayed
