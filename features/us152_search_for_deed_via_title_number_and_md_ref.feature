@@ -10,10 +10,24 @@ Acceptance Criteria
 - If multiple deeds are found the service must return the deed ID and status of each deed
 - The service must state when no deed exists
 
-Scenario: A single deed is returned, when using valid Title Number & MD Reference
+Scenario: A search of the deed store can be performed when using valid Title Number & MD Reference
 Given I have valid deed data with <1> borrowers
 And I create the deed via the Deed API
 When I search the deed store
 Then the text "token" is displayed on the page
 And the text "status" is displayed on the page
-And I verify returned information
+
+Scenario: Multiple deed ID and Status's are returned when searched using valid Title Number & MD Reference
+Given I have valid deed data with <1> borrowers
+And I create the deed via the Deed API
+When I search the deed store with title_number <999>
+Then the text "token" is displayed on the page
+And the text "status" is displayed on the page
+Then I verify the number of returned deeds is <3>
+
+Scenario: Error is returned when search returns no deed
+Given I have valid deed data with <1> borrowers
+And I create the deed via the Deed API
+When I search the deed store with title_number <111>
+Then no deed returned error message is displayed
+Then I verify the number of returned deeds is <0>
