@@ -3,7 +3,7 @@ And(/^I confirm the mortgage deed$/) do
 end
 
 Then(/^a confirmation page is displayed$/) do
-  page.should have_css('h3', text: 'Thank you for viewing your mortgage deed')
+  page.should have_css('h1', text: 'Thank you for viewing your mortgage deed')
   page.should have_css('h2', text: 'What happens next?')
   page.should have_css('p', text: 'The online deed you\'ve viewed is not '\
                                   'the legal deed.')
@@ -15,5 +15,5 @@ Then(/^a confirmation page is displayed$/) do
                                    'title register to include the new mortgage')
   page.should have_css('p', text: 'The time this takes will vary depending '\
                                   'on the complexity of the transaction.')
-  page.should have_css('ul', text: 'More about the Land Registry')
+  page.should have_css('p', text: 'More about the Land Registry')
 end
