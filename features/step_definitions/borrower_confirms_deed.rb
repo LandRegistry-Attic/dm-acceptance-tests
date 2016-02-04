@@ -1,4 +1,4 @@
-Then(/^I confirm the mortgage deed$/) do
+And(/^I confirm the mortgage deed$/) do
   click_button('Continue')
 end
 
