@@ -64,3 +64,14 @@ And(/^the Charging clause is displayed on the deed$/) do
                            'mortgage with payment of all money secured by '\
                            'this charge.')
 end
+
+Then(/^the property address is displayed on the deed$/) do
+  page.should have_content(@deed.address)
+end
+
+And(/^confirm your deed information text is displayed on the deed page$/) do
+  page.should have_content('If you are happy with the details shown on your '\
+                           'mortgage deed above, please continue.')
+  page.should have_content('If something is wrong you should contact your '\
+                           'conveyancer')
+end
