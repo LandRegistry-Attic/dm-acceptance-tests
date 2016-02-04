@@ -8,7 +8,7 @@ Acceptance Criteria
 Scenario Outline: Borrower Views Start Page
     Given I navigate to the borrower frontend "/sign-my-mortgage" page
     Then the following <INFORMATION> should be displayed
-    And when I click on the "Start now" button
+    And when I click on the "Start now" link
     Then the "What is your borrower token?" page is displayed
 
     Examples:

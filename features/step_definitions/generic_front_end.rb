@@ -6,6 +6,10 @@ Then(/^when I click on the "([^"]*)" button$/) do |button_name|
   page.click_button(button_name)
 end
 
+Then(/^when I click on the "([^"]*)" link$/) do |link_name|
+  page.click_link(link_name)
+end
+
 Then(/^the "([^"]*)" page is displayed$/) do |page_title|
   page.should have_content(page_title)
 end
