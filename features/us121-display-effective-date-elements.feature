@@ -17,6 +17,6 @@ Scenario: Effective Date is displayed on the deed
   When I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower token
   And I enter the borrowers date of birth
-  And when I click on the "Continue to mortgage" button
+  And when I click on the "Continue" button
   Then the effective date element is present on page
   And the text "This charge takes effect when the registrar receives notification from Pure Law that the charge is to take effect." is displayed on the page
