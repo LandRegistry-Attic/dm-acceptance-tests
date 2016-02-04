@@ -1,18 +1,7 @@
-When(/^I search the deed store$/) do
-  str_end = '/deed?md_ref=e-MD12344&title_number='
-  deed_end_point = Env.deed_api + str_end + @title_number.to_s
-  @response = HTTP.get(deed_end_point)
-
-  # Open the URL in browser to check information
-  head = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number='
-  full_str = head + @deed.title_number.to_s
-  visit(full_str)
-end
-
 When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   # Open the URL in browser to check information
   head = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number='
-  full_str = head + title_number.to_s
+  full_str = head + title_number
   visit(full_str)
 end
 
