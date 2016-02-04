@@ -1,20 +1,34 @@
 When(/^I search the deed store$/) do
-  title_number = @deed.title_number.to_s
-  full_str = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number=' + title_number
-  visit(full_str)
-end
+  str_end = '/deed?md_ref=' + @md_ref.to_s + '&title_number='
+  deed_end_point = Env.deed_api + str_end + @title_number.to_s
+  @response = HTTP.get(deed_end_point)
 
-Then(/^I verify the number of returned deeds is <(\d+)>$/) do |deeds|
-  page.should have_content('token', :count => deeds )
-  page.should have_content('status', :count => deeds )
+  # Open the URL in browser to check information
+  head = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number='
+  full_str = head + @deed.title_number.to_s
+  visit(full_str)
 end
 
 When(/^I search the deed store with title_number <(\d+)>$/) do |title_number|
-  title_number = title_number
-  full_str = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number=DT' + title_number.to_s
+  head = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number=DT'
+  full_str = head + title_number.to_s
   visit(full_str)
 end
 
-Then(/^no deed returned error message is displayed$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^I create the deed with title_number <(\d+)>$/) do |title_num|
+  # Using to create deed with specific title number
+=begin
+  @deed = Deed.new(1)
+  @deed.title_number = title_num
+  @deed_hash = @deed.to_hash
+=end
+  require 'pry'
+  binding.pry
+  str_end = '/deed?md_ref=e-MD12344&title_number=DT' + title_num.to_s
+  deed_end_point = Env.deed_api + str_end
+  @response = HTTP.get(deed_end_point)
+
+  head = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number=DT'
+  full_str = head + title_num.to_s
+  visit(full_str)
 end
