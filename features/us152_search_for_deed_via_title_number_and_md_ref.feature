@@ -11,18 +11,18 @@ Acceptance Criteria
 - The service must state when no deed exists
 
 Scenario: A search of the deed store can be performed when using valid Title Number & MD Reference
-Given I create the deed with title_number "1254"
+Given I create the deed with title_number "1234"
 And I create the deed via the Deed API
-When I search the deed store
+When I search the deed store with title_number "1234"
 Then the text "token" is displayed on the page
 And the text "status" is displayed on the page
 
 Scenario: Multiple deed ID's and Statuses are returned when searched using valid Title Number & MD Reference
-Given I create the deed with title_number "DN100"
+Given I create the deed with title_number "DM101"
 And I create the deed via the Deed API
-And I create the deed with title_number "DN100"
+And I create the deed with title_number "DM101"
 And I create the deed via the Deed API
-When I search the deed store with title_number "DN100"
+When I search the deed store with title_number "DM101"
 Then the text "token" is displayed on the page
 And the text "status" is displayed on the page
 And the text "}, {" is displayed on the page
@@ -30,5 +30,5 @@ And the text "}, {" is displayed on the page
 Scenario: Error is returned when search returns no deed
 Given I have valid deed data with <1> borrowers
 And I create the deed via the Deed API
-When I search the deed store with title_number "99999999"
+When I search the deed store with title_number "99999"
 Then the text "Not Found" is displayed on the page
