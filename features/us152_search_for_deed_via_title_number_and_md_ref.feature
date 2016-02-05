@@ -28,7 +28,5 @@ And the text "status" is displayed on the page
 And the text "}, {" is displayed on the page
 
 Scenario: Error is returned when search returns no deed
-Given I have valid deed data with <1> borrowers
-And I create the deed via the Deed API
-When I search the deed store with title_number "99999"
+Given I search the deed store with title_number "99999"
 Then the text "Not Found" is displayed on the page
