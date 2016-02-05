@@ -26,7 +26,7 @@ Scenario: Borrower enters a valid deed reference
   And I retrieve the unique user id using the URL
   And I search for the deed using the unique borrower token
   And I enter the borrowers date of birth
-  And when I click on the "Continue" button
+  And when I click on the "Continue" link
   Then the Your mortgage deed page is displayed
   And the property address is formatted correctly
   And the Lender is displayed on the deed

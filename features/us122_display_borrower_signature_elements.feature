@@ -16,7 +16,7 @@ Scenario: 1 Borrower signature box is displayed on the deed
   When I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower token
   And I enter the borrowers date of birth
-  And when I click on the "Continue" button
+  And when I click on the "Continue" link
   Then <1> borrower signature element is on page
 
 Scenario: 4 Borrower signature boxes are displayed on the deed
@@ -28,5 +28,5 @@ Scenario: 4 Borrower signature boxes are displayed on the deed
   When I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower token
   And I enter the borrowers date of birth
-  And when I click on the "Continue" button
+  And when I click on the "Continue" link
   Then <4> borrower signature element is on page

@@ -15,7 +15,7 @@ Scenario Outline: Borrower Views How to Proceed Page
     And I enter the borrowers date of birth
     Then the "Identity verified" page is displayed
     And the following <INFORMATION> should be displayed
-    And when I click on the "Continue" button
+    And when I click on the "Continue" link
     Then the Your mortgage deed page is displayed
 
     Examples:
