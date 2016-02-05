@@ -1,8 +1,8 @@
 When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   # Open the URL in browser to check information
-  head = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number='
-  full_str = head + title_number
-  visit(full_str)
+  url_head = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number='
+  full_url = url_head + title_number
+  visit(full_url)
 end
 
 Given(/^I create the deed with title_number "([^"]*)"$/) do |title_num|
