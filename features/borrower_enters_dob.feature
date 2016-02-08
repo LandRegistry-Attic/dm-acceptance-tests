@@ -29,7 +29,7 @@ Scenario: Borrower Enters Date in Different Format
   And I search for the deed using the unique borrower reference
   When I enter the borrowers date of birth without the leading zeros
   And when I click on the "Continue" link
-  Then the Your mortgage deed page is displayed
+  Then the mortgage deed is displayed
 
 @us145
 Scenario: Borrower Enters Future Date

@@ -16,4 +16,4 @@ Scenario: Borrower Views How to Proceed Page
     Then the "View your mortgage deed" page is displayed
     And instructions for viewing your mortgage should be displayed
     And when I click on the "Continue" link
-    Then the Your mortgage deed page is displayed
+    Then the mortgage deed is displayed

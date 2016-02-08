@@ -25,6 +25,6 @@ Scenario: Borrower enters a valid deed reference
   And I search for the deed using the unique borrower reference
   And I enter the borrowers date of birth
   And when I click on the "Continue" link
-  Then the Your mortgage deed page is displayed
+  Then the mortgage deed is displayed
   Then I confirm the mortgage deed
   And a confirmation page is displayed

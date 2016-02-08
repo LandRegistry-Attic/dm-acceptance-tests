@@ -6,7 +6,7 @@ Then(/^instructions for viewing your mortgage should be displayed$/) do
                            'the paper version you have received from your '\
                            'conveyancer. If you spot any mistakes you should '\
                            'let your conveyancer know.')
-  page.should have_content('Sign you paper mortgage deed')
+  page.should have_content('Sign your paper mortgage deed')
   page.should have_content('The online deed is not the legal mortgage. You '\
                            'should still sign and return your paper mortgage '\
                            'deed following the instructions you have from '\
