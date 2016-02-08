@@ -14,7 +14,7 @@ Scenario: Borrower Enters an Invalid Date
   And I create the deed via the Deed API
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
-  And I navigate to the borrower frontend "/searchdeed" page
+  And I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower token
   When I enter a date of birth that is not in a uk date format
   Then the error "Please enter a valid date of birth" should be displayed
@@ -25,9 +25,10 @@ Scenario: Borrower Enters Date in Different Format
   And I create the deed via the Deed API
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
-  And I navigate to the borrower frontend "/searchdeed" page
+  And I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower token
   When I enter the borrowers date of birth without the leading zeros
+  And when I click on the "Continue" link
   Then the Your mortgage deed page is displayed
 
 @us145
@@ -36,7 +37,7 @@ Scenario: Borrower Enters Future Date
   And I create the deed via the Deed API
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
-  And I navigate to the borrower frontend "/searchdeed" page
+  And I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower token
   When I enter a date of birth that is in the future
   Then the error "Please enter a valid date of birth" should be displayed
@@ -47,7 +48,7 @@ Scenario: Borrower Enters Incorrect Date of Birth
   And I create the deed via the Deed API
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
-  And I navigate to the borrower frontend "/searchdeed" page
+  And I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower token
   When I enter a date of birth that is not the borrowers
   Then the error "Unable to find your mortgage deed" should be displayed

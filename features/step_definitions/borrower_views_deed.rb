@@ -1,7 +1,3 @@
-Given(/^I navigate to the borrower frontend "([^"]*)" page$/) do |path|
-  visit(Env.borrower_frontend + path)
-end
-
 And(/^I retrieve the deed id$/) do
   response_hash = JSON.parse(@response.body)
   @get_url = response_hash['url']
@@ -26,10 +22,6 @@ end
 
 When(/^I search for an invalid deed$/) do
   click_button('Continue')
-end
-
-Then(/^the "([^"]*)" page is displayed$/) do |page_title|
-  page.should have_content(page_title)
 end
 
 And(/^the Lender is displayed on the deed$/) do

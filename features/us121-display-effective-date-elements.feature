@@ -14,8 +14,9 @@ Scenario: Effective Date is displayed on the deed
   And I create the deed via the Deed API
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
-  When I navigate to the borrower frontend "/searchdeed" page
+  When I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower token
   And I enter the borrowers date of birth
+  And when I click on the "Continue" link
   Then the effective date element is present on page
   And the text "This charge takes effect when the registrar receives notification from Pure Law that the charge is to take effect." is displayed on the page
