@@ -24,7 +24,7 @@ Scenario: Borrower enters a valid deed reference
   When I navigate to the borrower frontend "/borrower-reference" page
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
-  And I search for the deed using the unique borrower token
+  And I search for the deed using the unique borrower reference
   And I enter the borrowers date of birth
   And when I click on the "Continue" link
   Then the Your mortgage deed page is displayed
@@ -34,14 +34,4 @@ Scenario: Borrower enters a valid deed reference
   And the Charging clause is displayed on the deed
   And confirm your deed information text is displayed on the deed page
 
-@us20 @us151
-Scenario: Borrower enters invalid deed reference
 
-  (US151) Message must be displayed if no deed is found matching Borrower ID and Date of birth
-  (US151) Wording should be as in prototype.
-
-  When I navigate to the borrower frontend "/borrower-reference" page
-  And I search for an invalid deed
-  And I enter the borrowers date of birth
-  Then the error "Unable to find your mortgage deed" should be displayed
-  And help text explaining why your deed wasn't found is displayed

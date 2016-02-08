@@ -9,19 +9,10 @@ And(/^I retrieve the unique user id using the URL$/) do
   @borrower_token = deed_hash['deed']['borrowers'][0]['token']
 end
 
-And(/^I search for the deed using the unique borrower token$/) do
-  fill_in 'borrower_token', with: @borrower_token
-  click_button('Continue')
-end
-
 Then(/^the Your mortgage deed page is displayed$/) do
   page.should have_content('Your mortgage deed')
   page.should have_content(@deed.title_number)
   page.should have_content(@deed.md_ref)
-end
-
-When(/^I search for an invalid deed$/) do
-  click_button('Continue')
 end
 
 And(/^the Lender is displayed on the deed$/) do

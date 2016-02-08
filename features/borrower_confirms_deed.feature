@@ -22,7 +22,7 @@ Scenario: Borrower enters a valid deed reference
   When I navigate to the borrower frontend "/borrower-reference" page
   And I retrieve the deed id
   And I retrieve the unique user id using the URL
-  And I search for the deed using the unique borrower token
+  And I search for the deed using the unique borrower reference
   And I enter the borrowers date of birth
   And when I click on the "Continue" link
   Then the Your mortgage deed page is displayed
