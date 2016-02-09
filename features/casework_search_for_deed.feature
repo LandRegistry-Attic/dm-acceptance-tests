@@ -2,7 +2,7 @@
 Feature: Search for deed via title number and MD Refs
 In order to establish if a deed exists:
 The deed store must be capable of being searched using title number and MD reference,
-so that another service can be provided with the deed ID.
+so that another service can be provided with the Deed ID and status.
 
 
 Acceptance Criteria
