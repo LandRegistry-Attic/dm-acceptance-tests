@@ -22,7 +22,7 @@ Then(/^I verify the returned deed information$/) do
       token = data[deed_count].keys[1].include?('token')
       draft = data[deed_count]['status'].include?('DRAFT')
       tok_val = data[deed_count]['token'].nil?
-      # Fails if any of the above checks return false.
+      # Fails if the first 3 above checks = false, or the last =  true
       if status == false || token == false || draft == false || tok_val == true
         abort('Status or Token is not returned as expected')
       end
