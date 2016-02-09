@@ -31,5 +31,6 @@ Then I verify the returned deed information
 
 @us152
 Scenario: Error is returned when search returns no deed
-Given I search the deed store with title_number "99999"
+Given I create the deed with title_number "DM11"
+When I search the deed store with title_number "99999"
 Then a status code of "404" is returned
