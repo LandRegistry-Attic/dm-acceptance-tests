@@ -15,5 +15,5 @@ Then(/^a confirmation page is displayed$/) do
                                    'title register to include the new mortgage')
   page.should have_css('p', text: 'The time this takes will vary depending '\
                                   'on the complexity of the transaction.')
-  page.should have_css('p', text: 'More about the Land Registry')
+  page.should have_css('a', text: 'More about the Land Registry')
 end

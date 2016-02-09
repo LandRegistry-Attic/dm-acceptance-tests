@@ -9,19 +9,24 @@ And(/^I retrieve the unique user id using the URL$/) do
   @borrower_token = deed_hash['deed']['borrowers'][0]['token']
 end
 
-And(/^I search for the deed using the unique borrower token$/) do
-  fill_in 'borrower_token', with: @borrower_token
-  click_button('Continue')
-end
-
-Then(/^the Your mortgage deed page is displayed$/) do
+Then(/^the mortgage deed is displayed$/) do
   page.should have_content('Your mortgage deed')
-  page.should have_content(@deed.title_number)
-  page.should have_content(@deed.md_ref)
+  step %(the Title number is displayed)
+  step %(the property address is formatted correctly)
+  step %(the Lender is displayed on the deed)
+  step %(the Additional provision is displayed on the deed)
+  step %(the Charging clause is displayed on the deed)
+  step %(the effective date element is present on page)
+  step %(the borrower signature elements are present on page)
+  step %(the Mortgage document reference is displayed)
 end
 
-When(/^I search for an invalid deed$/) do
-  click_button('Continue')
+Then(/^the Title number is displayed$/) do
+  page.should have_content(@deed.title_number)
+end
+
+Then(/^the Mortgage document reference is displayed$/) do
+  page.should have_content(@deed.md_ref)
 end
 
 And(/^the Lender is displayed on the deed$/) do
@@ -32,7 +37,7 @@ And(/^the Lender is displayed on the deed$/) do
 end
 
 And(/^the Additional provision is displayed on the deed$/) do
-  page.should have_css('h3', text: 'Additional provisions:')
+  page.should have_css('h3', text: 'Additional provisions')
   page.should have_content('This Mortgage Deed incorporates the Lenders '\
                            'Mortgage Conditions and Explanation 2006, a '\
                            'copy of which the borrower has received. The '\
@@ -50,15 +55,25 @@ And(/^the Additional provision is displayed on the deed$/) do
 end
 
 And(/^the Charging clause is displayed on the deed$/) do
-  page.should have_css('h3', text: 'Charging clause:')
+  page.should have_css('h3', text: 'Charging clause')
   page.should have_content('The borrower, with full title guarantee, charges '\
                            'to the lender the property by way of legal '\
                            'mortgage with payment of all money secured by '\
                            'this charge.')
 end
 
-Then(/^the property address is displayed on the deed$/) do
-  page.should have_content(@deed.address)
+Then(/^the effective date element is present on page$/) do
+  page.should have_content('This charge takes effect when the registrar '\
+                           'receives notification from Pure Law that the '\
+                           'charge is to take effect.')
+  page.should have_content('[Effective date and time will be shown here]')
+end
+
+Then(/^the borrower signature elements are present on page/) do
+  @deed.borrowers.each do |borrower|
+    page.should have_content('[Awaiting digital signature of '\
+                             "#{borrower[:forename]} #{borrower[:surname]}]")
+  end
 end
 
 And(/^confirm your deed information text is displayed on the deed page$/) do
