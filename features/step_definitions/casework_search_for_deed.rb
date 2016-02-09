@@ -1,15 +1,15 @@
 When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   # Open the URL in browser to check information
-  url_head = 'http://10.10.10.10:9020/deed?md_ref=e-MD12344&title_number='
+  url_head = Env.deed_api + '/deed?md_ref=' + @deed.md_ref + '&title_number='
   full_url = url_head + title_number
   @response = HTTP.get(full_url)
 end
 
 Given(/^I create the deed with title_number "([^"]*)"$/) do |title_num|
   # Using to create deed with specific title number
-  deed = Deed.new(1)
-  deed.title_number = title_num
-  @deed_hash = deed.to_hash
+  @deed = Deed.new(1)
+  @deed.title_number = title_num
+  @deed_hash = @deed.to_hash
 end
 
 Then(/^I verify the returned deed information$/) do
@@ -18,8 +18,8 @@ Then(/^I verify the returned deed information$/) do
     deed_count = 0
     # Checks each returned deed for key values: status, token. And value DRAFT.
     while deed_count <= (data.length - 1)
-      status = data[deed_count].keys[0].include?('status')
-      token = data[deed_count].keys[1].include?('token')
+      status = data[deed_count].keys[1].include?('status')
+      token = data[deed_count].keys[0].include?('token')
       draft = data[deed_count]['status'].include?('DRAFT')
       tok_val = data[deed_count]['token'].nil?
       # Fails if the first 3 above checks = false, or the last =  true
