@@ -18,8 +18,8 @@ Then(/^I verify the returned deed information$/) do
     deed_count = 0
     # Checks each returned deed for key values: status, token. And value DRAFT.
     while deed_count <= (data.length - 1)
-      status = data[deed_count].keys[1].include?('status')
-      token = data[deed_count].keys[0].include?('token')
+      status = data[deed_count].include?('status')
+      token = data[deed_count].include?('token')
       draft = data[deed_count]['status'].include?('DRAFT')
       tok_val = data[deed_count]['token'].nil?
       # Fails if the first 3 above checks = false, or the last =  true
