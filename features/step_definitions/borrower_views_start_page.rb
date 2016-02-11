@@ -23,6 +23,6 @@ Then(/^the conform with Data Protection Law text is displayed$/) do
                            'Personal Information Charter')
 end
 
-  And(/^a link to Personal Information Charter is displayed$/) do
-    page.should have_link('Personal Information Charter.', href: 'https://www.gov.uk/government/organisations/land-registry/about/personal-information-charter')
- end
+And(/^a link to Personal Information Charter is displayed$/) do
+  page.should have_link('Personal Information Charter.', href: 'https://www.gov.uk/government/organisations/land-registry/about/personal-information-charter')
+end
