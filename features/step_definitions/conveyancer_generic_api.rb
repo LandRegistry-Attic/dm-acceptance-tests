@@ -14,8 +14,7 @@ Then(/^a status code of "([^"]*)" is returned$/) do |code|
 end
 
 Then(/^a url link to retrieve the deed is returned$/) do
-  deed_end_point = Env.deed_api + '/deed/'
-  assert_match(deed_end_point, @response.body)
+  assert_match('/deed/', @response.body)
 end
 
 And(/^a message for failure is given "([^"]*)"$/) do |failure_reason|
@@ -23,8 +22,8 @@ And(/^a message for failure is given "([^"]*)"$/) do |failure_reason|
 end
 
 And(/^I know the borrower id$/) do
-  deed_end_point = JSON[@response.body]['url']
-  @response = HTTP.get(deed_end_point)
+  relative_get_url = JSON[@response.body]['url']
+  @response = HTTP.get(Env.deed_api + relative_get_url)
 
   data = JSON.parse(@response)
   @borrower_id = data['deed']['borrowers'][0]['id']
