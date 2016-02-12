@@ -30,3 +30,8 @@ When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
   fill_in 'dob-year', with: split_dob[2]
   click_button('Continue')
 end
+
+Then(/^the deed is digitally signed$/) do
+  step %(I confirm the mortgage deed)
+  step %(a confirmation page is displayed)
+end
