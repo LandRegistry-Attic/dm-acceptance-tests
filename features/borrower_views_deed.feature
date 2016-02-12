@@ -19,7 +19,7 @@ Acceptance Criteria:
   (US122) The borrower signature boxes must align with how they are formatted on the prototype
   (US122) Must accept one to four borrowers
 
-@us20 @us119 @us85a @us133a @us121
+@us20 @us119 @us85a @us133a @us121 @us133
 Scenario: Borrower enters a valid deed reference
   Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
@@ -43,6 +43,3 @@ Scenario: 4 Borrower signature boxes are displayed on the deed
   And I enter the borrowers date of birth
   And when I click on the "Continue" link
   Then the mortgage deed is displayed
-
-
-
