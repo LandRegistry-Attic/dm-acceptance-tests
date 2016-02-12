@@ -12,14 +12,6 @@ When(/^I enter the borrowers date of birth$/) do
   click_button('Continue')
 end
 
-When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
-  split_dob = @deed.borrowers[borrower.to_i - 1][:dob].split('/')
-  fill_in 'dob-day', with: split_dob[0]
-  fill_in 'dob-month', with: split_dob[1]
-  fill_in 'dob-year', with: split_dob[2]
-  click_button('Continue')
-end
-
 When(/^I enter a date of birth that is not in a uk date format$/) do
   fill_in 'dob-day', with: '09'
   fill_in 'dob-month', with: '30'
