@@ -18,8 +18,7 @@ Scenario: Single borrower views and signs deed, then views again
   And I create the deed via the Deed API
   And borrower <1> views the deed
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
 
@@ -31,8 +30,7 @@ Scenario: Single borrower views deed, then views and signs
   Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 @us133 @wip1 @wipAll
 Scenario: Single borrower views deed 3 times
@@ -52,12 +50,10 @@ Scenario: 2 Borrowers can view and sign a deed
   And I create the deed via the Deed API
   And borrower <1> views the deed
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 @us133 @wip2 @wipAll
 Scenario: 1st Borrower can view a deed, 2nd signs, then 1st views and signs
@@ -67,12 +63,10 @@ Scenario: 1st Borrower can view a deed, 2nd signs, then 1st views and signs
   Then the mortgage deed is displayed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 @us133 @wip2 @wipAll
 Scenario: 2nd Borrower can view a deed, 1st signs, then 2nd views and signs
@@ -82,12 +76,10 @@ Scenario: 2nd Borrower can view a deed, 1st signs, then 2nd views and signs
   Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 @us133 @wip2 @wipAll
 Scenario: 1st Borrower can sign a deed, 2nd views, then 2nd views and signs, 1st views signs
@@ -95,13 +87,11 @@ Scenario: 1st Borrower can sign a deed, 2nd views, then 2nd views and signs, 1st
   And I create the deed via the Deed API
   And borrower <1> views the deed
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
   And borrower <2> views the deed again
-  Then the mortgage deed is displayed
-  And I confirm the mortgage deed
+  Then the deed is digitally signed
   Then a confirmation page is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
@@ -112,14 +102,12 @@ Scenario: 2nd Borrower can sign a deed, 1st views, then 1st views and signs, 2nd
   And I create the deed via the Deed API
   And borrower <2> views the deed
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
 
@@ -140,33 +128,27 @@ Scenario: 3 Borrowers can view and sign a deed (2nd,3rd,1st)
   And I create the deed via the Deed API
   And borrower <2> views the deed
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 @us133 @wip3 @wipAll
 Scenario: 3 Borrowers can view and sign a deed (2nd,1st,3rd)
   Given I have valid deed data with <3> borrowers
   And I create the deed via the Deed API
   And borrower <2> views the deed
-  Then the mortgage deed is displayed
-  And I confirm the mortgage deed
+  Then the deed is digitally signed
   Then a confirmation page is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 
 @us133 @wip3 @wipAll
@@ -177,18 +159,15 @@ Scenario: 3 Borrowers can view deed mutltiple times, and sign once
   Then the mortgage deed is displayed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 @us133 @wip3 @wipAll
 Scenario: 3 Borrowers can view deed mutltiple times, and sign once
@@ -198,18 +177,15 @@ Scenario: 3 Borrowers can view deed mutltiple times, and sign once
   Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 @us133 @wip4 @wipAll
 Scenario: 4 Borrowers can view deed
@@ -231,21 +207,17 @@ Scenario: 4 Borrowers can view and sign a deed
   And I create the deed via the Deed API
   And borrower <3> views the deed
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  Then the mortgage deed is displayed
-  And I confirm the mortgage deed
+  Then the deed is digitally signed
   Then a confirmation page is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <4> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 @us133 @wip4 @wipAll
 Scenario: 4 Borrowers can view and sign a deed
@@ -253,21 +225,15 @@ Scenario: 4 Borrowers can view and sign a deed
   And I create the deed via the Deed API
   And borrower <1> views the deed
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
-  Then the mortgage deed is displayed
-  Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <4> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
 
 @us133 @wip4 @wipAll
@@ -280,24 +246,20 @@ Scenario: 4 Borrowers can view deed multiple times, and sign once
   Then the mortgage deed is displayed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
   And borrower <4> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
 
   @us133 @wip4 @wipAll
   Scenario: 4 Borrowers can view deed multiple times, and sign once
@@ -309,29 +271,17 @@ Scenario: 4 Borrowers can view deed multiple times, and sign once
   Then the mortgage deed is displayed
   And borrower <2> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
   And borrower <4> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
+  Then the deed is digitally signed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
-  And I confirm the mortgage deed
-  Then a confirmation page is displayed
-
-
-@us133 @wip5 @wipAll
-Scenario: Reduce size of signing steps
-  Given I have valid deed data with <4> borrowers
-  And I create the deed via the Deed API
-  And borrower <2> views the deed
-  Then the mortgage deed is displayed
+  Then the deed is digitally signed
