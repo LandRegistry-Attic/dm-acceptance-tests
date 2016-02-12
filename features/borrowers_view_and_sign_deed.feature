@@ -43,7 +43,6 @@ Scenario: Single borrower views deed 3 times
   And borrower <1> views the deed again
   Then the mortgage deed is displayed
 
-
 @us133 @wip2 @wipAll
 Scenario: 2 Borrowers can view and sign a deed
   Given I have valid deed data with <2> borrowers
@@ -150,7 +149,6 @@ Scenario: 3 Borrowers can view and sign a deed (2nd,1st,3rd)
   Then the mortgage deed is displayed
   Then the deed is digitally signed
 
-
 @us133 @wip3 @wipAll
 Scenario: 3 Borrowers can view deed mutltiple times, and sign once
   Given I have valid deed data with <3> borrowers
@@ -200,7 +198,6 @@ Scenario: 4 Borrowers can view deed
   And borrower <3> views the deed again
   Then the mortgage deed is displayed
 
-
 @us133 @wip4 @wipAll
 Scenario: 4 Borrowers can view and sign a deed
   Given I have valid deed data with <4> borrowers
@@ -235,7 +232,6 @@ Scenario: 4 Borrowers can view and sign a deed
   Then the mortgage deed is displayed
   Then the deed is digitally signed
 
-
 @us133 @wip4 @wipAll
 Scenario: 4 Borrowers can view deed multiple times, and sign once
   Given I have valid deed data with <4> borrowers
@@ -261,8 +257,8 @@ Scenario: 4 Borrowers can view deed multiple times, and sign once
   Then the mortgage deed is displayed
   Then the deed is digitally signed
 
-  @us133 @wip4 @wipAll
-  Scenario: 4 Borrowers can view deed multiple times, and sign once
+@us133 @wip4 @wipAll
+Scenario: 4 Borrowers can view deed multiple times, and sign once
   Given I have valid deed data with <4> borrowers
   And I create the deed via the Deed API
   And borrower <2> views the deed
