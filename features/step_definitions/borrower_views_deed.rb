@@ -64,7 +64,7 @@ And(/^the Charging clause is displayed on the deed$/) do
 end
 
 Then(/^the effective date element is present on page$/) do
-  page.should have_content('This charge takes effect when the registrar '\
+  page.should have_content('This chrge takes effect when the registrar '\
                            'receives notification from Pure Law that the '\
                            'charge is to take effect.')
   page.should have_content('[Effective date and time will be shown here]')
