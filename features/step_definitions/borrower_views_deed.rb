@@ -4,12 +4,6 @@ And(/^I retrieve the unique user id using the URL$/) do
   @borrower_token = deed_hash['deed']['borrowers'][0]['token']
 end
 
-And(/^I retrieve the unique user id for borrower <(\d+)>$/) do |borrower|
-  @response = HTTP.get(@get_url)
-  deed_hash = JSON.parse(@response.body)
-  @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
-end
-
 Then(/^the mortgage deed is displayed$/) do
   page.should have_content('Your mortgage deed')
   step %(the Title number is displayed)
@@ -64,7 +58,7 @@ And(/^the Charging clause is displayed on the deed$/) do
 end
 
 Then(/^the effective date element is present on page$/) do
-  page.should have_content('This chrge takes effect when the registrar '\
+  page.should have_content('This charge takes effect when the registrar '\
                            'receives notification from Pure Law that the '\
                            'charge is to take effect.')
   page.should have_content('[Effective date and time will be shown here]')
@@ -82,21 +76,4 @@ And(/^confirm your deed information text is displayed on the deed page$/) do
                            'mortgage deed above, please continue.')
   page.should have_content('If something is wrong you should contact your '\
                            'conveyancer')
-end
-
-Then(/^borrower <(\d+)> views the deed$/) do |borrower|
-  step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(I retrieve the deed id)
-  step %(I retrieve the unique user id for borrower <#{borrower}>)
-  step %(I search for the deed using the unique borrower reference)
-  step %(I enter the date of birth for borrower <#{borrower}>)
-  step %(when I click on the "Continue" link)
-end
-
-Then(/^borrower <(\d+)> views the deed again$/) do |borrower|
-  step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(I retrieve the unique user id for borrower <#{borrower}>)
-  step %(I search for the deed using the unique borrower reference)
-  step %(I enter the date of birth for borrower <#{borrower}>)
-  step %(when I click on the "Continue" link)
 end
