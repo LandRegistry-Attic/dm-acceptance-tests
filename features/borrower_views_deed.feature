@@ -27,7 +27,7 @@ Scenario: Borrower enters a valid deed reference
   Then the mortgage deed is displayed
   And confirm your deed information text is displayed on the deed page
 
-@us122
+@us122 @us133
 Scenario: 4 Borrower signature boxes are displayed on the deed
   Given I have valid deed data with <4> borrowers
   And I create the deed via the Deed API
