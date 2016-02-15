@@ -1,7 +1,6 @@
 @borrower_views_start_page
 Feature: Borrower Views Start Page
 
-
 Acceptance Criteria
     (US75) Page content matches wireframe
     (US150) Need to provide a link to the Personal Information Charter
@@ -9,7 +8,6 @@ Acceptance Criteria
 Background:
     Given I navigate to the borrower frontend "/sign-my-mortgage" page
     Then information about the service and how to use it is displayed
-
 
 @us75
 Scenario: Borrower Views Start Page
