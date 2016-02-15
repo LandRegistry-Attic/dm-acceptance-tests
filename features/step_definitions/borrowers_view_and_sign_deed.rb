@@ -35,3 +35,12 @@ Then(/^the deed is digitally signed$/) do
   step %(I confirm the mortgage deed)
   step %(a confirmation page is displayed)
 end
+
+Then(/^borrower <(\d+)> has signed the deed$/) do |bor|
+  #Checks deed for 
+  f_name = @deed.borrowers[bor.to_i - 1][:forename]
+  m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
+  s_name = @deed.borrowers[bor.to_i - 1][:surname]
+  page.should have_content('Confirmed by '\
+                           "#{f_name} #{m_name} #{s_name}")
+end
