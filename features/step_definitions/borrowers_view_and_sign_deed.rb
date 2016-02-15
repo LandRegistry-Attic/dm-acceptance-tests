@@ -31,16 +31,10 @@ When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
   click_button('Continue')
 end
 
-Then(/^the deed is digitally signed$/) do
-  step %(I confirm the mortgage deed)
-  step %(a confirmation page is displayed)
-end
-
 Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
   step %(the mortgage deed is displayed)
   step %(I confirm the mortgage deed)
   step %(a confirmation page is displayed)
-  # Create step to check borrowers name is not shown as an outstanding signature
   step %(borrower <#{borrower}> signature should not be outstanding)
 end
 
@@ -49,11 +43,12 @@ Then(/^borrower <(\d+)> signature should not be outstanding$/) do |borrower|
   page.should have_no_content('Borrowers yet to sign: ' + borrower)
 end
 
-Then(/^borrower <(\d+)> has signed the deed$/) do |bor|
-  #Add this step with view deed after a signing has occurred
+Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
+  #Use when viewing deed, to verify a previous signing has occurred
   f_name = @deed.borrowers[bor.to_i - 1][:forename]
   m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
   s_name = @deed.borrowers[bor.to_i - 1][:surname]
-  page.should have_content('Confirmed by '\
+  # Change this to should have content, when I know the string
+  page.should have_no_content('Confirmed by '\
                            "#{f_name} #{m_name} #{s_name}")
 end
