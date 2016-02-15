@@ -36,8 +36,21 @@ Then(/^the deed is digitally signed$/) do
   step %(a confirmation page is displayed)
 end
 
+Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
+  step %(the mortgage deed is displayed)
+  step %(I confirm the mortgage deed)
+  step %(a confirmation page is displayed)
+  # Create step to check borrowers name is not shown as an outstanding signature
+  step %(borrower <#{borrower}> signature should not be outstanding)
+end
+
+Then(/^borrower <(\d+)> signature should not be outstanding$/) do |borrower|
+  #This is just a place holder. Unsure of presentation
+  page.should have_no_content('Borrowers yet to sign: ' + borrower)
+end
+
 Then(/^borrower <(\d+)> has signed the deed$/) do |bor|
-  #Checks deed for 
+  #Add this step with view deed after a signing has occurred
   f_name = @deed.borrowers[bor.to_i - 1][:forename]
   m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
   s_name = @deed.borrowers[bor.to_i - 1][:surname]
