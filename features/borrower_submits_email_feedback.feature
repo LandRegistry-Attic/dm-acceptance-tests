@@ -5,10 +5,10 @@ In order for borrower to be able to provide feedback on the digital mortgage ser
 A way of providing feedback must be provided.
 
 Acceptance Criteria:
-(US104)Text on page: "Please submit feedback by email"
+(US104)Text on page: "How could we improve this service?"
 
 @us104
-Scenario: Text Please submit feedback by email is shown on page
+Scenario: Text "How could we improve this service?" is shown on page
 Given I have valid deed data with <1> borrowers
 And I create the deed via the Deed API
 And I retrieve the deed id
@@ -21,3 +21,4 @@ And the mortgage deed is displayed
 And I confirm the mortgage deed
 And a confirmation page is displayed
 Then the text "How could we improve this service?" is displayed on the page
+Then a link to submit email feedback is displayed
