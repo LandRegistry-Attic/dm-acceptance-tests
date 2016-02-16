@@ -11,8 +11,9 @@ Acceptance Criteria:
 Scenario: Text Please submit feedback by email is shown on page
 Given I have valid deed data with <1> borrowers
 And I create the deed via the Deed API
-And I navigate to the borrower frontend "/borrower-reference" page
+And I retrieve the deed id
 And I retrieve the unique user id using the URL
+When I navigate to the borrower frontend "/borrower-reference" page
 And I search for the deed using the unique borrower reference
 And I enter the borrowers date of birth
 And when I click on the "Continue" link
