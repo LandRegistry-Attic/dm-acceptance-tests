@@ -38,9 +38,12 @@ Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
   step %(borrower <#{borrower}> signature should not be outstanding)
 end
 
-Then(/^borrower <(\d+)> signature should not be outstanding$/) do |borrower|
+Then(/^borrower <(\d+)> signature should not be outstanding$/) do |bor|
   #This is just a place holder. Unsure of presentation
-  page.should have_no_content('Borrowers yet to sign: ' + borrower)
+  f_name = @deed.borrowers[bor.to_i - 1][:forename]
+  m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
+  s_name = @deed.borrowers[bor.to_i - 1][:surname]
+  page.should have_no_content("Borrowers yet to sign: #{f_name} #{m_name} #{s_name}")
 end
 
 Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
