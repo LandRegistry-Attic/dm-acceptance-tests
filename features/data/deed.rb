@@ -5,6 +5,7 @@ class Deed
   attr_accessor :borrowers
   attr_accessor :identity_checked
   attr_accessor :property_address
+  attr_accessor :buid
 
   def initialize(number_of_borrowers)
     @title_number = generate_title_number
