@@ -18,9 +18,10 @@ Then(/^borrower <(\d+)> views the deed again$/) do |borrower|
 end
 
 And(/^I retrieve the unique user id for borrower <(\d+)>$/) do |borrower|
-  @response = HTTP.get(@get_url)
+  @response = HTTP.get(Env.deed_api + @relative_get_path)
   deed_hash = JSON.parse(@response.body)
   @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
+
 end
 
 When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
