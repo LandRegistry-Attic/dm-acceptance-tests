@@ -1,7 +1,8 @@
 #When (/^I check the favorite color count(?: for email address (.*))?$/) do |email|
 Then(/^I update deed variable "([^"]*)" with value "([^"]*)"(?:, borrower "([^"]*)")?$/) do |var, value, bor|
-  #Take in array of params. Perform on all lines
-  opt ||= 1 # This value is global in the test, i.e get updated between steps
+  # The value of bor is optional.
+  # Sets bor = 1, if no bor parameter is passed in
+  bor ||= 1
   case var
   when 'title_number'
     @deed.title_number = value
@@ -28,7 +29,6 @@ Then(/^I update deed variable "([^"]*)" with value "([^"]*)"(?:, borrower "([^"]
   else
     abort('Unrecognised Input, please recheck variable name, and value.')
   end
-  opt = 1 #resetting default value
 end
 
 Then(/^I hash the deed$/) do

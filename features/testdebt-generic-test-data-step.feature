@@ -21,6 +21,7 @@ And I update deed variable "middle_name" with value "Synth", borrower "2"
 Then I hash the deed
 And I update deed variable "forename" with value "Nany"
 And I update deed variable "surname" with value "Geoff"
+And I update deed variable "middle_name" with value "Maddy"
 Then I hash the deed
 
 @techdebt
