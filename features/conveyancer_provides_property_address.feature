@@ -22,7 +22,7 @@ Scenario: No property address provided
 Scenario: Input property address formatted with commas
   Given I have a property address that is formatted with commas
   When I create the deed via the Deed API
-  And I retrieve the deed id
+  And the deed id is returned by the Deed API
   And I retrieve the unique user id using the URL
   When I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower reference

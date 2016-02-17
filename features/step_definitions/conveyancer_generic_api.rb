@@ -9,6 +9,12 @@ When(/^I create the deed via the Deed API$/) do
   @response = HTTP.post(deed_end_point, json: @deed_hash)
 end
 
+Given(/^the deed id is returned by the Deed API$/) do
+  response_hash = JSON.parse(@response.body)
+  split_response = response_hash['path'].split('/')
+  @deed_id = split_response[2]
+end
+
 Then(/^a status code of "([^"]*)" is returned$/) do |code|
   assert_equal(code, @response.code.to_s)
 end
