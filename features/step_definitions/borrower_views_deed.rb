@@ -1,10 +1,5 @@
-And(/^I retrieve the deed id$/) do
-  response_hash = JSON.parse(@response.body)
-  @relative_get_path = response_hash['path']
-end
-
 And(/^I retrieve the unique user id using the URL$/) do
-  @response = HTTP.get(Env.deed_api + @relative_get_path)
+  @response = HTTP.get(Env.deed_api + '/deed/' + @deed_id)
   deed_hash = JSON.parse(@response.body)
   @borrower_token = deed_hash['deed']['borrowers'][0]['token']
 end

@@ -12,7 +12,7 @@ Acceptance Criteria:
 Scenario: Borrower Enters an Invalid Date
   Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
-  And I retrieve the deed id
+  And the deed id is returned by the Deed API
   And I retrieve the unique user id using the URL
   And I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower reference
@@ -23,7 +23,7 @@ Scenario: Borrower Enters an Invalid Date
 Scenario: Borrower Enters Date in Different Format
   Given I have deed data with a borrowers date of birth with leading zeros
   And I create the deed via the Deed API
-  And I retrieve the deed id
+  And the deed id is returned by the Deed API
   And I retrieve the unique user id using the URL
   And I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower reference
@@ -35,7 +35,7 @@ Scenario: Borrower Enters Date in Different Format
 Scenario: Borrower Enters Future Date
   Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
-  And I retrieve the deed id
+  And the deed id is returned by the Deed API
   And I retrieve the unique user id using the URL
   And I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower reference
@@ -46,7 +46,7 @@ Scenario: Borrower Enters Future Date
 Scenario: Borrower Enters Incorrect Date of Birth
   Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
-  And I retrieve the deed id
+  And the deed id is returned by the Deed API
   And I retrieve the unique user id using the URL
   And I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower reference
