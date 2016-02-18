@@ -31,3 +31,9 @@ And I set deed "title_number" to "009"
 Then I hash the deed
 And I set deed "title_number" to "007"
 Then I hash the deed
+
+@techdebt2
+Scenario: WIP for checking signature
+Given I create default deed with <2> borrowers
+And borrower <2> views the deed
+And borrower <1> views the deed again
