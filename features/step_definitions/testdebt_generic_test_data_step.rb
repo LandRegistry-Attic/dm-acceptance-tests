@@ -1,6 +1,11 @@
 Then(/^I set deed "([^"]*)" to "([^"]*)"(?:,"([^"]*)")?$/) do |var, value, opt|
-  # The value of bor is optional.
-  # Sets bor = 1, if no bor parameter is passed in
+  # This will work for both steps below:
+  # => And I set deed "middle_name" to "Synth","2"
+  # and
+  # => And I set deed "middle_name" to "Synth"
+  # The value of opt is optional.
+
+  # Sets opt = 1, if no bor parameter is passed in
   opt ||= 1
   case var
   when 'title_number'

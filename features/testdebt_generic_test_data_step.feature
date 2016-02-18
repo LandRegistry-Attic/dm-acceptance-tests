@@ -4,8 +4,8 @@ Feature: Override deed variables
 Acceptance Criteria
 - Can override ALL deed variables from one step
 
-@techdebt
-Scenario: Override identity_checked variable
+@techdebt1 @techdebt
+Scenario: Override deed variables
 Given I have valid deed data with <2> borrowers
 And I set deed "title_number" to "009"
 And I set deed "md_ref" to "Tt109"
@@ -24,7 +24,7 @@ And I set deed "surname" to "Geoff"
 And I set deed "middle_name" to "Maddy"
 Then I hash the deed
 
-@techdebt
+@techdebt1 @techdebt
 Scenario: Override deed twice.
 Given I have valid deed data with <1> borrowers
 And I set deed "title_number" to "009"
@@ -32,7 +32,7 @@ Then I hash the deed
 And I set deed "title_number" to "007"
 Then I hash the deed
 
-@techdebt2
+@techdebt2 @techdebt
 Scenario: WIP for checking signature
 Given I create default deed with <2> borrowers
 And borrower <2> views the deed
