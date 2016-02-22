@@ -36,16 +36,6 @@ Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
   step %(the mortgage deed is displayed)
   step %(I confirm the mortgage deed)
   step %(a confirmation page is displayed)
-  step %(borrower <#{borrower}> signature should not be outstanding)
-end
-
-Then(/^borrower <(\d+)> signature should not be outstanding$/) do |bor|
-  #This is just a place holder. Unsure of presentation
-  f_name = @deed.borrowers[bor.to_i - 1][:forename]
-  m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
-  s_name = @deed.borrowers[bor.to_i - 1][:surname]
-  page.should have_no_content('Confirmed by '\
-                           "#{f_name} #{m_name} #{s_name}")
 end
 
 Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
@@ -53,7 +43,6 @@ Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
   f_name = @deed.borrowers[bor.to_i - 1][:forename]
   m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
   s_name = @deed.borrowers[bor.to_i - 1][:surname]
-  # Change this to should have content, when I know the string
-  page.should have_no_content('Awaiting signature of '\
+  page.should have_content('Confirmed by '\
                            "#{f_name} #{m_name} #{s_name}")
 end
