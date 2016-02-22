@@ -34,6 +34,6 @@ Then I hash the deed
 
 @techdebt2 @techdebt
 Scenario: WIP for checking signature
-Given I create default deed with <2> borrowers
+Given I create default deed with <2> borrowers,"forename","Johny","2"
 And borrower <2> views the deed
 And borrower <1> views the deed again
