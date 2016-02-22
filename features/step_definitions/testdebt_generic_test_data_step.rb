@@ -33,6 +33,7 @@ Then(/^I set deed "([^"]*)" to "([^"]*)"(?:,"([^"]*)")?$/) do |var, value, opt|
   else
     abort('Unrecognised Input, please recheck variable name, and value.')
   end
+  step %(I hash the deed)
 end
 
 Then(/^I hash the deed$/) do
@@ -71,7 +72,19 @@ When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
   fill_in 'dob-year', with: split_dob[2]
   click_button('Continue')
 end
-Given(/^I create default deed with <(\d+)> borrowers$/) do |borrower|
+
+Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)","([^"]*)","([^"]*)")?$/) do |borrower, var, val, opt|
   step %(I have valid deed data with <#{borrower}> borrowers)
+  #Checks for optional deed params
+  if var != nil
+    if opt != nil
+      require 'pry'
+      binding.pry
+      step %(I set deed "#{var}" to "#{val}","#{opt}")
+    else
+      step %(I set deed "#{var}" to "#{val}")
+    end
+  end
+
   step %(I create the deed via the Deed API)
 end
