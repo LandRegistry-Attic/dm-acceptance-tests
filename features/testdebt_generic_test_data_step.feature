@@ -4,36 +4,25 @@ Feature: Override deed variables
 Acceptance Criteria
 - Can override ALL deed variables from one step
 
-@techdebt1 @techdebt
-Scenario: Override deed variables
-Given I have valid deed data with <2> borrowers
-And I set deed "title_number" to "009"
-And I set deed "md_ref" to "Tt109"
-And I set deed "identity_checked" to "Y"
-And I set deed "forename" to "Nick","2"
-And I set deed "surname" to "Valentine","2"
-And I set deed "gender" to "Male"
-And I set deed "address" to "34A Other Address, Actual Address"
-And I set deed "dob" to "01/02/1986"
-And I set deed "phone_number" to "12345678"
-And I set deed "property_address" to "123 Fake St, Fake Town"
-And I set deed "middle_name" to "Synth","2"
-Then I hash the deed
-And I set deed "forename" to "Nany"
-And I set deed "surname" to "Geoff"
-And I set deed "middle_name" to "Maddy"
-Then I hash the deed
+@techdebt @techdebt1
+Scenario: WIP for default deed
+Given I create default deed with <2> borrowers
+And borrower <2> views the deed
+And borrower <1> views the deed again
 
-@techdebt1 @techdebt
-Scenario: Override deed twice.
-Given I have valid deed data with <1> borrowers
-And I set deed "title_number" to "009"
-Then I hash the deed
-And I set deed "title_number" to "007"
-Then I hash the deed
+@techdebt @techdebt2
+Scenario: WIP for override
+Given I create default deed with <2> borrowers
+And I override deed "forename:TIMMY:2"
 
-@techdebt2 @techdebt
-Scenario: WIP for checking signature
-Given I create default deed with <2> borrowers,"forename","Johny","2"
+@techdebt @techdebt3
+Scenario:  WIP create deed with override
+Given I create default deed with <3> borrowers,"forename:TIMMY:2"
+And borrower <2> views the deed
+And borrower <1> views the deed again
+
+@techdebt @techdebt4
+Scenario:  WIP for override no opt
+Given I create default deed with <2> borrowers,"forename:TIMMY"
 And borrower <2> views the deed
 And borrower <1> views the deed again

@@ -1,4 +1,4 @@
-Then(/^I set deed "([^"]*)" to "([^"]*)"(?:,"([^"]*)")?$/) do |var, value, opt|
+Then(/^I override deed "([^"]*)"$/) do |params|
   # This will work for both steps below:
   # => And I set deed "middle_name" to "Synth","2"
   # and
@@ -7,6 +7,15 @@ Then(/^I set deed "([^"]*)" to "([^"]*)"(?:,"([^"]*)")?$/) do |var, value, opt|
 
   # Sets opt = 1, if no bor parameter is passed in
   opt ||= 1
+  # Splits the params string
+  split_params = params.split(':')
+  var = split_params[0]
+  value = split_params[1]
+
+  if split_params[2] != nil
+    opt = split_params[2]
+  end
+
   case var
   when 'title_number'
     @deed.title_number = value
@@ -33,6 +42,8 @@ Then(/^I set deed "([^"]*)" to "([^"]*)"(?:,"([^"]*)")?$/) do |var, value, opt|
   else
     abort('Unrecognised Input, please recheck variable name, and value.')
   end
+  require 'pry'
+  binding.pry
   step %(I hash the deed)
 end
 
@@ -73,18 +84,11 @@ When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
   click_button('Continue')
 end
 
-Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)","([^"]*)","([^"]*)")?$/) do |borrower, var, val, opt|
+Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)")?$/) do |borrower, params|
   step %(I have valid deed data with <#{borrower}> borrowers)
   #Checks for optional deed params
-  if var != nil
-    if opt != nil
-      require 'pry'
-      binding.pry
-      step %(I set deed "#{var}" to "#{val}","#{opt}")
-    else
-      step %(I set deed "#{var}" to "#{val}")
-    end
+  if params != nil
+      step %(I override deed "#{params}")
   end
-
   step %(I create the deed via the Deed API)
 end
