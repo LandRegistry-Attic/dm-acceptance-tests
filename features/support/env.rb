@@ -11,6 +11,11 @@ class Env
         'http://0.0.0.0:9090/webseal')
   end
 
+  def self.deed_casework_api
+    (ENV['DEED_API_URL'] ||
+        'http://0.0.0.0:9020')
+  end
+
   def self.deed_api_test
     (ENV['DEED_API_URL_TEST'] ||
         'http://0.0.0.0:9090/webseal_test')
