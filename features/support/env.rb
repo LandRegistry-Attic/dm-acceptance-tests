@@ -17,7 +17,7 @@ class Env
   end
 
   def self.deed_api_buid_b
-    (ENV['DEED_API_BUID_A_URL'] ||
+    (ENV['DEED_API_BUID_B_URL'] ||
         'http://0.0.0.0:9090/webseal_test')
   end
 
