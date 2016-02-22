@@ -1,7 +1,7 @@
 Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   # Use ONLY for the very first viewing of the deed
   step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(I retrieve the deed id)
+  step %(the deed id is returned by the Deed API)
   step %(I retrieve the unique user id for borrower <#{borrower}>)
   step %(I search for the deed using the unique borrower reference)
   step %(I enter the date of birth for borrower <#{borrower}>)
@@ -20,7 +20,7 @@ Then(/^borrower <(\d+)> views the deed again$/) do |borrower|
 end
 
 And(/^I retrieve the unique user id for borrower <(\d+)>$/) do |borrower|
-  @response = HTTP.get(Env.deed_api + @relative_get_path)
+  @response = HTTP.get(Env.deed_api + '/deed/' + @deed_id)
   deed_hash = JSON.parse(@response.body)
   @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
 end
