@@ -71,8 +71,8 @@ end
 
 Then(/^the borrower signature elements are present on page/) do
   @deed.borrowers.each do |borrower|
-    page.should have_content('[Awaiting digital signature of '\
-                             "#{borrower[:forename]} #{borrower[:surname]}]")
+    page.should have_content("[Awaiting confirmation from #{borrower[:forename]}"\
+                             "#{borrower[:middle_name]} #{borrower[:surname]}]")
   end
 end
 
