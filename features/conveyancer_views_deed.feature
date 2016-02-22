@@ -16,7 +16,6 @@ Scenario: Conveyancer views a deed created by their own Business Unit
 @us146b
 Scenario: Conveyancer is not able to view a deed created by a different
 Business Unit
-  Given a different Business Unit has created a deed
-  When I search for the deed
-  Then a status code of "400" is returned
-  And a message for failure is given "????????????"
+  Given I have created a deed
+  When I retrieve the deed using a different business unit id
+  Then a status code of "404" is returned
