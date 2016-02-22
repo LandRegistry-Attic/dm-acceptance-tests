@@ -44,7 +44,8 @@ Then(/^borrower <(\d+)> signature should not be outstanding$/) do |bor|
   f_name = @deed.borrowers[bor.to_i - 1][:forename]
   m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
   s_name = @deed.borrowers[bor.to_i - 1][:surname]
-  page.should have_no_content("Borrowers yet to sign: #{f_name} #{m_name} #{s_name}")
+  page.should have_no_content('Confirmed by '\
+                           "#{f_name} #{m_name} #{s_name}")
 end
 
 Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
@@ -53,6 +54,6 @@ Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
   m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
   s_name = @deed.borrowers[bor.to_i - 1][:surname]
   # Change this to should have content, when I know the string
-  page.should have_no_content('Confirmed by '\
+  page.should have_no_content('Awaiting signature of '\
                            "#{f_name} #{m_name} #{s_name}")
 end
