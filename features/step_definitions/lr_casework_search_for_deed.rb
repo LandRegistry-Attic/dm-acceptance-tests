@@ -1,6 +1,7 @@
 When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   # Open the URL in browser to check information
-  url_head = Env.deed_casework_api + '/deed?md_ref=' + @deed.md_ref + '&title_number='
+  url_head = Env.deed_casework_api + '/deed?md_ref=' +
+             @deed.md_ref + '&title_number='
   full_url = url_head + title_number
   @response = HTTP.get(full_url)
 end
