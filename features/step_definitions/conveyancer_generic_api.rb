@@ -5,7 +5,7 @@ Given(/^I have valid deed data with <(\d+)> borrowers$/) do |num_borrowers|
 end
 
 When(/^I create the deed via the Deed API$/) do
-  deed_end_point = Env.deed_api + '/deed/'
+  deed_end_point = Env.deed_api_buid_a + '/deed/'
   @response = HTTP.post(deed_end_point, json: @deed_hash)
 end
 
@@ -29,7 +29,7 @@ end
 
 And(/^I know the borrower id$/) do
   relative_get_path = JSON[@response.body]['path']
-  @response = HTTP.get(Env.deed_api + relative_get_path)
+  @response = HTTP.get(Env.deed_api_buid_a + relative_get_path)
 
   data = JSON.parse(@response)
   @borrower_id = data['deed']['borrowers'][0]['id']
