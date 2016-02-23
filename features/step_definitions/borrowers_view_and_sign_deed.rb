@@ -34,7 +34,7 @@ When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
 end
 
 Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
-  step %(the borrower signature element <#{borrower}> is present on page)
+  step %(the borrower <#{borrower}> signature element is present on page)
   step %(I confirm the mortgage deed)
   step %(a confirmation page is displayed)
 end
@@ -48,7 +48,7 @@ Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
                            "#{f_name} #{m_name} #{s_name}")
 end
 
-Given(/^the borrower signature element <(\d+)> is present on page$/) do |bor|
+Given(/^the borrower <(\d+)> signature element is present on page$/) do |bor|
   f_name = @deed.borrowers[bor.to_i - 1][:forename]
   m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
   s_name = @deed.borrowers[bor.to_i - 1][:surname]

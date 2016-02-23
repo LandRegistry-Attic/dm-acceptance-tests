@@ -16,7 +16,7 @@ Scenario: Single borrower views and signs deed, then views again
   Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
   And borrower <1> views the deed
-  And the borrower signature element <1> is present on page
+  And the borrower <1> signature element is present on page
   Then the deed is digitally signed by borrower <1>
   And borrower <1> views the deed again
   Then I verify borrower <1> has signed the deed
@@ -77,13 +77,11 @@ Scenario: 2 Borrowers can view and sign a deed. p4
   Then the deed is digitally signed by borrower <1>
   And borrower <2> views the deed again
   Then I verify borrower <1> has signed the deed
-  Then the mortgage deed is displayed
   And borrower <2> views the deed again
   Then the deed is digitally signed by borrower <2>
   And borrower <1> views the deed again
   Then I verify borrower <2> has signed the deed
   Then I verify borrower <1> has signed the deed
-  Then the mortgage deed is displayed
 
 @us133
 Scenario: 2 Borrowers can view and sign a deed. p5
@@ -93,14 +91,12 @@ Scenario: 2 Borrowers can view and sign a deed. p5
   Then the deed is digitally signed by borrower <2>
   And borrower <1> views the deed again
   Then I verify borrower <2> has signed the deed
-  Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then I verify borrower <2> has signed the deed
   Then the deed is digitally signed by borrower <1>
   And borrower <2> views the deed again
   Then I verify borrower <1> has signed the deed
   Then I verify borrower <2> has signed the deed
-  Then the mortgage deed is displayed
 
 @us133
 Scenario: 3 Borrowers can view a deed. p1
@@ -147,7 +143,6 @@ Scenario: 3 Borrowers can view deed mutltiple times, and sign once. p1
   Then the deed is digitally signed by borrower <2>
   And borrower <3> views the deed again
   Then I verify borrower <2> has signed the deed
-  Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then I verify borrower <3> has signed the deed
   Then the deed is digitally signed by borrower <1>
@@ -232,14 +227,12 @@ Scenario: 4 Borrowers can view deed multiple times, and sign once. p1
   Then the deed is digitally signed by borrower <2>
   And borrower <3> views the deed again
   Then I verify borrower <2> has signed the deed
-  Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then I verify borrower <2> has signed the deed
   Then the deed is digitally signed by borrower <1>
   And borrower <3> views the deed again
   Then I verify borrower <1> has signed the deed
   Then I verify borrower <2> has signed the deed
-  Then the mortgage deed is displayed
   And borrower <4> views the deed again
   Then I verify borrower <1> has signed the deed
   Then I verify borrower <2> has signed the deed
@@ -260,15 +253,12 @@ Scenario: 4 Borrowers can view deed multiple times, and sign once. p2
   Then the deed is digitally signed by borrower <2>
   And borrower <3> views the deed again
   Then I verify borrower <2> has signed the deed
-  Then the mortgage deed is displayed
   And borrower <1> views the deed again
   Then I verify borrower <2> has signed the deed
-  Then the mortgage deed is displayed
   Then the deed is digitally signed by borrower <1>
   And borrower <3> views the deed again
   Then I verify borrower <1> has signed the deed
   Then I verify borrower <2> has signed the deed
-  Then the mortgage deed is displayed
   And borrower <4> views the deed again
   Then I verify borrower <1> has signed the deed
   Then I verify borrower <2> has signed the deed
