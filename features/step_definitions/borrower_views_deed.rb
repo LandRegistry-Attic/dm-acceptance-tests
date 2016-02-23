@@ -12,7 +12,6 @@ Then(/^the mortgage deed is displayed$/) do
   step %(the Additional provision is displayed on the deed)
   step %(the Charging clause is displayed on the deed)
   step %(the effective date element is present on page)
-  step %(the borrower signature elements are present on page)
   step %(the Mortgage document reference is displayed)
 end
 
@@ -62,13 +61,6 @@ Then(/^the effective date element is present on page$/) do
                            'receives notification from Pure Law that the '\
                            'charge is to take effect.')
   page.should have_content('[Effective date and time will be shown here]')
-end
-
-Then(/^the borrower signature elements are present on page/) do
-  @deed.borrowers.each do |borrower|
-    page.should have_content('[Awaiting digital signature of '\
-                             "#{borrower[:forename]} #{borrower[:surname]}]")
-  end
 end
 
 And(/^confirm your deed information text is displayed on the deed page$/) do
