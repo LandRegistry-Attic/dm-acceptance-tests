@@ -11,7 +11,7 @@ Acceptance Criteria:
 (US133) Each borrower must be able to view a deed multiple times but must only be able to confirm the details once.
 (US133) When the deed is viewed subsequently it will show that the relevant borrower has confirmed the deed.
 
-@us133
+@us133 @wipfix
 Scenario: Single borrower views and signs deed, then views again
   Given I have valid deed data with <1> borrowers
   And I create the deed via the Deed API
