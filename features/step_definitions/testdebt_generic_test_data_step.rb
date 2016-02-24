@@ -1,9 +1,9 @@
-Then(/^I override deed "([^"]*)"$/) do |params|
+Then(/^I override deed with "([^"]*)"$/) do |params|
   # This will work for both steps below:
-  # => And I set deed "middle_name" to "Synth","2"
+  # => And I override deed with "middle_name:Synth:2"
   # and
-  # => And I set deed "middle_name" to "Synth"
-  # The value of opt is optional.
+  # => And I override deed with "middle_name:Synth"
+  # The 3rd value is optional.
 
   # Sets opt = 1, if no bor parameter is passed in
   opt ||= 1
@@ -12,6 +12,7 @@ Then(/^I override deed "([^"]*)"$/) do |params|
   var = split_params[0]
   value = split_params[1]
 
+  # Checks if Borrower number was passed in
   if split_params[2] != nil
     opt = split_params[2]
   end
@@ -88,7 +89,7 @@ Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)")?$/) do |borro
   step %(I have valid deed data with <#{borrower}> borrowers)
   #Checks for optional deed params
   if params != nil
-      step %(I override deed "#{params}")
+      step %(I override deed with "#{params}")
   end
   step %(I create the deed via the Deed API)
 end
