@@ -1,22 +1,13 @@
 Then(/^I override deed with "([^"]*)"$/) do |params|
-  # This will work for both steps below:
-  # => And I override deed with "middle_name:Synth:2"
-  # and
-  # => And I override deed with "middle_name:Synth"
-  # The 3rd value is optional.
+  # Example use ... And I override deed with "middle_name:Synth:2"
 
-  # Sets opt = 1, if no bor parameter is passed in
-  opt ||= 1
   # Splits the params string
   split_params = params.split(':')
   var = split_params[0]
   value = split_params[1]
+  opt = split_params[2]
 
   # Checks if Borrower number was passed in
-  if split_params[2] != nil
-    opt = split_params[2]
-  end
-
   case var
   when 'title_number'
     @deed.title_number = value
@@ -52,11 +43,11 @@ end
 
 Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)")?$/) do |borrower, params|
   # Creates a deed, with entered number of [borrowers].
-  # Uses [params] to apply any ovverides to the deed. e.g Change the name of a borrower
+  # Uses [params] to apply any overrides to the deed. e.g Change the name
   step %(I have valid deed data with <#{borrower}> borrowers)
   #Checks for optional deed params
-  if params != nil
-      step %(I override deed with "#{params}")
+  unless !params.nil?
+    step %(I override deed with "#{params}")
   end
   step %(I create the deed via the Deed API)
   step %(the deed id is returned by the Deed API)
