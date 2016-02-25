@@ -22,7 +22,7 @@ end
 
 And(/^I retrieve the unique user id for borrower <(\d+)>$/) do |borrower|
   # Extension of the Generic method. Retrieves ID for specific Borrower
-  @response = HTTP.get(Env.deed_api + '/deed/' + @deed_id)
+  @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
   deed_hash = JSON.parse(@response.body)
   @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
 end
