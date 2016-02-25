@@ -61,6 +61,4 @@ Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)")?$/) do |borro
   step %(I create the deed via the Deed API)
   step %(the deed id is returned by the Deed API)
   step %(I retrieve the unique user id for borrower <#{borrower}>)
-  require 'pry'
-  binding.pry
 end
