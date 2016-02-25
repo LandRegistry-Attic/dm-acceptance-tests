@@ -17,8 +17,7 @@ Scenario: Borrower enters a valid deed reference
          - Lender
          - Charging clause
 
-  Given I have valid deed data with <1> borrowers
-  And I create the deed via the Deed API
+  Given I create default deed with <1> borrowers
   And borrower <1> views the deed
   Then the mortgage deed is displayed
   Then I confirm the mortgage deed
