@@ -55,7 +55,6 @@ end
 Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   # Use ONLY for the very first viewing of the deed
   step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(I retrieve the deed id)
   step %(I retrieve the unique user id for borrower <#{borrower}>)
   step %(I search for the deed using the unique borrower reference)
   step %(I enter the date of birth for borrower <#{borrower}>)
@@ -86,10 +85,13 @@ When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
 end
 
 Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)")?$/) do |borrower, params|
+  # Creates a deed, with entered number of [borrowers].
+  # Uses [params] to apply any ovverides to the deed. e.g Change the name of a borrower
   step %(I have valid deed data with <#{borrower}> borrowers)
   #Checks for optional deed params
   if params != nil
       step %(I override deed with "#{params}")
   end
   step %(I create the deed via the Deed API)
+  step %(I retrieve the deed id)
 end
