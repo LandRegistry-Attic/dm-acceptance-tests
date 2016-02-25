@@ -1,19 +1,6 @@
 Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   # Use ONLY for the very first viewing of the deed
   step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(the deed id is returned by the Deed API)
-  step %(I retrieve the unique user id for borrower <#{borrower}>)
-  step %(I search for the deed using the unique borrower reference)
-  step %(I enter the date of birth for borrower <#{borrower}>)
-  step %(when I click on the "Continue" link)
-  step %(the mortgage deed is displayed)
-end
-
-Then(/^borrower <(\d+)> views the deed again$/) do |borrower|
-  # Use for every subsequent viewing of the deed, regardless of the borrower
-  # This will be redundant if the deed id is stored as part of data setup
-  step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(I retrieve the unique user id for borrower <#{borrower}>)
   step %(I search for the deed using the unique borrower reference)
   step %(I enter the date of birth for borrower <#{borrower}>)
   step %(when I click on the "Continue" link)

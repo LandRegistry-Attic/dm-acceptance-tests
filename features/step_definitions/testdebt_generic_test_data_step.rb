@@ -43,45 +43,11 @@ Then(/^I override deed with "([^"]*)"$/) do |params|
   else
     abort('Unrecognised Input, please recheck variable name, and value.')
   end
-  require 'pry'
-  binding.pry
   step %(I hash the deed)
 end
 
 Then(/^I hash the deed$/) do
   @deed_hash = @deed.to_hash
-end
-
-Then(/^borrower <(\d+)> views the deed$/) do |borrower|
-  # Use ONLY for the very first viewing of the deed
-  step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(I retrieve the unique user id for borrower <#{borrower}>)
-  step %(I search for the deed using the unique borrower reference)
-  step %(I enter the date of birth for borrower <#{borrower}>)
-  step %(when I click on the "Continue" link)
-end
-
-Then(/^borrower <(\d+)> views the deed again$/) do |borrower|
-  # Use for every subsequent viewing of the deed, regardless of the borrower
-  step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(I retrieve the unique user id for borrower <#{borrower}>)
-  step %(I search for the deed using the unique borrower reference)
-  step %(I enter the date of birth for borrower <#{borrower}>)
-  step %(when I click on the "Continue" link)
-end
-
-And(/^I retrieve the unique user id for borrower <(\d+)>$/) do |borrower|
-  @response = HTTP.get(Env.deed_api + @relative_get_path)
-  deed_hash = JSON.parse(@response.body)
-  @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
-end
-
-When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
-  split_dob = @deed.borrowers[borrower.to_i - 1][:dob].split('/')
-  fill_in 'dob-day', with: split_dob[0]
-  fill_in 'dob-month', with: split_dob[1]
-  fill_in 'dob-year', with: split_dob[2]
-  click_button('Continue')
 end
 
 Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)")?$/) do |borrower, params|
@@ -93,5 +59,8 @@ Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)")?$/) do |borro
       step %(I override deed with "#{params}")
   end
   step %(I create the deed via the Deed API)
-  step %(I retrieve the deed id)
+  step %(the deed id is returned by the Deed API)
+  step %(I retrieve the unique user id for borrower <#{borrower}>)
+  require 'pry'
+  binding.pry
 end
