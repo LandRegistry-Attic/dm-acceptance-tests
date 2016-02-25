@@ -19,7 +19,7 @@ Acceptance Criteria:
   (US122) The borrower signature boxes must align with how they are formatted on the prototype
   (US122) Must accept one to four borrowers
 
-@us20 @us119 @us85a @us133a @us121 @us133 @wip22
+@us20 @us119 @us85a @us133a @us121 @us133
 Scenario: Borrower enters a valid deed reference
   Given I create default deed with <1> borrowers
   And borrower <1> views the deed
