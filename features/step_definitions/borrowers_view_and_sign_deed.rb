@@ -7,15 +7,18 @@ Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   step %(the mortgage deed is displayed)
 end
 
-And(/^I retrieve the unique user id for borrower <(\d+)>$/) do |borrower|
-  # Extension of the Generic method. Retrieves ID for specific Borrower
+And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
+  # Retrieves ID for specific Borrower. OR first borrower by default
+  borrower ||= 1
   @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
   deed_hash = JSON.parse(@response.body)
   @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
 end
 
-When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
+When(/^I enter the date of birth(?: for borrower <(\d+)>)?$/) do |borrower|
   # Extension of the Generic method. Enters DOB for specific Borrower
+  # OR first borrower by default
+  borrower ||= 1
   split_dob = @deed.borrowers[borrower.to_i - 1][:dob].split('/')
   fill_in 'dob-day', with: split_dob[0]
   fill_in 'dob-month', with: split_dob[1]
