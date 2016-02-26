@@ -7,7 +7,7 @@ Then(/^I override deed with "([^"]*)"$/) do |params|
   value = split_params[1]
   opt = split_params[2]
 
-  # Checks if Borrower number was passed in
+  # Applies deed override
   case var
   when 'title_number'
     @deed.title_number = value
@@ -15,24 +15,8 @@ Then(/^I override deed with "([^"]*)"$/) do |params|
     @deed.md_ref = value
   when 'identity_checked'
     @deed.identity_checked = value
-  when 'forename'
-    @deed.borrowers[opt.to_i - 1][:forename] = value
-  when 'surname'
-    @deed.borrowers[opt.to_i - 1][:surname] = value
-  when 'gender'
-    @deed.borrowers[opt.to_i - 1][:gender] = value
-  when 'address'
-    @deed.borrowers[opt.to_i - 1][:address] = value
-  when 'dob'
-    @deed.borrowers[opt.to_i - 1][:dob] = value
-  when 'phone_number'
-    @deed.borrowers[opt.to_i - 1][:phone_number] = value
-  when 'property_address'
-    @deed.borrowers[opt.to_i - 1][:property_address] = value
-  when 'middle_name'
-    @deed.borrowers[opt.to_i - 1][:middle_name] = value
   else
-    abort('Unrecognised Input, please recheck variable name, and value.')
+    @deed.borrowers[opt.to_i - 1][:"#{var}"] = value
   end
   step %(I hash the deed)
 end
@@ -46,7 +30,7 @@ Given(/^I create default deed with <(\d+)> borrowers(?:,"([^"]*)")?$/) do |borro
   # Uses [params] to apply any overrides to the deed. e.g Change the name
   step %(I have valid deed data with <#{borrower}> borrowers)
   #Checks for optional deed params
-  unless !params.nil?
+  unless params.nil?
     step %(I override deed with "#{params}")
   end
   step %(I create the deed via the Deed API)
