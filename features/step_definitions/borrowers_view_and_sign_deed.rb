@@ -1,5 +1,6 @@
 Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   # Use ONLY for the very first viewing of the deed
+  step %(I retrieve the unique user id for borrower <#{borrower}>)
   step %(I navigate to the borrower frontend "/borrower-reference" page)
   step %(I search for the deed using the unique borrower reference)
   step %(I enter the date of birth for borrower <#{borrower}>)
