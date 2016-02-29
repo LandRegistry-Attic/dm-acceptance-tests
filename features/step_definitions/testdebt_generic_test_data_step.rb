@@ -5,6 +5,7 @@ Then(/^set "([^"]*)" to "([^"]*)" for borrower <(\d+)>$/) do |var, value, opt|
   else
     @deed.borrowers[opt.to_i - 1][:"#{var}"] = value
   end
+  step %(I hash the deed)
 end
 
 Then(/^I hash the deed$/) do
@@ -17,5 +18,14 @@ Given(/^I create default deed with <(\d+)> borrowers$/) do |borrower|
   step %(I have valid deed data with <#{borrower}> borrowers)
   step %(I create the deed via the Deed API)
   step %(the deed id is returned by the Deed API)
-  step %(I retrieve the unique user id for borrower <#{borrower}>)
+end
+
+Given(/^I setup deed with <(\d+)> borrowers$/) do |borrower|
+  # Creates a deed, with entered number of [borrowers].
+  step %(I have valid deed data with <#{borrower}> borrowers)
+end
+
+Then(/^I create the deed$/) do
+  step %(I create the deed via the Deed API)
+  step %(the deed id is returned by the Deed API)
 end

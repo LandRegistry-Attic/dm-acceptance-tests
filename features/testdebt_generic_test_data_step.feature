@@ -14,7 +14,9 @@ And borrower <1> views the deed
 # Readable way to override deed info
 @techdebt @techdebt2
 Scenario: WIP for override
-Given I create default deed with <2> borrowers
+Given I setup deed with <1> borrowers
 Then set "forename" to "Tinny" for borrower <1>
-Then set "dob" to "22/2/1982" for borrower <2>
-And I hash the deed
+And I create the deed
+And borrower <1> views the deed
+And the borrower <1> signature element is present on page
+Then the deed is digitally signed by borrower <1>
