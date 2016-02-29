@@ -21,7 +21,8 @@ And borrower <1> views the deed
 And the borrower <1> signature element is present on page
 Then the deed is digitally signed by borrower <1>
 
-# Sets up a 1 borower deed, with the single override applied 
+# Sets up a 1 borower deed, with the single override applied
+# Used in a lot of existing tests
 @techdebt @techdebt3
 Scenario: WIP for override 2
 Given deed data with "Joe" as "forename"
