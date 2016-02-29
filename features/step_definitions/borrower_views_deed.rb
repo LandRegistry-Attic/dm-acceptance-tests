@@ -6,11 +6,11 @@ end
 
 Then(/^the mortgage deed is displayed$/) do
   page.should have_content('Your mortgage deed')
-  step %(the Title number is displayed)
   step %(the property address is formatted correctly)
+  step %(the Title number is displayed)
   step %(the Lender is displayed on the deed)
-  step %(the Additional provision is displayed on the deed)
   step %(the Charging clause is displayed on the deed)
+  step %(the Additional provision is displayed on the deed)
   step %(the effective date element is present on page)
   step %(the Mortgage document reference is displayed)
 end
