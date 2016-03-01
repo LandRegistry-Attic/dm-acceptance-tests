@@ -14,8 +14,9 @@ And borrower <1> views the deed
 # Readable way to override deed info
 @techdebt @techdebt2
 Scenario: WIP for override
-Given I setup a deed with <1> borrowers
-And I amend "forename" to "Timmy" for borrower <1>
+Given I setup a deed with <2> borrowers
+And I amend "forename" to "Timmy"
+And I amend "surname" to "Jones" for borrower <2>
 And I create the deed
 And borrower <1> views the deed
 And the borrower <1> signature element is present on page
