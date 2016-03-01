@@ -76,3 +76,28 @@ And(/^confirm your deed information text is displayed on the deed page$/) do
   page.should have_content('If something is wrong you should contact your '\
                            'conveyancer')
 end
+
+# Checks the mortgage deed is unsigned for borrower, then signs it.
+Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
+  step %(the borrower <#{borrower}> signature element is present on page)
+  step %(I confirm the mortgage deed)
+  step %(a confirmation page is displayed)
+end
+
+# Use when viewing deed, to verify a previous signing has occurred
+Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
+  f_name = @deed.borrowers[bor.to_i - 1][:forename]
+  m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
+  s_name = @deed.borrowers[bor.to_i - 1][:surname]
+  page.should have_content('Confirmed by '\
+                           "#{f_name} #{m_name} #{s_name}")
+end
+
+# Use when viewing deed, to verify specific Borrower has not signed
+Given(/^the borrower <(\d+)> signature element is present on page$/) do |bor|
+  f_name = @deed.borrowers[bor.to_i - 1][:forename]
+  m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
+  s_name = @deed.borrowers[bor.to_i - 1][:surname]
+  page.should have_content("[Awaiting confirmation from #{f_name}"\
+                             "#{m_name} #{s_name}]")
+end
