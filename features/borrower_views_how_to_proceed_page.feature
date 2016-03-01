@@ -6,14 +6,11 @@ Acceptance Criteria
 
 @us55
 Scenario: Borrower Views How to Proceed Page
-    Given I have valid deed data with <1> borrowers
-    And I create the deed via the Deed API
-    And the deed id is returned by the Deed API
-    And I retrieve the unique user id using the URL
-    When I navigate to the borrower frontend "/borrower-reference" page
+    Given I create default deed with <1> borrowers
+    And I retrieve the unique user id for borrower <1>
+    And I navigate to the borrower frontend "/borrower-reference" page
     And I search for the deed using the unique borrower reference
-    And I enter the borrowers date of birth
-    Then the "View your mortgage deed" page is displayed
+    And I enter the date of birth for borrower <1>
     And instructions for viewing your mortgage should be displayed
     And when I click on the "Continue" link
     Then the mortgage deed is displayed

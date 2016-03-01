@@ -9,15 +9,8 @@ Acceptance Criteria:
 
 @us104
 Scenario: Text "How could we improve this service?" is shown on page
-Given I have valid deed data with <1> borrowers
-And I create the deed via the Deed API
-And the deed id is returned by the Deed API
-And I retrieve the unique user id using the URL
-When I navigate to the borrower frontend "/borrower-reference" page
-And I search for the deed using the unique borrower reference
-And I enter the borrowers date of birth
-And when I click on the "Continue" link
-And the mortgage deed is displayed
+Given I create default deed with <1> borrowers
+And borrower <1> views the deed
 And I confirm the mortgage deed
 And a confirmation page is displayed
 Then the text "How could we improve this service?" is displayed on the page

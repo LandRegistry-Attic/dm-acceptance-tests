@@ -1,34 +1,25 @@
 Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   # Use ONLY for the very first viewing of the deed
-  step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(the deed id is returned by the Deed API)
   step %(I retrieve the unique user id for borrower <#{borrower}>)
+  step %(I navigate to the borrower frontend "/borrower-reference" page)
   step %(I search for the deed using the unique borrower reference)
   step %(I enter the date of birth for borrower <#{borrower}>)
   step %(when I click on the "Continue" link)
   step %(the mortgage deed is displayed)
 end
 
-Then(/^borrower <(\d+)> views the deed again$/) do |borrower|
-  # Use for every subsequent viewing of the deed, regardless of the borrower
-  # This will be redundant if the deed id is stored as part of data setup
-  step %(I navigate to the borrower frontend "/borrower-reference" page)
-  step %(I retrieve the unique user id for borrower <#{borrower}>)
-  step %(I search for the deed using the unique borrower reference)
-  step %(I enter the date of birth for borrower <#{borrower}>)
-  step %(when I click on the "Continue" link)
-  step %(the mortgage deed is displayed)
-end
-
-And(/^I retrieve the unique user id for borrower <(\d+)>$/) do |borrower|
-  # Extension of the Generic method. Retrieves ID for specific Borrower
+And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
+  # Retrieves ID for specific Borrower. OR first borrower by default
+  borrower ||= 1
   @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
   deed_hash = JSON.parse(@response.body)
   @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
 end
 
-When(/^I enter the date of birth for borrower <(\d+)>$/) do |borrower|
+When(/^I enter the date of birth(?: for borrower <(\d+)>)?$/) do |borrower|
   # Extension of the Generic method. Enters DOB for specific Borrower
+  # OR first borrower by default
+  borrower ||= 1
   split_dob = @deed.borrowers[borrower.to_i - 1][:dob].split('/')
   fill_in 'dob-day', with: split_dob[0]
   fill_in 'dob-month', with: split_dob[1]
