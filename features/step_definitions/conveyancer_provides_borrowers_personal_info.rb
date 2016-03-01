@@ -1,11 +1,3 @@
-
-
-Given(/^I have deed data with two borrowers one that has an invalid gender$/) do
-  @deed = Deed.new(2)
-  @deed.borrowers[1][:gender] = 'Troll'
-  @deed_hash = @deed.to_hash
-end
-
 Given(/^I have deed data with two borrowers one which has no gender$/) do
   @deed_hash = {
     title_number: 'DT567568',
