@@ -1,4 +1,4 @@
-# Generic way to enter values into DOB field
+# Generic way to enter values into DOB field e.g "12/2/1976"
 When(/^I enter "([^"]*)" as the date of birth$/) do |dob|
 split_dob = dob.split('/')
 fill_in 'dob-day', with: split_dob[0]
