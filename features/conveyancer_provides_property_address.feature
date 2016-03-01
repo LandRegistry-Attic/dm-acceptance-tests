@@ -26,6 +26,6 @@ Scenario: Input property address formatted with commas
   And I retrieve the unique user id using the URL
   When I navigate to the borrower frontend "/borrower-reference" page
   And I search for the deed using the unique borrower reference
-  And I enter the borrowers date of birth
+  And I enter the date of birth
   And when I click on the "Continue" link
   Then the mortgage deed is displayed
