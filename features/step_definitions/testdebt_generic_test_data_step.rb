@@ -1,4 +1,4 @@
-And(/^I ammend "([^"]*)" to "([^"]*)" for borrower <(\d+)>$/) do |var, val, opt|
+And(/^I amend "([^"]*)" to "([^"]*)" for borrower <(\d+)>$/) do |var, val, opt|
   # Applies the deed override
   if var == 'title_number' || var == 'md_ref' || var == 'identity_checked'
     @deed.instance_variable_set("@#{var}", val)

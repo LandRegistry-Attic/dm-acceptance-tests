@@ -15,7 +15,7 @@ And borrower <1> views the deed
 @techdebt @techdebt2
 Scenario: WIP for override
 Given I setup a deed with <1> borrowers
-And I ammend "forename" to "Timmy" for borrower <1>
+And I amend "forename" to "Timmy" for borrower <1>
 And I create the deed
 And borrower <1> views the deed
 And the borrower <1> signature element is present on page
