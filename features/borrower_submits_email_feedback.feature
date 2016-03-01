@@ -13,5 +13,4 @@ Given I create default deed with <1> borrowers
 And borrower <1> views the deed
 And I confirm the mortgage deed
 And a confirmation page is displayed
-Then the text "How could we improve this service?" is displayed on the page
 Then a link to submit email feedback is displayed
