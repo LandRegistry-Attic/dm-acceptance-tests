@@ -9,13 +9,13 @@ Acceptance criteria
 
 @us146b
 Scenario: Conveyancer views a deed created by their own Business Unit
-  Given I setup a deed with <1> borrowers
+  Given I create default deed with <1> borrowers
   When I retrieve the deed using the same business unit id
   Then a status code of "200" is returned
 
 @us146b
 Scenario: Conveyancer is not able to view a deed created by a different
 Business Unit
-  Given I setup a deed with <1> borrowers
+  Given I create default deed with <1> borrowers
   When I retrieve the deed using a different business unit id
   Then a status code of "404" is returned
