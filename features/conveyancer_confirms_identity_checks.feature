@@ -6,12 +6,16 @@ Acceptance Criteria
   Y creates the deed
   Anything else will fail as a Schema Failure.
 
+@us109
 Scenario: Create Deed where the identity check has a value of N
-  Given conveyancer is not confirming borrower identity check
+  Given I setup a deed with <1> borrowers
+  And I amend "identity_checked" to "N" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
 
+@us109
 Scenario: Create Deed where the identity check has no value
-  Given conveyancer has submitted an empty identity check value
+  Given I setup a deed with <1> borrowers
+  And I amend "identity_checked" to "" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
