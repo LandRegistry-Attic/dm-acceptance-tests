@@ -11,14 +11,16 @@ Acceptance Criteria
 
 @us40
 Scenario: Create a deed with two Mortgage Document references
-  Given I have deed data with two md refs
-  When I create the deed via the Deed API
+  Given I setup a deed with <1> borrowers
+  And I amend "md_ref" to "e-MD12345, e-MD1234Z" for borrower <1>
+  And I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['md_ref']:"
 
 @us40
 Scenario: Create a deed with an invalid mortgage document reference
-  Given I have deed data with an md ref made of a six digit number
+  Given I setup a deed with <1> borrowers
+  And I amend "md_ref" to "e-MD123456" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['md_ref']:"
