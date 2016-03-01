@@ -1,6 +1,6 @@
 And(/^I amend "([^"]*)" to "([^"]*)" for borrower <(\d+)>$/) do |var, val, opt|
   # Applies the deed override
-  if var == 'title_number' || var == 'md_ref' || var == 'identity_checked'
+  case var when 'title_number', 'md_ref', 'identity_checked', 'property_address' then
     @deed.instance_variable_set("@#{var}", val)
   else
     @deed.borrowers[opt.to_i - 1][:"#{var}"] = val
