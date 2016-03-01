@@ -14,7 +14,7 @@ Acceptance Criteria
 @us85a @wip
 Scenario: No property address provided
   Given I setup a deed with <1> borrowers
-  And I amend "property_address" to "" for borrower <1>
+  And I amend "property_address" to ""
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['property_address']:"
