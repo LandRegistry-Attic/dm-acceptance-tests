@@ -30,7 +30,8 @@ end
 Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
   # Checks the mortgage deed is unsigned for borrower, then signs it.
   step %(the borrower <#{borrower}> signature element is present on page)
-  step %(I confirm the mortgage deed)
+  step %(I request an authentication code)
+  step %(I enter an authentication code)
   step %(a confirmation page is displayed)
 end
 
