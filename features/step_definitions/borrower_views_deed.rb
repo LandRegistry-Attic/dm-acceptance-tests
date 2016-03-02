@@ -12,6 +12,18 @@ And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
   @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
 end
 
+Then(/^the mortgage deed is displayed$/) do
+  page.should have_content('Your mortgage deed')
+  step %(the property address is formatted correctly)
+  step %(the Title number is displayed)
+  step %(the Lender is displayed on the deed)
+  step %(the Charging clause is displayed on the deed)
+  step %(the Additional provision is displayed on the deed)
+  step %(the effective date element is present on page)
+  step %(the Mortgage document reference is displayed)
+  step %(confirm your deed information text is displayed on the deed page)
+end
+
 Then(/^the Title number is displayed$/) do
   page.should have_content(@deed.title_number)
 end
@@ -68,10 +80,10 @@ Then(/^the borrower signature elements are present on page/) do
 end
 
 And(/^confirm your deed information text is displayed on the deed page$/) do
-  page.should have_content('If you are happy with the details shown on your '\
-                           'mortgage deed above, please continue.')
-  page.should have_content('If something is wrong you should contact your '\
-                           'conveyancer')
+  page.should have_content('If you’re ready to confirm your mortgage, we’ll send you an authentication code which you’ll need to
+                enter on the next screen')
+  page.should have_content('If you do not wish to confirm the mortgage deed (for instance if you think there is a mistake or you
+                want further explanation) you should contact your conveyancer.')
 end
 
 # Checks the mortgage deed is unsigned for borrower, then signs it.
