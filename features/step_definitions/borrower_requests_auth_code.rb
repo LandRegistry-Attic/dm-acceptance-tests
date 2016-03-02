@@ -1,7 +1,8 @@
 # Gets last 4 digits of borrowers phone number
-And(/^I request an authentication code$/) do
+And(/^I request an authentication code for borrower <(\d+)>$/) do |borrower|
   # Check for full message
-  step %(I get last 4 digits of phone number)
+  # Add check before getting phone number, try avoid reassigning the messages
+  step %(I get last 4 digits of phone number for borrower <#{borrower}>)
   step %(I set the authentication messages)
   step %(the text "Receiving your authentication code" is displayed on the page)
   step %(the text "#{@send_auth}#{@last_digits}" is displayed on the page)
@@ -16,9 +17,8 @@ Given(/^I enter an authentication code$/) do
   click_button('Confirm mortgage')
 end
 
-And(/^I get last 4 digits of phone number$/) do
-  bor ||= 1
-  phone_number = @deed.borrowers[bor.to_i - 1][:phone_number]
+And(/^I get last 4 digits of phone number for borrower <(\d+)>$/) do |borrower|
+  phone_number = @deed.borrowers[borrower.to_i - 1][:phone_number]
   @last_digits = phone_number[phone_number.length - 4, phone_number.length - 1]
 end
 
