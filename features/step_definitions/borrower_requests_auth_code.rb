@@ -1,9 +1,7 @@
 # Gets last 4 digits of borrowers phone number
 And(/^I request an authentication code for borrower <(\d+)>$/) do |borrower|
-  # Check for full message
-  # Add check before getting phone number, try avoid reassigning the messages
+  step %(I set the authentication messages) if @send_auth.to_s.length == 0
   step %(I get last 4 digits of phone number for borrower <#{borrower}>)
-  step %(I set the authentication messages)
   step %(the text "Receiving your authentication code" is displayed on the page)
   step %(the text "#{@send_auth}#{@last_digits}" is displayed on the page)
   click_on('Send my code')
@@ -13,7 +11,7 @@ Given(/^I enter an authentication code$/) do
   step %(the text "Enter your authentication code" is displayed on the page)
   step %(the text "#{@sent_auth}#{@last_digits}" is displayed on the page)
   step %(the text "" is displayed on the page)
-  # Get Code
+  # Get Code will go here
   click_button('Confirm mortgage')
 end
 
