@@ -16,5 +16,6 @@ Scenario: Sign my mortgage page tells borrower they need their mobile phone
 Scenario: Borrower Requests Auth Code to sign deed
   Given I create default deed with <1> borrowers
   And borrower <1> views the deed
-  And the borrower <1> signature element is present on page
   Then the deed is digitally signed by borrower <1>
+  And borrower <1> views the deed
+  And I verify borrower <1> has signed the deed
