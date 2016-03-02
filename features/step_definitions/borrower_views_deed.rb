@@ -80,10 +80,12 @@ Then(/^the borrower signature elements are present on page/) do
 end
 
 And(/^confirm your deed information text is displayed on the deed page$/) do
-  page.should have_content('If you’re ready to confirm your mortgage, we’ll send you an authentication code which you’ll need to
-                enter on the next screen')
-  page.should have_content('If you do not wish to confirm the mortgage deed (for instance if you think there is a mistake or you
-                want further explanation) you should contact your conveyancer.')
+  page.should have_content('If you’re ready to confirm your mortgage, we’ll'\
+  ' send you an authentication code which you’ll need to'\
+                ' enter on the next screen')
+  page.should have_content('If you do not wish to confirm the mortgage deed'\
+  ' (for instance if you think there is a mistake or you want'\
+                ' further explanation) you should contact your conveyancer.')
 end
 
 # Checks the mortgage deed is unsigned for borrower, then signs it.
