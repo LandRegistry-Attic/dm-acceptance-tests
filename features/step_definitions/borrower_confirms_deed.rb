@@ -1,7 +1,3 @@
-And(/^I confirm the mortgage deed$/) do
-  click_button('Continue')
-end
-
 Then(/^a confirmation page is displayed$/) do
   page.should have_css('h1', text: 'Thank you for viewing your mortgage deed')
   page.should have_css('h2', text: 'What happens next?')
