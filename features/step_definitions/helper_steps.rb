@@ -38,13 +38,13 @@ Given(/^I setup a deed with <(\d+)> borrowers$/) do |borrower|
 end
 
 # Applies the deed override
-And(/^I amend "([^"]*)" to "([^"]*)"(?: for borrower <(\d+)>)?$/) do |var, val, opt|
-  opt ||= 1
-  case var
+And(/^I amend "([^"]*)" to "([^"]*)"(?: for borrower <(\d+)>)?$/) do |vr, vl, b|
+  b ||= 1
+  case vr
   when 'title_number', 'md_ref', 'identity_checked', 'property_address' then
-    @deed.instance_variable_set("@#{var}", val)
+    @deed.instance_variable_set("@#{vr}", vl)
   else
-    @deed.borrowers[opt.to_i - 1][:"#{var}"] = val
+    @deed.borrowers[b.to_i - 1][:"#{vr}"] = vl
   end
   step %(I hash the deed)
 end
