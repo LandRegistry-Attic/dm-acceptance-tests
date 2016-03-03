@@ -19,6 +19,7 @@ Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   step %(I navigate to the borrower frontend "/borrower-reference" page)
   step %(I search for the deed using the unique borrower reference)
   step %(I enter the date of birth for borrower <#{borrower}>)
+  step %(I check the contents of how to proceed page)
   step %(when I click on the "Continue" link)
   step %(the mortgage deed is displayed)
 end
@@ -69,4 +70,26 @@ Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
   step %(I request an authentication code for borrower <#{borrower}>)
   step %(I enter an authentication code)
   step %(a confirmation page is displayed)
+end
+
+Given(/^I check the contents of how to proceed page$/) do
+  page.should have_content('View your mortgage deed')
+  page.should have_content('signed in you can view an'\
+  ' online version of your mortgage deed. You should:')
+
+  page.should have_content('Read your mortgage deed carefully')
+  page.should have_content('Compare the online version of the deed with the'\
+  ' paper version you have received from your conveyancer. If you spot'\
+  ' any mistakes you should let your conveyancer know.')
+
+  page.should have_content('Confirm your mortgage deed is correct')
+  page.should have_content('If you are happy there are no mistakes, then you'\
+  ' will need to request an authentication code to be sent to your mobile'\
+  ' phone in order to confirm the deed is correct.')
+
+  page.should have_content('Sign your paper mortgage deed')
+  page.should have_content('The online deed is not the legal mortgage. You'\
+  ' should still sign and return your paper mortgage deed following the'\
+  ' instructions you have from your conveyancer.')
+
 end
