@@ -1,6 +1,6 @@
 # This step def contains helper steps, created and used in Generic Refactor.
 
-# Performs steps to view deed. See borrower_views_deed.rb
+# Confirms the content of the Deed page
 Then(/^the mortgage deed is displayed$/) do
   page.should have_content('Your mortgage deed')
   step %(the property address is formatted correctly)
@@ -10,10 +10,11 @@ Then(/^the mortgage deed is displayed$/) do
   step %(the Additional provision is displayed on the deed)
   step %(the effective date element is present on page)
   step %(the Mortgage document reference is displayed)
+  step %(confirm your deed information text is displayed on the deed page)
 end
 
+# Performs steps to view deed. See borrower_views_deed.rb
 Then(/^borrower <(\d+)> views the deed$/) do |borrower|
-  # Use ONLY for the very first viewing of the deed
   step %(I retrieve the unique user id for borrower <#{borrower}>)
   step %(I navigate to the borrower frontend "/borrower-reference" page)
   step %(I search for the deed using the unique borrower reference)
@@ -60,4 +61,12 @@ end
 Then(/^I create the deed$/) do
   step %(I create the deed via the Deed API)
   step %(the deed id is returned by the Deed API)
+end
+
+# Checks the mortgage deed is unsigned for borrower, then signs it.
+Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
+  step %(the borrower <#{borrower}> signature element is present on page)
+  step %(I request an authentication code for borrower <#{borrower}>)
+  step %(I enter an authentication code)
+  step %(a confirmation page is displayed)
 end
