@@ -1,5 +1,17 @@
 # This step def contains helper steps, created and used in Generic Refactor.
 
+# Performs steps to view deed. See borrower_views_deed.rb
+Then(/^the mortgage deed is displayed$/) do
+  page.should have_content('Your mortgage deed')
+  step %(the property address is formatted correctly)
+  step %(the Title number is displayed)
+  step %(the Lender is displayed on the deed)
+  step %(the Charging clause is displayed on the deed)
+  step %(the Additional provision is displayed on the deed)
+  step %(the effective date element is present on page)
+  step %(the Mortgage document reference is displayed)
+end
+
 Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   # Use ONLY for the very first viewing of the deed
   step %(I retrieve the unique user id for borrower <#{borrower}>)
@@ -8,14 +20,6 @@ Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   step %(I enter the date of birth for borrower <#{borrower}>)
   step %(when I click on the "Continue" link)
   step %(the mortgage deed is displayed)
-end
-
-# Retrieves ID for specific Borrower. OR first borrower by default
-And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
-  borrower ||= 1
-  @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
-  deed_hash = JSON.parse(@response.body)
-  @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
 end
 
 # Used to hash the deed after a deed change has occured
@@ -38,6 +42,9 @@ Given(/^I setup a deed with <(\d+)> borrowers$/) do |borrower|
 end
 
 # Applies the deed override
+# vr: deed variable to be changed. e.g dob
+# vl: the new value the deed variable is to be set to. e.g '2/3/1980'
+# b: borrower on the deed. e.g b = 1 is the first borrower
 And(/^I amend "([^"]*)" to "([^"]*)"(?: for borrower <(\d+)>)?$/) do |vr, vl, b|
   b ||= 1
   case vr

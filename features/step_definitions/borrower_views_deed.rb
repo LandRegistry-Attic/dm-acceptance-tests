@@ -4,15 +4,12 @@ And(/^I retrieve the unique user id using the URL$/) do
   @borrower_token = deed_hash['deed']['borrowers'][0]['token']
 end
 
-Then(/^the mortgage deed is displayed$/) do
-  page.should have_content('Your mortgage deed')
-  step %(the property address is formatted correctly)
-  step %(the Title number is displayed)
-  step %(the Lender is displayed on the deed)
-  step %(the Charging clause is displayed on the deed)
-  step %(the Additional provision is displayed on the deed)
-  step %(the effective date element is present on page)
-  step %(the Mortgage document reference is displayed)
+# Retrieves ID for specific Borrower. OR first borrower by default
+And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
+  borrower ||= 1
+  @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
+  deed_hash = JSON.parse(@response.body)
+  @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
 end
 
 Then(/^the Title number is displayed$/) do
