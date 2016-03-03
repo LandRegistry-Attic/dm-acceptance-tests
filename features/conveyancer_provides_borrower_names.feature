@@ -9,20 +9,26 @@ Acceptance Criteria
   There is no upper limit and there must be a least 1
   Successful and unsuccessful response must be returned
 
+@us5
 Scenario: Create Deed with a Borrower with a Middle Name
-  Given I have deed data with a borrower with a middle name
-  When I create the deed via the Deed API
+  Given I setup a deed with <1> borrowers
+  And I amend "middle_name" to "Middle" for borrower <1>
+  And I create the deed
   Then a status code of "201" is returned
   And a url link to retrieve the deed is returned
 
+@us5
 Scenario: Create Deed with No Borrowers
   Given I have valid deed data with <0> borrowers
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'minItems' in schema['properties']['borrowers']:"
 
+@us5
 Scenario: Create Deed with Invalid Borrower
-  Given I have deed data with a borrower with no name
+  Given I setup a deed with <1> borrowers
+  And I amend "forename" to "" for borrower <1>
+  And I amend "surname" to "" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['surname']:"

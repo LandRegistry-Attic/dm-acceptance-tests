@@ -1,9 +1,3 @@
-Given(/^I do not have a property address to provide$/) do
-  @deed = Deed.new(1)
-  @deed.property_address = ''
-  @deed_hash = @deed.to_hash
-end
-
 Given(/^I have a property address that is formatted with commas$/) do
   @deed = Deed.new(1)
   @deed.property_address = '256 King Henrys Drive, New Addington, Croydon, '\

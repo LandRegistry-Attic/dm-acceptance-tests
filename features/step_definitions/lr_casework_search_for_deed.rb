@@ -6,13 +6,6 @@ When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   @response = HTTP.get(full_url)
 end
 
-Given(/^I create the deed with title_number "([^"]*)"$/) do |title_num|
-  # Using to create deed with specific title number
-  @deed = Deed.new(1)
-  @deed.title_number = title_num
-  @deed_hash = @deed.to_hash
-end
-
 Then(/^I verify the returned deed information$/) do
   data = JSON.parse(@response)
   if data.length > 0

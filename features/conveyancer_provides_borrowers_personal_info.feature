@@ -22,71 +22,96 @@ Business Rules
   BRL-DM-09  Mobile phone number must  be in the  UK format
   BRL-DM-10 Gender will be M, F or U
 
+@us13
 Scenario: Create a deed without an address
-  Given I have deed data without a borrowers address
+  Given I setup a deed with <1> borrowers
+  And I amend "address" to "" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['address']:"
 
+@us13
 Scenario: Create a deed with single address but no postcode
-  Given I have deed data with a borrowers address with no postcode
+  Given I setup a deed with <1> borrowers
+  And I amend "address" to "1 The High Street Highley" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['address']:"
 
+@us13
 Scenario: Create a deed with single address and non UK postcode
-  Given I have deed data with a borrowers address with a non UK postcode
+  Given I setup a deed with <1> borrowers
+  And I amend "address" to "8 Rue de Champignon 75008 Paris" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['address']:"
 
+@us13
 Scenario: Create a deed with multiple UK mobile phone numbers
-  Given I have deed data with a borrower that has two mobile phone numbers
+  Given I setup a deed with <1> borrowers
+  And I amend "phone_number" to "07507154072, 07528670998" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['phone_number']:"
 
+@us13
 Scenario: Create a deed without a mobile phone number
-  Given I have deed data with a borrower that has no mobile phone number
+  Given I setup a deed with <1> borrowers
+  And I amend "phone_number" to "" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['phone_number']:"
 
+@us13
 Scenario: Create a deed where both borrowers have the same mobile phone number
-  Given I have deed data with two borrowers with the same mobile number
+  Given I setup a deed with <2> borrowers
+  And I amend "phone_number" to "07507154077" for borrower <1>
+  And I amend "phone_number" to "07507154077" for borrower <2>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
 
+@us13
 Scenario: Create a deed without the DOB
-  Given I have deed data with a borrower that has no date of birth
+  Given I setup a deed with <1> borrowers
+  And I amend "dob" to "" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['dob']:"
 
+@us13
 Scenario: Create a deed with multiple DOBs for the same borrower
-  Given I have deed data with a borrower that has two date of births
+  Given I setup a deed with <1> borrowers
+  And I amend "dob" to "21/09/1965, 24/07/2000" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['dob']:"
 
+@us13
 Scenario: Create a deed with an invalid DOB
-  Given I have deed data with a borrower with invalid format date of birth
+  Given I setup a deed with <1> borrowers
+  And I amend "dob" to "1965/09/21" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['dob']:"
 
+@us13
 Scenario: Create a deed with an invalid DOB date out of range
-  Given I have deed data with a borrower that has an invalid date of birth
+  Given I setup a deed with <1> borrowers
+  And I amend "dob" to "32/09/1965" for borrower <1>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['dob']:"
 
+@us13
 Scenario: Create a deed with one Male borrower and one invalid gender borrower
-  Given I have deed data with two borrowers one that has an invalid gender
+  Given I setup a deed with <2> borrowers
+  And I amend "gender" to "Troll" for borrower <1>
+  And I amend "gender" to "male" for borrower <2>
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'enum' in schema['properties']['borrowers']['items']['properties']['gender']:"
 
+@us13
 Scenario: Create a deed with one Female borrower and one borrower without gender
   Given I have deed data with two borrowers one which has no gender
   When I create the deed via the Deed API

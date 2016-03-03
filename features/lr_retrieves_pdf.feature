@@ -11,16 +11,14 @@ Acceptance Criteria:
 
 @us153a
 Scenario: Retrieve PDF for Valid Deed ID
-  Given I have valid deed data with <1> borrowers
-  And I create the deed via the Deed API
+  Given I create default deed with <1> borrowers
   And the deed id is returned by the Deed API
   When I retrieve a pdf using the deed id
   Then the PDF is returned
 
 @us153a
 Scenario: Retrieve PDF for Invalid Deed ID
-  Given I have valid deed data with <1> borrowers
-  And I create the deed via the Deed API
+  Given I create default deed with <1> borrowers
   And the deed id is returned by the Deed API
   When I retrieve a pdf using an incorrect deed id
   Then a status code of "404" is returned

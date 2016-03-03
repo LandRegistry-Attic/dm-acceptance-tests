@@ -1,15 +1,3 @@
-Given(/^I have deed data with two md refs$/) do
-  @deed = Deed.new(1)
-  @deed.md_ref = 'e-MD12345, e-MD1234Z'
-  @deed_hash = @deed.to_hash
-end
-
-Given(/^I have deed data with an md ref made of a six digit number$/) do
-  @deed = Deed.new(1)
-  @deed.md_ref = 'e-MD123456'
-  @deed_hash = @deed.to_hash
-end
-
 Given(/^I have deed data without an md ref$/) do
   @deed_hash = {
     title_number: 'DT567568',
@@ -27,11 +15,4 @@ Given(/^I have deed data without an md ref$/) do
       }
     ]
   }
-end
-
-Given(/^I have deed data where md ref is not on the mortgage document table$/
-     ) do
-  @deed = Deed.new(1)
-  @deed.md_ref = 'e-MD12345'
-  @deed_hash = @deed.to_hash
 end
