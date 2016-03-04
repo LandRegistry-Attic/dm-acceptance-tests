@@ -91,5 +91,4 @@ Given(/^I check the contents of how to proceed page$/) do
   page.should have_content('The online deed is not the legal mortgage. You'\
   ' should still sign and return your paper mortgage deed following the'\
   ' instructions you have from your conveyancer.')
-
 end
