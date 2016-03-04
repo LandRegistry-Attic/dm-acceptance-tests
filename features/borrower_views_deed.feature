@@ -24,7 +24,6 @@ Scenario: Borrower enters a valid deed reference
   Given I create default deed with <1> borrowers
   And borrower <1> views the deed
   Then the borrower signature elements are present on page
-  And confirm your deed information text is displayed on the deed page
 
 @us122 @us133
 Scenario: 4 Borrower signature boxes are displayed on the deed

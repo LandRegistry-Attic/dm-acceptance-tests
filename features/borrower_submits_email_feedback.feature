@@ -11,6 +11,5 @@ Acceptance Criteria:
 Scenario: Text "How could we improve this service?" is shown on page
 Given I create default deed with <1> borrowers
 And borrower <1> views the deed
-And I confirm the mortgage deed
-And a confirmation page is displayed
+Then the deed is digitally signed by borrower <1>
 Then a link to submit email feedback is displayed

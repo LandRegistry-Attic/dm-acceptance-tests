@@ -4,14 +4,6 @@ And(/^I retrieve the unique user id using the URL$/) do
   @borrower_token = deed_hash['deed']['borrowers'][0]['token']
 end
 
-# Retrieves ID for specific Borrower. OR first borrower by default
-And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
-  borrower ||= 1
-  @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
-  deed_hash = JSON.parse(@response.body)
-  @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
-end
-
 Then(/^the Title number is displayed$/) do
   page.should have_content(@deed.title_number)
 end
@@ -60,6 +52,7 @@ Then(/^the effective date element is present on page$/) do
   page.should have_content('[Effective date and time will be shown here]')
 end
 
+# Checks that no borrower has signed
 Then(/^the borrower signature elements are present on page/) do
   @deed.borrowers.each do |borrower|
     page.should have_content('[Awaiting confirmation from '\
@@ -68,17 +61,20 @@ Then(/^the borrower signature elements are present on page/) do
 end
 
 And(/^confirm your deed information text is displayed on the deed page$/) do
-  page.should have_content('If you are happy with the details shown on your '\
-                           'mortgage deed above, please continue.')
-  page.should have_content('If something is wrong you should contact your '\
-                           'conveyancer')
+  page.should have_content('If you’re ready to confirm your mortgage, we’ll'\
+  ' send you an authentication code which you’ll need to'\
+                ' enter on the next screen')
+  page.should have_content('If you do not wish to confirm the mortgage deed'\
+  ' (for instance if you think there is a mistake or you want'\
+                ' further explanation) you should contact your conveyancer.')
 end
 
-# Checks the mortgage deed is unsigned for borrower, then signs it.
-Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
-  step %(the borrower <#{borrower}> signature element is present on page)
-  step %(I confirm the mortgage deed)
-  step %(a confirmation page is displayed)
+# Retrieves ID for specific Borrower. OR first borrower by default
+And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
+  borrower ||= 1
+  @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
+  deed_hash = JSON.parse(@response.body)
+  @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
 end
 
 # Use when viewing deed, to verify a previous signing has occurred
