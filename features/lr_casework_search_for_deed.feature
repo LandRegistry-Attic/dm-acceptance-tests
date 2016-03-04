@@ -59,7 +59,8 @@ Scenario: Verify deed status is Complete when fully signed
 Given I setup a deed with <1> borrowers
 And I amend "title_number" to "99999"
 When I create the deed
-Given I create default deed with <1> borrowers
+And I search the deed store with title_number "99999"
+Then I verify the returned deed information is "DRAFT"
 And borrower <1> views the deed
 And the borrower <1> signature element is present on page
 Then the deed is digitally signed by borrower <1>
@@ -71,6 +72,8 @@ Scenario: Verify deed status is Incomplete when not fully signed
 Given I setup a deed with <2> borrowers
 And I amend "title_number" to "6789"
 When I create the deed
+And I search the deed store with title_number "6789"
+Then I verify the returned deed information is "DRAFT"
 And borrower <1> views the deed
 And the borrower <1> signature element is present on page
 Then the deed is digitally signed by borrower <1>
