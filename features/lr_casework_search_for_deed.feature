@@ -40,3 +40,11 @@ And I amend "title_number" to "DM11"
 And I create the deed via the Deed API
 When I search the deed store with title_number "99999"
 Then a status code of "404" is returned
+
+@us133f @wip12
+Scenario: Verify deed status
+Given I setup a deed with <1> borrowers
+And I amend "title_number" to "99999"
+When I create the deed via the Deed API
+When I search the deed store with title_number "99999"
+Then I verify the returned deed information is "DRAFT"

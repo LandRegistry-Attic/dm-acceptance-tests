@@ -7,8 +7,9 @@ When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   @response = HTTP.get(full_url)
 end
 
+
 # Verify the returned information is correct
-Then(/^I verify the returned deed information$/) do
+Then(/^I verify the returned deed information is "([^"]*)"$/) do |deed_sts|
   data = JSON.parse(@response)
   if data.length > 0
     deed_count = 0
@@ -16,10 +17,10 @@ Then(/^I verify the returned deed information$/) do
     while deed_count <= (data.length - 1)
       status = data[deed_count].include?('status')
       token = data[deed_count].include?('token')
-      draft = data[deed_count]['status'].include?('DRAFT')
+      st_val = data[deed_count]['status'].include?(deed_sts)
       tok_val = data[deed_count]['token'].nil?
       # Fails if the first 3 above checks = false, or the last =  true
-      if status == false || token == false || draft == false || tok_val == true
+      if status == false || token == false || st_val == false || tok_val == true
         abort('Status or Token is not returned as expected')
       end
       deed_count += 1
