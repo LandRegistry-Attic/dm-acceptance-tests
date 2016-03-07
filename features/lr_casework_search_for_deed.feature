@@ -10,16 +10,16 @@ Acceptance Criteria
 - (us152) If a single deed is found the service must return the deed ID and status of the deed
 - (us152) If multiple deeds are found the service must return the deed ID and status of each deed
 - (us152) The service must state when no deed exists
+- (us133f) For multi-borrower: DB Status must be partially signed.
+- (us133f) For single borrower: DB Status must be signed.
 
 @us152
 Scenario: A search of the deed store can be performed when using valid Title Number & MD Reference
-
 Given I setup a deed with <1> borrowers
 And I amend "title_number" to "9079"
 And I create the deed via the Deed API
 When I search the deed store with title_number "9079"
 Then I verify the returned deed information
-
 
 @us152
 Scenario: Multiple deed ID's and Statuses are returned when searched using valid Title Number & MD Reference
@@ -32,7 +32,6 @@ And I create the deed via the Deed API
 When I search the deed store with title_number "DM11"
 Then I verify the returned deed information
 
-
 @us152
 Scenario: Error is returned when search returns no deed
 Given I setup a deed with <1> borrowers
@@ -40,7 +39,6 @@ And I amend "title_number" to "DM11"
 And I create the deed via the Deed API
 When I search the deed store with title_number "99999"
 Then a status code of "404" is returned
-
 
 # List of possible deed status'  found in dm-deed-api/application/deed/deed_status.py
 # "DRAFT"
@@ -54,8 +52,8 @@ Then a status code of "404" is returned
 # "STORED"
 # "REGISTERED"
 
-@us133f @wip12
-Scenario: Verify deed status is Complete when fully signed
+@us133f @us152
+Scenario: Verify deed status is All-signed when fully signed
 Given I setup a deed with <1> borrowers
 And I amend "title_number" to "99999"
 When I create the deed
@@ -67,8 +65,8 @@ Then the deed is digitally signed by borrower <1>
 When I search the deed store with title_number "99999"
 Then I verify the returned deed information is "ALL-SIGNED"
 
-@us133f @wip12
-Scenario: Verify deed status is Incomplete when not fully signed
+@us133f @us152
+Scenario: Verify deed status is PARTIALLY-SIGNED when not fully signed
 Given I setup a deed with <2> borrowers
 And I amend "title_number" to "6789"
 When I create the deed
