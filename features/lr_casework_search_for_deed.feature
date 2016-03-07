@@ -41,7 +41,7 @@ When I search the deed store with title_number "14789"
 Then a status code of "404" is returned
 
 @us133f @us152
-Scenario: Verify deed status is All-signed when fully signed
+Scenario: Verify deed status is ALL-SIGNED, when all borrowers have signed the deed
 Given I setup a deed with <1> borrowers
 And I amend "title_number" to "99999"
 When I create the deed
@@ -54,7 +54,7 @@ When I search the deed store with title_number "99999"
 Then I verify the returned deed information is "ALL-SIGNED"
 
 @us133f @us152
-Scenario: Verify deed status is PARTIALLY-SIGNED when all borrowers have not signed
+Scenario: Verify deed status is PARTIALLY-SIGNED, when one borrower has not yet signed the deed
 Given I setup a deed with <2> borrowers
 And I amend "title_number" to "6789"
 When I create the deed
