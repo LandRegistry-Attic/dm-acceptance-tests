@@ -19,7 +19,7 @@ Given I setup a deed with <1> borrowers
 And I amend "title_number" to "9079"
 And I create the deed via the Deed API
 When I search the deed store with title_number "9079"
-Then I verify the returned deed information
+Then I verify the returned deed information is "DRAFT"
 
 @us152
 Scenario: Multiple deed ID's and Statuses are returned when searched using valid Title Number & MD Reference
@@ -30,7 +30,7 @@ And I setup a deed with <1> borrowers
 And I amend "title_number" to "DM11"
 And I create the deed via the Deed API
 When I search the deed store with title_number "DM11"
-Then I verify the returned deed information
+Then I verify the returned deed information is "DRAFT"
 
 @us152
 Scenario: Error is returned when search returns no deed
@@ -39,18 +39,6 @@ And I amend "title_number" to "DM11"
 And I create the deed via the Deed API
 When I search the deed store with title_number "14789"
 Then a status code of "404" is returned
-
-# List of possible deed status'  found in dm-deed-api/application/deed/deed_status.py
-# "DRAFT"
-# "PARTIALLY-SIGNED"
-# "SUPERCEDED"
-# "ABORTED"
-# "STOPPED"
-# "ALL-SIGNED"
-# "EFFECTIVE"
-# "SUBMITTED"
-# "STORED"
-# "REGISTERED"
 
 @us133f @us152
 Scenario: Verify deed status is All-signed when fully signed
@@ -66,7 +54,7 @@ When I search the deed store with title_number "99999"
 Then I verify the returned deed information is "ALL-SIGNED"
 
 @us133f @us152
-Scenario: Verify deed status is PARTIALLY-SIGNED when not fully signed
+Scenario: Verify deed status is PARTIALLY-SIGNED when all borrowers have not signed
 Given I setup a deed with <2> borrowers
 And I amend "title_number" to "6789"
 When I create the deed
