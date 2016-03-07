@@ -9,6 +9,11 @@ When(/^I create the deed via the Deed API$/) do
   @response = HTTP.post(deed_end_point, json: @deed_hash)
 end
 
+When(/^Conveyancer two creates the deed via the Deed API$/) do
+  deed_end_point = Env.deed_api_buid_b + '/deed/'
+  @response = HTTP.post(deed_end_point, json: @deed_hash)
+end
+
 Given(/^the deed id is returned by the Deed API$/) do
   response_hash = JSON.parse(@response.body)
   split_response = response_hash['path'].split('/')

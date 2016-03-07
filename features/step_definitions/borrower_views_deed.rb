@@ -4,6 +4,20 @@ And(/^I retrieve the unique user id using the URL$/) do
   @borrower_token = deed_hash['deed']['borrowers'][0]['token']
 end
 
+# Retrieves ID for specific Borrower. OR first borrower by default
+And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
+  borrower ||= 1
+  @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
+  deed_hash = JSON.parse(@response.body)
+  @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
+end
+
+And(/^I retrieve unique user id for deed created by conveyancer two$/) do
+  @response = HTTP.get(Env.deed_api_buid_b + '/deed/' + @deed_id)
+  deed_hash = JSON.parse(@response.body)
+  @borrower_token = deed_hash['deed']['borrowers'][0]['token']
+end
+
 Then(/^the Title number is displayed$/) do
   page.should have_content(@deed.title_number)
 end
@@ -47,8 +61,15 @@ end
 
 Then(/^the effective date element is present on page$/) do
   page.should have_content('This charge takes effect when the registrar '\
-                           'receives notification from Pure Law that the '\
-                           'charge is to take effect.')
+                           'receives notification from Land Registry Devices '\
+                           ' that the charge is to take effect.')
+  page.should have_content('[Effective date and time will be shown here]')
+end
+
+Then(/^the effective date element for the second Lender is present on page$/) do
+  page.should have_content('This charge takes effect when the registrar '\
+                           'receives notification from Land Registry Test '\
+                           'that the charge is to take effect.')
   page.should have_content('[Effective date and time will be shown here]')
 end
 
