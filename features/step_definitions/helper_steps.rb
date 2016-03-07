@@ -10,7 +10,6 @@ Then(/^the mortgage deed is displayed$/) do
   step %(the Additional provision is displayed on the deed)
   step %(the effective date element is present on page)
   step %(the Mortgage document reference is displayed)
-  step %(confirm your deed information text is displayed on the deed page)
 end
 
 # Performs steps to view deed. See borrower_views_deed.rb
@@ -68,12 +67,13 @@ end
 Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
   step %(the borrower <#{borrower}> signature element is present on page)
 
+
   # Wrap in conditional depending on page
   if step %(the text "Receiving your authentication code" is displayed on the page)
     step %(I request an authentication code for borrower <#{borrower}>)
     step %(I enter an authentication code)
   else
-    click_button('Confirm mortgage')
+    click_button('Continue')
   end
   step %(a confirmation page is displayed)
 end
