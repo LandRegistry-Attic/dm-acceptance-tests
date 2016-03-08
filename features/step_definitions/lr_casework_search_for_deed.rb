@@ -1,3 +1,4 @@
+# Searches deed store for deed information using specified title number
 When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   # Open the URL in browser to check information
   url_head = Env.deed_api_casework + '/deed?md_ref=' +
@@ -6,6 +7,7 @@ When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   @response = HTTP.get(full_url)
 end
 
+# Verify the returned information is correct
 Then(/^I verify the returned deed information$/) do
   data = JSON.parse(@response)
   if data.length > 0

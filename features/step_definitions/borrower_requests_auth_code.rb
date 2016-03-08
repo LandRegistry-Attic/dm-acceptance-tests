@@ -1,4 +1,4 @@
-# Requests authentication code for required borrower
+# Requests authentication code for specified borrower
 And(/^I request an authentication code for borrower <(\d+)>$/) do |borrower|
   step %(I set the authentication messages) if @send_auth.to_s.length == 0
   step %(I get last 4 digits of phone number for borrower <#{borrower}>)
@@ -7,7 +7,7 @@ And(/^I request an authentication code for borrower <(\d+)>$/) do |borrower|
   click_on('Send my code')
 end
 
-# Checks page for authentication code text, and enters the code
+# Checks page for authentication code text,then enters the authentication code
 Given(/^I enter an authentication code$/) do
   step %(the text "Enter your authentication code" is displayed on the page)
   step %(the text "#{@sent_auth}#{@last_digits}" is displayed on the page)
