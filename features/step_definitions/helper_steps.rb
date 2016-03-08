@@ -10,7 +10,6 @@ Then(/^the mortgage deed is displayed$/) do
   step %(the Additional provision is displayed on the deed)
   step %(the effective date element is present on page)
   step %(the Mortgage document reference is displayed)
-  step %(confirm your deed information text is displayed on the deed page)
 end
 
 # Performs steps to view deed. See borrower_views_deed.rb
@@ -29,17 +28,16 @@ Then(/^I hash the deed$/) do
   @deed_hash = @deed.to_hash
 end
 
-# Performs deed setup Version 1.0
+# Creates a deed, with entered number of [borrowers].
 Given(/^I create default deed with <(\d+)> borrowers$/) do |borrower|
-  # Creates a deed, with entered number of [borrowers].
   step %(I have valid deed data with <#{borrower}> borrowers)
   step %(I create the deed via the Deed API)
   step %(the deed id is returned by the Deed API)
 end
 
 # Use before any overrides
+# Creates a deed, with entered number of [borrowers].
 Given(/^I setup a deed with <(\d+)> borrowers$/) do |borrower|
-  # Creates a deed, with entered number of [borrowers].
   step %(I have valid deed data with <#{borrower}> borrowers)
 end
 
@@ -66,12 +64,17 @@ end
 
 # Checks the mortgage deed is unsigned for borrower, then signs it.
 Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
-  step %(the borrower <#{borrower}> signature element is present on page)
-  step %(I request an authentication code for borrower <#{borrower}>)
-  step %(I enter an authentication code)
+  # Conditional check to see if authentication code is to be sent or not
+  if step %(the borrower <#{borrower}> signature element is present on page)
+    step %(I request an authentication code for borrower <#{borrower}>)
+    step %(I enter an authentication code)
+  else
+    click_button('Continue')
+  end
   step %(a confirmation page is displayed)
 end
 
+# Verifies the text on the How To Proceed Page
 Given(/^I check the contents of how to proceed page$/) do
   page.should have_content('View your mortgage deed')
   page.should have_content('signed in you can view an'\

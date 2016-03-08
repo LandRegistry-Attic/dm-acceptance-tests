@@ -1,6 +1,6 @@
+# Creates a deed with the specified number of borrowers
 Given(/^I have valid deed data with <(\d+)> borrowers$/) do |num_borrowers|
-  borrowers = num_borrowers.to_i
-  @deed = Deed.new(borrowers)
+  @deed = Deed.new(num_borrowers.to_i)
   @deed_hash = @deed.to_hash
 end
 
