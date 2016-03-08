@@ -1,3 +1,4 @@
+# Checks the content of the Confirmation page is correct
 Then(/^a confirmation page is displayed$/) do
   page.should have_css('h1', text: 'Thank you for viewing your mortgage deed')
   page.should have_css('h2', text: 'What happens next?')

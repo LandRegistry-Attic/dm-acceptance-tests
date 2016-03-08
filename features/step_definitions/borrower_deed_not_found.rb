@@ -1,3 +1,4 @@
+# Deed not found help text is shown on page
 Then(/^help text explaining why your deed wasn't found is displayed$/) do
   page.should have_content('the borrower reference was mistyped')
   page.should have_content('or the date of birth was not in the format dd mm '\

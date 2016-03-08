@@ -75,6 +75,7 @@ Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
   step %(a confirmation page is displayed)
 end
 
+# Verifies the text on the How To Proceed Page
 Given(/^I check the contents of how to proceed page$/) do
   page.should have_content('View your mortgage deed')
   page.should have_content('signed in you can view an'\
