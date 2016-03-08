@@ -90,14 +90,6 @@ And(/^confirm your deed information text is displayed on the deed page$/) do
                 ' further explanation) you should contact your conveyancer.')
 end
 
-# Retrieves ID for specific Borrower. OR first borrower by default
-And(/^I retrieve the unique user id for borrower (?:<(\d+)>)?$/) do |borrower|
-  borrower ||= 1
-  @response = HTTP.get(Env.deed_api_buid_a + '/deed/' + @deed_id)
-  deed_hash = JSON.parse(@response.body)
-  @borrower_token = deed_hash['deed']['borrowers'][borrower.to_i - 1]['token']
-end
-
 # Use when viewing deed, to verify a previous signing has occurred
 Then(/^I verify borrower <(\d+)> has signed the deed$/) do |bor|
   f_name = @deed.borrowers[bor.to_i - 1][:forename]
