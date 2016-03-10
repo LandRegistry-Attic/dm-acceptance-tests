@@ -1,5 +1,4 @@
 ### This class is for creating deed test data to be submitted to the Deed API
-require 'date'
 class Deed
   attr_accessor :title_number
   attr_accessor :md_ref
