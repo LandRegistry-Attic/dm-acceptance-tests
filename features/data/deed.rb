@@ -23,7 +23,7 @@ class Deed
     number_of_borrowers.times do |borrower_number|
       year = Random.new.rand(1920..2000)
       month =Random.new.rand(1..12)
-      day  = Random.new.rand(1..30)
+      day  = Random.new.rand(1..28)
       date = Date.new(year, month, day).strftime('%d/%m/%Y')
       borrowers.push(
         forename: 'Jayne',
