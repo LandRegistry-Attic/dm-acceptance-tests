@@ -25,15 +25,16 @@ class Deed
       year = Random.new.rand(1920..2000)
       month =Random.new.rand(1..12)
       day  = Random.new.rand(1..30)
-      date = Date.new(year, month, day)
+      date = Date.new(year, month, day).strftime('%d/%m/%Y')
       borrowers.push(
         forename: 'Jayne',
         surname: 'Cobb',
         gender: "#{/Male|Female|Not Specified/.random_example}",
         address: "#{borrower_number}B Borrower Street, Plymouth, PL3 2PP",
-        dob: "#{date.strftime('%d/%m/%Y')}",
+        dob: date,
         phone_number: "07#{/[0-9]{9}/.random_example}"
       )
+      puts "Borrowers Info: #{borrowers}"
     end
     borrowers
   end
