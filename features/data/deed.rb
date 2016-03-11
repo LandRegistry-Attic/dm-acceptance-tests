@@ -21,14 +21,19 @@ class Deed
   def generate_borrowers(number_of_borrowers)
     borrowers = []
     number_of_borrowers.times do |borrower_number|
+      year = Random.new.rand(1920..2000)
+      month =Random.new.rand(1..12)
+      day  = Random.new.rand(1..28)
+      date = Date.new(year, month, day).strftime('%d/%m/%Y')
       borrowers.push(
         forename: 'Jayne',
         surname: 'Cobb',
         gender: "#{/Male|Female|Not Specified/.random_example}",
         address: "#{borrower_number}B Borrower Street, Plymouth, PL3 2PP",
-        dob: "#{Date.today.strftime('%d/%m/%Y')}",
+        dob: date,
         phone_number: "07#{/[0-9]{9}/.random_example}"
       )
+      puts "Borrowers Info: #{borrowers}"
     end
     borrowers
   end

@@ -7,6 +7,8 @@ end
 When(/^I create the deed via the Deed API$/) do
   deed_end_point = Env.deed_api_buid_a + '/deed/'
   @response = HTTP.post(deed_end_point, json: @deed_hash)
+  puts "DEED TOKEN TO FIND: #{@response}"
+
 end
 
 When(/^Conveyancer two creates the deed via the Deed API$/) do
