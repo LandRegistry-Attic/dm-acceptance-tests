@@ -33,8 +33,8 @@ class Deed
         dob: date,
         phone_number: "07#{/[0-9]{9}/.random_example}"
       )
-      puts "Borrowers Info: #{borrowers}"
     end
+    puts "Borrowers Info: #{borrowers}"
     borrowers
   end
 
