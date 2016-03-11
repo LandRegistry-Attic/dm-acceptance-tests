@@ -19,7 +19,6 @@ And I create the deed via the Deed API
 When I search the deed store with title_number "9079"
 Then I verify the returned deed information
 
-
 @us152
 Scenario: Multiple deed ID's and Statuses are returned when searched using valid Title Number & MD Reference
 Given I setup a deed with <1> borrowers
@@ -30,7 +29,7 @@ And I amend "title_number" to "DM11"
 And I create the deed via the Deed API
 When I search the deed store with title_number "DM11"
 Then I verify the returned deed information
-  
+
 @us152
 Scenario: Error is returned when search returns no deed
 Given I setup a deed with <1> borrowers
