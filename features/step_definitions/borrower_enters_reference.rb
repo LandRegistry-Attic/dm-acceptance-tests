@@ -1,8 +1,6 @@
 # Searches for deed with @borrower_token
 And(/^I search for the deed using the unique borrower reference$/) do
-  split_token = @borrower_token.split('-')
-  fill_in 'borrower_token', with: split_token[0]
-  fill_in 'borrower_token_2', with: split_token[1]
+  fill_in 'borrower_token', with: @borrower_token
   click_button('Continue')
 end
 
