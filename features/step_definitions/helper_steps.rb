@@ -18,9 +18,7 @@ Then(/^borrower <(\d+)> views the deed$/) do |borrower|
   step %(I navigate to the borrower frontend "/borrower-reference" page)
   step %(I search for the deed using the unique borrower reference)
   step %(I enter the date of birth for borrower <#{borrower}>)
-  step %(I check the contents of how to proceed page)
   step %(when I click on the "Continue" link)
-  step %(the mortgage deed is displayed)
 end
 
 # Used to hash the deed after a deed change has occured
