@@ -19,5 +19,6 @@ Scenario: Borrower enters a valid deed reference
 
   Given I create default deed with <1> borrowers
   And borrower <1> views the deed
+  And the mortgage deed is displayed
   Then the deed is digitally signed by borrower <1>
   And a confirmation page is displayed
