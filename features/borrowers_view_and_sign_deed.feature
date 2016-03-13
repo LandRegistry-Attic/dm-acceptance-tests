@@ -33,29 +33,9 @@ Scenario: 2 Borrowers can view and sign a deed.
   Then the deed is digitally signed by borrower <2>
   And borrower <2> views the deed
   And the mortgage deed is displayed
-  Then I verify borrower <2> has signed the deed
 
 @us133 @us133f
-Scenario: 3 Borrowers can view and sign a deed.
-  Given I create default deed with <3> borrowers
-  And borrower <2> views the deed
-  And the mortgage deed is displayed
-  Then the deed is digitally signed by borrower <2>
-  And borrower <3> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <2> has signed the deed
-  Then the deed is digitally signed by borrower <3>
-  And borrower <1> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <3> has signed the deed
-  Then I verify borrower <2> has signed the deed
-  Then the deed is digitally signed by borrower <1>
-  And borrower <1> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <1> has signed the deed
-
-@us133 @us133f
-Scenario: 3 Borrowers can view deed multiple times, and sign once. p1
+Scenario: 3 Borrowers can view deed multiple times, and sign once.
   Given I create default deed with <3> borrowers
   And borrower <1> views the deed
   And the mortgage deed is displayed
@@ -79,7 +59,7 @@ Scenario: 3 Borrowers can view deed multiple times, and sign once. p1
   Then I verify borrower <3> has signed the deed
 
 @us133 @us133f
-Scenario: 4 Borrowers can view and sign a deed. p1
+Scenario: 4 Borrowers can view and sign a deed.
   Given I create default deed with <4> borrowers
   And borrower <3> views the deed
   And the mortgage deed is displayed
@@ -102,39 +82,3 @@ Scenario: 4 Borrowers can view and sign a deed. p1
   And borrower <3> views the deed
   And the mortgage deed is displayed
   Then I verify borrower <4> has signed the deed
-
-@us133 @us133f
-Scenario: 4 Borrowers can view deed multiple times, and sign once. p1
-  Given I create default deed with <4> borrowers
-  And borrower <4> views the deed
-  And the mortgage deed is displayed
-  And borrower <1> views the deed
-  And the mortgage deed is displayed
-  And borrower <2> views the deed
-  And the mortgage deed is displayed
-  Then the deed is digitally signed by borrower <2>
-  And borrower <3> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <2> has signed the deed
-  And borrower <1> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <2> has signed the deed
-  Then the deed is digitally signed by borrower <1>
-  And borrower <3> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <1> has signed the deed
-  Then I verify borrower <2> has signed the deed
-  And borrower <4> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <1> has signed the deed
-  Then I verify borrower <2> has signed the deed
-  Then the deed is digitally signed by borrower <4>
-  And borrower <3> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <2> has signed the deed
-  Then I verify borrower <1> has signed the deed
-  Then I verify borrower <4> has signed the deed
-  Then the deed is digitally signed by borrower <3>
-  And borrower <4> views the deed
-  And the mortgage deed is displayed
-  Then I verify borrower <3> has signed the deed
