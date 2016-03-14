@@ -23,10 +23,12 @@ Acceptance Criteria:
 Scenario: Borrower enters a valid deed reference
   Given I create default deed with <1> borrowers
   And borrower <1> views the deed
+  And the mortgage deed is displayed
   Then the borrower signature elements are present on page
 
 @us122 @us133
 Scenario: 4 Borrower signature boxes are displayed on the deed
   Given I create default deed with <1> borrowers
   And borrower <1> views the deed
+  And the mortgage deed is displayed
   Then the borrower signature elements are present on page
