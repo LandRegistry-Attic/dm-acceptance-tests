@@ -18,29 +18,67 @@ class Deed
     "DMA#{rand(0..99999)}"
   end
 
-  def generate_borrowers(number_of_borrowers)
-    borrowers = []
-    number_of_borrowers.times do |borrower_number|
-      year = Random.new.rand(1920..2000)
-      month = Random.new.rand(1..12)
-      day  = Random.new.rand(1..28)
-      date = Date.new(year, month, day).strftime('%d/%m/%Y')
-      borrowers.push(
-        forename: 'Jayne',
-        surname: 'Cobb',
-        gender: "#{/Male|Female|Not Specified/.random_example}",
-        address: "#{borrower_number}B Borrower Street, Plymouth, PL3 2PP",
-        dob: date,
-        phone_number: "07#{/[0-9]{9}/.random_example}"
-      )
-    end
-    puts "Borrowers Info: #{borrowers}"
-    borrowers
-  end
-
   def to_hash
     instance_variables.map do |var|
       [var[1..-1].to_sym, instance_variable_get(var)]
     end.to_h
   end
+
+  def generate_random_date()
+    year = Random.new.rand(1920..2000)
+    month = Random.new.rand(1..12)
+    day  = Random.new.rand(1..28)
+    date = Date.new(year, month, day).strftime('%d/%m/%Y')
+    return date
+  end
+
+
+  def generate_borrowers(number_of_borrowers)
+    # Sets up the borrower data
+    borrower_data = []
+    borrower_data.push(
+        forename: 'Jayne',
+        surname: 'Cobb',
+        gender: 'Female',
+        address: '1B Borrower Street, Plymouth, PL3 2PP',
+        dob: generate_random_date,
+        phone_number: '07481362536'
+    )
+    borrower_data.push(
+        forename: 'Mark',
+        middle_name: 'James',
+        surname: 'Strong',
+        gender: 'Male',
+        address: '2B Borrower Street, Plymouth, PL3 2PP',
+        dob: generate_random_date,
+        phone_number: '07481362537'
+    )
+    borrower_data.push(
+        forename: 'Sue',
+        middle_name: 'Anne',
+        surname: 'Randall',
+        gender: 'Female',
+        address: '3B Borrower Street, Plymouth, PL3 2PP',
+        dob: generate_random_date,
+        phone_number: '07481362538'
+    )
+    borrower_data.push(
+        forename: 'Lee',
+        surname: 'Thomson',
+        gender: 'Male',
+        address: '4B Borrower Street, Plymouth, PL3 2PP',
+        dob: generate_random_date,
+        phone_number: '07481362539'
+    )
+    borrower_data
+
+    # Adds the borrowers data to the deed
+    borrowers = []
+    number_of_borrowers.times do |borrower_number|
+      borrowers.push(borrower_data[borrower_number])
+    end
+    puts "Borrowers Info: #{borrowers}"
+    borrowers
+  end
+
 end
