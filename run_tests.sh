@@ -20,3 +20,7 @@ if [ -z "$@"]
 else
   BUNDLE_GEMFILE=$gemfile bundle exec cucumber $currentLocation $@
 fi
+
+if [ -z "$ESEC_INTEGRATION"]; then
+    python3 server.py True "Digital Mortgage"
+fi
