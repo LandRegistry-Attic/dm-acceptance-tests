@@ -42,7 +42,7 @@ class Deed
         gender: 'Female',
         address: '1B Borrower Street, Plymouth, PL3 2PP',
         dob: generate_random_date,
-        phone_number: '07481362536'
+        phone_number: ENV['PHONE_NUMBER']
     )
     borrower_data.push(
         forename: 'Mark',

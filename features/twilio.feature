@@ -4,7 +4,7 @@ Feature: Checko Twilio API
   @wip1233 @messagelist
   Scenario: Check Twilio integration
   And I get message list
-  And I get latest message
+  And I get latest message auth code
 
   @wip1234 @viewdeed
   Scenario: Set up deed with Twilio Phone Number

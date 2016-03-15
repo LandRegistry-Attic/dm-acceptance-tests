@@ -21,8 +21,8 @@ And(/^I post SMS with body "([^"]*)"$/) do |msg_body|
   @client = Twilio::REST::Client.new @account_sid, @auth_token
 
   @client.account.messages.create({
-                                      :from => '+447481362536',
-                                      :to => '07561137984',
+                                      :from => ENV['PHONE_NUMBER'],
+                                      :to => ENV['PHONE_NUMBER'],
                                       :body => "#{msg_body}",
                                   })
   puts 'SENT MESSAGE'
@@ -41,17 +41,18 @@ And(/^I get message list$/) do
   end
 end
 
-And(/^I get latest message$/) do
+And(/^I get latest message auth code$/) do
   # put your own credentials here
   @account_sid = ENV['ACCOUNT_SID']
-  puts @account_sid
+  puts "ACCOUNT SID IS: #{@account_sid}"
   @auth_token = ENV['AUTH_TOKEN']
-  puts @auth_token
+  puts "AUTH TOKEN IS: #{@auth_token}"
+
 # set up a client to talk to the Twilio REST API
   @client = Twilio::REST::Client.new @account_sid, @auth_token
 # Place holder
   @latest_msg = @client.account.messages.list[0].body.to_s
-  @auth_code = @latest_msg.split(' ')[-1]
+  @auth_code = @latest_msg.split(' ')[-1].chop
   puts "Auth code is: #{@auth_code}"
 
 end
