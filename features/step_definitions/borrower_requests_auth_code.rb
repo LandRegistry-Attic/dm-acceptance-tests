@@ -12,6 +12,8 @@ Given(/^I enter an authentication code$/) do
   step %(the text "Enter your authentication code" is displayed on the page)
   step %(the text "#{@sent_auth}#{@last_digits}" is displayed on the page)
   # Get Code will go here
+  # step %(I get latest message auth code)
+  # fill_in 'auth-code', with: @auth_code
   click_button('Confirm mortgage')
 end
 
