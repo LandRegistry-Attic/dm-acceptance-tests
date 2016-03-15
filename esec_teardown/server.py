@@ -8,13 +8,9 @@ import os
 
 LOGGER = logging.getLogger(__name__)
 
-# This tells the SSL runtime to trust the provided certificate without credentials
 _create_unverified_https_context = ssl._create_unverified_context
 
 logging.basicConfig(filename="./esec-delete.log", level=logging.DEBUG)
-
-# TODO: Ensure the domain name is in the /windows/system32/drivers/etc/hosts file
-#url = 'https://TST-ESEC-H204.tst.esec.net:8443/routerProject/services/DocumentServices?wsdl'
 
 url = os.getenv('ESEC_URL')
 adminUrl = os.getenv('ESEC_ADMIN_URL')
