@@ -11,7 +11,3 @@ Feature: Checko Twilio API
   Given I create default deed with <4> borrowers
   And borrower <1> views the deed
   Then the mortgage deed is displayed
-
-  @wip1235 @sendsms
-  Scenario: Send message to Twilio Phone Number
-  Given I post SMS with body "Heya code is 12789"
