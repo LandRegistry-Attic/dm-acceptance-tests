@@ -57,13 +57,13 @@ def run_delete():
                 try:
                     if settings.confirm_delete == "True":
                         res = adminClient.service.removeUser(requestId, user["userId"])
-                        print("Remove user: %s - %s " % (user["userId"],str(res)))
+                        LOGGER.info("Remove user: %s - %s " % (user["userId"],str(res)))
                     else:
-                        print("Remove user(TEST- NOT DELETED): %s - %s " % (user["userId"],0))
+                        LOGGER.error("Remove user(TEST- NOT DELETED): %s - %s " % (user["userId"],0))
                 except:
                     msg = str(sys.exc_info())
                     print(msg)
-                    print("Error: Removing user: %s" % (user["userId"]))
+                    LOGGER.error(("Error: Removing user: %s" % (user["userId"])))
 
 
 if __name__ == "__main__":
