@@ -12,13 +12,9 @@ _create_unverified_https_context = ssl._create_unverified_context
 
 logging.basicConfig(filename="./esec-delete.log", level=logging.DEBUG)
 
-url = os.getenv('ESEC_URL')
-adminUrl = os.getenv('ESEC_ADMIN_URL')
-userServicesUrl = os.getenv('USER_SERVICE_URL')
-
-client = Client(url)
-adminClient = Client(adminUrl)
-userClient = Client(userServicesUrl)
+client = Client(os.getenv('ESEC_URL'))
+adminClient = Client(os.getenv('ESEC_ADMIN_URL'))
+userClient = Client(os.getenv('USER_SERVICE_URL'))
 
 doTheDelete = False
 ORGANISATION_ID = "TESTUT2 [36812]"
