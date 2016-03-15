@@ -45,12 +45,10 @@ def run_delete():
     LOGGER.info("Settings from command line: %s" % str(settings))
     ORGANISATION_ID = settings.organisation_name
 
-    #old account = LR Administrators
     res = adminClient.service.searchForUser(requestId, "*", "GB", ORGANISATION_ID, "Users")
 
     for user in res:
         user_name = user["userId"]
-        #print("User Name: %s %s %s - status: %s" % (user_name, user["commonName"], user["surname"], user["accountStatus"]))
 
         if user_name[0:3] == "dm-":
 
