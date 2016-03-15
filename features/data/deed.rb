@@ -24,53 +24,50 @@ class Deed
     end.to_h
   end
 
-  def generate_random_date()
+  def generate_random_date
     year = Random.new.rand(1920..2000)
     month = Random.new.rand(1..12)
-    day  = Random.new.rand(1..28)
-    date = Date.new(year, month, day).strftime('%d/%m/%Y')
-    return date
+    day = Random.new.rand(1..28)
+    Date.new(year, month, day).strftime('%d/%m/%Y')
   end
-
 
   def generate_borrowers(number_of_borrowers)
     # Sets up the borrower data
     borrower_data = []
     borrower_data.push(
-        forename: 'Jayne',
-        surname: 'Cobb',
-        gender: 'Female',
-        address: '1B Borrower Street, Plymouth, PL3 2PP',
-        dob: generate_random_date,
-        phone_number: ENV['PHONE_NUMBER']
+      forename: 'Jayne',
+      surname: 'Cobb',
+      gender: 'Female',
+      address: '1B Borrower Street, Plymouth, PL3 2PP',
+      dob: generate_random_date,
+      phone_number: ENV['PHONE_NUMBER']
     )
     borrower_data.push(
-        forename: 'Mark',
-        middle_name: 'James',
-        surname: 'Strong',
-        gender: 'Male',
-        address: '2B Borrower Street, Plymouth, PL3 2PP',
-        dob: generate_random_date,
-        phone_number: '07481362537'
+      forename: 'Mark',
+      middle_name: 'James',
+      surname: 'Strong',
+      gender: 'Male',
+      address: '2B Borrower Street, Plymouth, PL3 2PP',
+      dob: generate_random_date,
+      phone_number: '07481362537'
     )
     borrower_data.push(
-        forename: 'Sue',
-        middle_name: 'Anne',
-        surname: 'Randall',
-        gender: 'Female',
-        address: '3B Borrower Street, Plymouth, PL3 2PP',
-        dob: generate_random_date,
-        phone_number: '07481362538'
+      forename: 'Sue',
+      middle_name: 'Anne',
+      surname: 'Randall',
+      gender: 'Female',
+      address: '3B Borrower Street, Plymouth, PL3 2PP',
+      dob: generate_random_date,
+      phone_number: '07481362538'
     )
     borrower_data.push(
-        forename: 'Lee',
-        surname: 'Thomson',
-        gender: 'Male',
-        address: '4B Borrower Street, Plymouth, PL3 2PP',
-        dob: generate_random_date,
-        phone_number: '07481362539'
+      forename: 'Lee',
+      surname: 'Thomson',
+      gender: 'Male',
+      address: '4B Borrower Street, Plymouth, PL3 2PP',
+      dob: generate_random_date,
+      phone_number: '07481362539'
     )
-    borrower_data
 
     # Adds the borrowers data to the deed
     borrowers = []
@@ -80,5 +77,4 @@ class Deed
     puts "Borrowers Info: #{borrowers}"
     borrowers
   end
-
 end
