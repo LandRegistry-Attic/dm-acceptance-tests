@@ -14,61 +14,58 @@ Acceptance Criteria
 @us152
 Scenario: A search of the deed store can be performed when using valid Title Number & MD Reference
 Given I setup a deed with <1> borrowers
-And I amend "title_number" to "9079"
+And I amend "title_number" to "DM-AT9079"
 And I create the deed via the Deed API
-When I search the deed store with title_number "9079"
+When I search the deed store with title_number "DM-AT9079"
 Then I verify the returned deed information is "DRAFT"
 
 @us152
 Scenario: Multiple deed ID's and Statuses are returned when searched using valid Title Number & MD Reference
 Given I setup a deed with <1> borrowers
-And I amend "title_number" to "DM11"
+And I amend "title_number" to "DM-AT11"
 And I create the deed via the Deed API
 And I setup a deed with <1> borrowers
-And I amend "title_number" to "DM11"
+And I amend "title_number" to "DM-AT11"
 And I create the deed via the Deed API
-When I search the deed store with title_number "DM11"
+When I search the deed store with title_number "DM-AT11"
 Then I verify the returned deed information is "DRAFT"
 
 @us152
 Scenario: Error is returned when search returns no deed
-Given I setup a deed with <1> borrowers
-And I amend "title_number" to "DM11"
-And I create the deed via the Deed API
-When I search the deed store with title_number "99999"
+Given I search the deed store with title_number "DM-AT9011"
 Then a status code of "404" is returned
 
 @us133f @us152
 Scenario: Verify deed status is ALL-SIGNED, when all borrowers have signed the deed
 Given I setup a deed with <1> borrowers
-And I amend "title_number" to "99999"
+And I amend "title_number" to "DT-AT999"
 When I create the deed
-And I search the deed store with title_number "99999"
+And I search the deed store with title_number "DT-AT999"
 Then I verify the returned deed information is "DRAFT"
 And borrower <1> views the deed
 And the mortgage deed is displayed
 And the borrower <1> signature element is present on page
 Then the deed is digitally signed by borrower <1>
-When I search the deed store with title_number "99999"
+When I search the deed store with title_number "DT-AT999"
 Then I verify the returned deed information is "ALL-SIGNED"
 
 @us133f @us152
 Scenario: Verify deed status is PARTIALLY-SIGNED, when one borrower has not yet signed the deed
 Given I setup a deed with <2> borrowers
-And I amend "title_number" to "6789"
+And I amend "title_number" to "DM-DT6789"
 When I create the deed
-And I search the deed store with title_number "6789"
+And I search the deed store with title_number "DM-DT6789"
 Then I verify the returned deed information is "DRAFT"
 And borrower <1> views the deed
 And the mortgage deed is displayed
 And the borrower <1> signature element is present on page
 Then the deed is digitally signed by borrower <1>
-When I search the deed store with title_number "6789"
+When I search the deed store with title_number "DM-DT6789"
 Then I verify the returned deed information is "PARTIALLY-SIGNED"
 And borrower <2> views the deed
 And the mortgage deed is displayed
 And I verify borrower <1> has signed the deed
 And the borrower <2> signature element is present on page
 Then the deed is digitally signed by borrower <2>
-When I search the deed store with title_number "6789"
+When I search the deed store with title_number "DM-DT6789"
 Then I verify the returned deed information is "ALL-SIGNED"
