@@ -40,7 +40,7 @@ class Deed
       gender: 'Female',
       address: '1B Borrower Street, Plymouth, PL3 2PP',
       dob: generate_random_date,
-      phone_number: ENV['PHONE_NUMBER']
+      phone_number: ENV['PHONE_NUMBER1']
     )
     borrower_data.push(
       forename: 'Mark',
@@ -49,7 +49,7 @@ class Deed
       gender: 'Male',
       address: '2B Borrower Street, Plymouth, PL3 2PP',
       dob: generate_random_date,
-      phone_number: '07481362537'
+      phone_number: ENV['PHONE_NUMBER2']
     )
     borrower_data.push(
       forename: 'Sue',
@@ -58,7 +58,7 @@ class Deed
       gender: 'Female',
       address: '3B Borrower Street, Plymouth, PL3 2PP',
       dob: generate_random_date,
-      phone_number: '07481362538'
+      phone_number: ENV['PHONE_NUMBER3']
     )
     borrower_data.push(
       forename: 'Lee',
@@ -66,7 +66,7 @@ class Deed
       gender: 'Male',
       address: '4B Borrower Street, Plymouth, PL3 2PP',
       dob: generate_random_date,
-      phone_number: '07481362539'
+      phone_number: ENV['PHONE_NUMBER4']
     )
 
     # Adds the borrowers data to the deed
