@@ -108,12 +108,6 @@ Given(/^the borrower <(\d+)> signature element is present on page$/) do |bor|
                              "#{m_name} #{s_name}]")
 end
 
-Given(/^I create a deed where the Lender is Coventry Building Society$/) do
-  step %(I have valid deed data with <#{borrower}> borrowers)
-  step %(I create the deed via the Deed API)
-  step %(the deed id is returned by the Deed API)
-end
-
 Then(/^the Coventry Building Society mortgage deed is displayed$/) do
   page.should have_css('h3', text: 'Lender')
   page.should have_content('COVENTRY BUILDING SOCIETY Economic House '\
