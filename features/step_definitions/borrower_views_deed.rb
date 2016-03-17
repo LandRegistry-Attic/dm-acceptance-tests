@@ -107,3 +107,57 @@ Given(/^the borrower <(\d+)> signature element is present on page$/) do |bor|
   page.should have_content("[Awaiting confirmation from #{f_name}"\
                              "#{m_name} #{s_name}]")
 end
+
+Given(/^I create a deed where the Lender is Coventry Building Society$/) do
+  step %(I have valid deed data with <#{borrower}> borrowers)
+  step %(I create the deed via the Deed API)
+  step %(the deed id is returned by the Deed API)
+end
+
+Then(/^the Coventry Building Society mortgage deed is displayed$/) do
+  page.should have_css('h3', text: 'Lender')
+  page.should have_content('COVENTRY BUILDING SOCIETY Economic House '\
+                           'PO Box 9, High Street Coventry CV1 5QN')
+
+  page.should have_css('h3', text: 'Charging clause')
+  page.should have_content('The borrower, with full title guarantee, charges '\
+                           'to the lender the property by way of legal '\
+                           'mortgage with payment of all money secured by '\
+                           'the charge.')
+
+  page.should have_css('h3', text: 'Additional provisions')
+  page.should have_content('The borrower acknowledges receipt of the '\
+                           'advance specified in the offer.')
+
+  page.should have_content('This mortgage deed incorporates the Mortgage '\
+                           'Conditions (Issue \'J\') which have been laid '\
+                           'down by the Board of Directors of the lender and '\
+                           'of which a copy has been supplied to the borrower.')
+
+  page.should have_content('This mortgage deed is made for securing further '\
+                           'advances (including re-advances)')
+
+  page.should have_content('The borrower as a member of the Coventry Building '\
+                           'Society will during the existence of this '\
+                           'mortgage deed be bound by the Rules of the '\
+                           'Society in force from time to time including '\
+                           'rules adopted and amendments made after the date '\
+                           'of this mortgage deed, except insofar as the '\
+                           'Rules are expressly modified by the Mortgage '\
+                           'Conditions and this mortgage deed.')
+
+  page.should have_content('The borrower applies to the Chief Land Registrar '\
+                           'to enter the following restriction in the '\
+                           'Proprietorship Register of the property:')
+
+  page.should have_content('No disposition of the registered estate by the '\
+                           'proprietor of the registered estate or by the '\
+                           'proprietor of any registered charge, not being a '\
+                           'charge registered before the entry of this '\
+                           'restriction, is to be registered without a '\
+                           'written consent signed by the proprietor for the '\
+                           'time being of the charge dated '\
+                           '[the date of this charge] in favour of Coventry '\
+                           'Building Society referred to in the Charges '\
+                           'Register')
+end

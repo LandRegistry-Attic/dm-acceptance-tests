@@ -32,3 +32,13 @@ Scenario: 4 Borrower signature boxes are displayed on the deed
   And borrower <1> views the deed
   And the mortgage deed is displayed
   Then the borrower signature elements are present on page
+
+@us119a
+Scenario: Borrower views their mortgage Deed where the Lender is Coventry Building
+Society. Lender Name, Address, Additional provisions and Society ref reflect the
+Coventry Building Societies Mortgage Deed.
+  Given I create default deed with <1> borrowers
+  And I amend "md_ref" to "e-MD047W" for borrower <1>
+  When I create the deed
+  And borrower <1> views the deed
+  Then the Coventry Building Society mortgage deed is displayed
