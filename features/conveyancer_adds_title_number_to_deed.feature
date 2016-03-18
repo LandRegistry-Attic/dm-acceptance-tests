@@ -12,7 +12,7 @@ Acceptance Criteria
 @us6
 Scenario: Add Multiple Title Numbers
   Given I setup a deed with <1> borrowers
-  And I amend "title_number" to "DT567568, DN573253"
+  And I amend "title_number" to "DMA6758, DMA7353"
   When I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['title_number']:"
