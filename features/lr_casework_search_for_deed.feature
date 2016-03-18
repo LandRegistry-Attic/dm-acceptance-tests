@@ -22,34 +22,34 @@ Then I verify the returned deed information is "DRAFT"
 @us152
 Scenario: Multiple deed ID's and Statuses are returned when searched using valid Title Number & MD Reference
 Given I setup a deed with <1> borrowers
-And I amend "title_number" to "DM11"
+And I amend "title_number" to "11"
 And I create the deed via the Deed API
 And I setup a deed with <1> borrowers
-And I amend "title_number" to "DM11"
+And I amend "title_number" to "11"
 And I create the deed via the Deed API
-When I search the deed store with title_number "DM11"
+When I search the deed store with title_number "11"
 Then I verify the returned deed information is "DRAFT"
 
 @us152
 Scenario: Error is returned when search returns no deed
 Given I setup a deed with <1> borrowers
-And I amend "title_number" to "DM11"
+And I amend "title_number" to "0011" for borrower <1>
 And I create the deed via the Deed API
-When I search the deed store with title_number "99999"
+When I search the deed store with title_number "9011"
 Then a status code of "404" is returned
 
 @us133f @us152
 Scenario: Verify deed status is ALL-SIGNED, when all borrowers have signed the deed
 Given I setup a deed with <1> borrowers
-And I amend "title_number" to "99999"
+And I amend "title_number" to "999"
 When I create the deed
-And I search the deed store with title_number "99999"
+And I search the deed store with title_number "999"
 Then I verify the returned deed information is "DRAFT"
 And borrower <1> views the deed
 And the mortgage deed is displayed
 And the borrower <1> signature element is present on page
 Then the deed is digitally signed by borrower <1>
-When I search the deed store with title_number "99999"
+When I search the deed store with title_number "999"
 Then I verify the returned deed information is "ALL-SIGNED"
 
 @us133f @us152
