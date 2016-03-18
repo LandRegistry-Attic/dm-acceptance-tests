@@ -15,7 +15,7 @@ class Deed
   end
 
   def generate_title_number
-    /[A-Z]{0,3}[1-9][0-9]{0,5}|[0-9]{1,6}[ZT]/.random_example
+    "DMA#{rand(0..99999)}"
   end
 
   def generate_borrowers(number_of_borrowers)
