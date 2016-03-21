@@ -8,11 +8,10 @@ And(/^I request an authentication code for borrower <(\d+)>$/) do |borrower|
 end
 
 # Checks page for authentication code text,then enters the authentication code
-Given(/^I enter the authentication code for borrower <(\d+)>$/) do |borrower|
+Given(/^I enter the authentication code for the borrower$/) do
   step %(the text "Enter your authentication code" is displayed on the page)
   step %(the text "#{@sent_auth}#{@last_digits}" is displayed on the page)
-  # Get Code will go here
-  step %(I get auth code for borrower <#{borrower}>)
+  step %(I get auth code for the borrower)
   fill_in 'auth-code', with: @auth_code
   click_button('Confirm mortgage')
 end
