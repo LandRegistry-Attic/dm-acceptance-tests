@@ -12,7 +12,7 @@ Given(/^I enter the authentication code for the borrower$/) do
   step %(the text "Enter your authentication code" is displayed on the page)
   step %(the text "#{@sent_auth}#{@last_digits}" is displayed on the page)
   step %(I get auth code for the borrower)
-  fill_in 'auth-code', with: @auth_code
+  fill_in 'auth_code', with: @auth_code
   click_button('Confirm mortgage')
 end
 
