@@ -105,7 +105,7 @@ Given(/^the borrower <(\d+)> signature element is present on page$/) do |bor|
   m_name = @deed.borrowers[bor.to_i - 1][:middle_name]
   s_name = @deed.borrowers[bor.to_i - 1][:surname]
   page.should have_content("[Awaiting confirmation from #{f_name}"\
-                             "#{m_name} #{s_name}]")
+                             " #{m_name} #{s_name}]")
 end
 
 Then(/^the Coventry Building Society mortgage deed is displayed$/) do
