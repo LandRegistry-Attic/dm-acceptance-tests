@@ -33,7 +33,7 @@ Feature: Search for deed via title number and MD Refs
   @us152
   Scenario: Error is returned when search returns no deed
     Given I setup a deed with <1> borrowers
-    And I amend "title_number" to "DMA0011" for borrower <1>
+    And I amend "title_number" to "DMA1011" for borrower <1>
     And I create the deed via the Deed API
     When I search the deed store with title_number "DMA9011"
     Then a status code of "404" is returned
