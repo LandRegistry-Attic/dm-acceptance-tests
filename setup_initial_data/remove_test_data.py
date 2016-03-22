@@ -4,12 +4,13 @@ from sqlalchemy import create_engine
 import logging
 
 LOGGER = logging.getLogger(__name__)
-DB = "postgresql://vagrant:vagrant@localhost:5432/deed_api"
 
 
 def process_input_options():
     parser = argparse.ArgumentParser(prog='title_number_teardown', description='utility to remove '
                                      'all acceptance test title numbers.')
+    parser.add_argument('db', metavar='db',
+                        help='database details')
     parser.add_argument('element', metavar='element',
                         help='prefix of the test title numbers to be removed')
     parser.add_argument('prefix', metavar='prefix',
@@ -27,7 +28,7 @@ def run_teardown():
     LOGGER.info("Settings from command line: %s" % str(settings))
 
     if settings.confirm is not None:
-        engine = create_engine(DB, convert_unicode=True)
+        engine = create_engine(settings.db, convert_unicode=True)
         sql_connection = engine.connect()
 
         sql_text = ("DELETE FROM deed WHERE deed ->> %s LIKE %s;")
