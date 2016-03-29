@@ -11,13 +11,11 @@ Feature: Search for deed via title number and MD Refs
   - (us152) If multiple deeds are found the service must return the deed ID and status of each deed
   - (us152) The service must state when no deed exists
 
-  @us152
+  @us152 @wip1234
   Scenario: A search of the deed store can be performed when using valid Title Number & MD Reference
-    Given I setup a deed with <1> borrowers
-    And I amend "title_number" to "DMA9079"
-    And I create the deed via the Deed API
-    When I search the deed store with title_number "DMA9079"
-    Then I verify the returned deed information is "DRAFT"
+    Given I create default deed with <1> borrowers
+    And I retrieve the unique user id for borrower <1>
+    When I search the deed store for "DRAFT"
 
   @us152
   Scenario: Multiple deed ID's and Statuses are returned when searched using valid Title Number & MD Reference
