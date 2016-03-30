@@ -1,8 +1,8 @@
 # Searches deed store for deed information using specified title number
 When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   # Open the URL in browser to check information
-  url_head = Env.deed_api_casework + '/deed?md_ref=' \
-             @deed.md_ref + '&title_number='
+  url_head = Env.deed_api_casework + '/deed?md_ref='\
+        "#{@deed.md_ref} + '&title_number="
   full_url = url_head + title_number
   @response = HTTP.get(full_url)
 end
@@ -25,7 +25,7 @@ Then(/^I verify the returned deed information is "([^"]*)"$/) do |deed_status|
       deed_count += 1
     end
   else
-    abort('No Data is returned')
+    abort 'No Data is returned'
   end
 end
 
@@ -38,7 +38,7 @@ end
 
 When(/^I search the deed store for "([^"]*)"$/) do |status|
   # Searches for the deed via API
-  full_url = Env.deed_api_casework + "/deed?md_ref=#{@deed.md_ref}" +
+  full_url = Env.deed_api_casework + "/deed?md_ref=#{@deed.md_ref}" \
        "&title_number=#{@deed.title_number}"
 
   # Gets search results
@@ -49,11 +49,11 @@ When(/^I search the deed store for "([^"]*)"$/) do |status|
   count = 0
   while count <= (data.length - 1)
     if data[count]['token'] == @token_from_deed
-      puts "Tokens match"
+      puts 'Tokens match'
       if data[count]['status'] == status
         puts "Status #{status} is as expected."
       else
-        abort ("Status #{status} was not returned, #{data[count]['status']}")
+        abort "Status #{status} was not returned, #{data[count]['status']}"
       end
     else
       puts 'Not a match'
