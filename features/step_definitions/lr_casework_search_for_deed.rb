@@ -1,7 +1,7 @@
 # Searches deed store for deed information using specified title number
 When(/^I search the deed store with title_number "([^"]*)"$/) do |title_number|
   # Open the URL in browser to check information
-  url_head = Env.deed_api_casework + '/deed?md_ref=' +
+  url_head = Env.deed_api_casework + '/deed?md_ref=' \
              @deed.md_ref + '&title_number='
   full_url = url_head + title_number
   @response = HTTP.get(full_url)
@@ -29,40 +29,35 @@ Then(/^I verify the returned deed information is "([^"]*)"$/) do |deed_status|
   end
 end
 
-When(/^I search the deed store for "([^"]*)"$/) do |status|
-
+Given(/^I retrieve the deed token$/) do
   # Gets the deed token, taken from deed API
   dt = JSON.parse(@response.to_s)
   @token_from_deed =  dt['deed']['token']
-  puts "token from deed is: #{@token_from_deed}"
+  puts "Token from deed is: #{@token_from_deed}"
+end
 
+When(/^I search the deed store for "([^"]*)"$/) do |status|
   # Searches for the deed via API
   full_url = Env.deed_api_casework + "/deed?md_ref=#{@deed.md_ref}" +
        "&title_number=#{@deed.title_number}"
-  puts full_url
 
-  # Gets the token from search result
+  # Gets search results
   response2 = HTTP.get(full_url)
   data = JSON.parse(response2.to_s)
-  @token_from_search = data[0]['token']
-  puts "token from search is: #{@token_from_search}"
 
   # Checks returned list, for matching deed token, to get status
   count = 0
-  if data[count]['token'] == @token_from_deed
-    puts "Tokens match"
-
-    if data[count]['status'] == status
-      puts "Status #{status} is as expected."
+  while count <= (data.length - 1)
+    if data[count]['token'] == @token_from_deed
+      puts "Tokens match"
+      if data[count]['status'] == status
+        puts "Status #{status} is as expected."
+      else
+        abort ("Status #{status} was not returned, #{data[count]['status']}")
+      end
     else
-      abort("Status #{status} was not returned.")
+      puts 'Not a match'
     end
-
-  else
-
+    count += 1
   end
-
-
-
-
 end
