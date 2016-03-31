@@ -3,6 +3,7 @@ AllCops:
     - 'Gemfile'
     - 'Gemfile.lock'
     - 'features/support/hooks.rb'
+    - 'features/data/deed.rb'
 
 Metrics/MethodLength:
   Enabled: false
