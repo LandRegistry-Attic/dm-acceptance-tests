@@ -51,23 +51,6 @@ class Deed
       dob: generate_random_date,
       phone_number: ENV['PHONE_NUMBER2']
     )
-    borrower_data.push(
-      forename: 'Sue',
-      middle_name: 'Anne',
-      surname: 'Randall',
-      gender: 'Female',
-      address: '3B Borrower Street, Plymouth, PL3 2PP',
-      dob: generate_random_date,
-      phone_number: ENV['PHONE_NUMBER3']
-    )
-    borrower_data.push(
-      forename: 'Lee',
-      surname: 'Thomson',
-      gender: 'Male',
-      address: '4B Borrower Street, Plymouth, PL3 2PP',
-      dob: generate_random_date,
-      phone_number: ENV['PHONE_NUMBER4']
-    )
 
     # Adds the borrowers data to the deed
     borrowers = []
