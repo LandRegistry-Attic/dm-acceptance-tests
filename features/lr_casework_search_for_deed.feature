@@ -48,18 +48,18 @@ Feature: Search for deed via title number and MD Refs
     Then the deed is digitally signed by borrower <1>
     Then I search the deed store for "ALL-SIGNED"
 
-  @us133f @us152
-  Scenario: Verify deed status is PARTIALLY-SIGNED, when one borrower has not yet signed the deed
-    Given I create default deed with <2> borrowers
-    And I retrieve the unique user id for borrower <1>
-    And I retrieve the deed token
-    When I search the deed store for "DRAFT"
-    And borrower <1> views the deed
-    And the mortgage deed is displayed
-    Then the deed is digitally signed by borrower <1>
-    When I search the deed store for "PARTIALLY-SIGNED"
-    And borrower <2> views the deed
-    And the mortgage deed is displayed
-    And I verify borrower <1> has signed the deed
-    Then the deed is digitally signed by borrower <2>
-    When I search the deed store for "ALL-SIGNED"
+  #@us133f @us152
+  #Scenario: Verify deed status is PARTIALLY-SIGNED, when one borrower has not yet signed the deed
+    #Given I create default deed with <2> borrowers
+    #And I retrieve the unique user id for borrower <1>
+    #And I retrieve the deed token
+    #When I search the deed store for "DRAFT"
+    #And borrower <1> views the deed
+    #And the mortgage deed is displayed
+    #Then the deed is digitally signed by borrower <1>
+    #When I search the deed store for "PARTIALLY-SIGNED"
+    #And borrower <2> views the deed
+    #And the mortgage deed is displayed
+    #And I verify borrower <1> has signed the deed
+    #Then the deed is digitally signed by borrower <2>
+    #When I search the deed store for "ALL-SIGNED"
