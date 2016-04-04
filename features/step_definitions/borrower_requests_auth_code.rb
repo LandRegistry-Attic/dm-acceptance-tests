@@ -29,3 +29,13 @@ And(/^I set the authentication messages$/) do
   @sent_auth = 'We have just sent your authentication code by text message'\
   ' to your mobile number ending '
 end
+
+And(/^The confirming in progress page is displayed$/) do
+  page.should have_css('h1', text: 'Confirming...')
+  page.should have_css('p', text: 'Your mortgage deed is now being confirmed. '\
+                                  'This process may take a few moments to '\
+                                  'complete.')
+  page.should have_css('p', text: 'Please do not refresh this page, you will '\
+                                  'be notified when the deed has been '\
+                                  'successfully confirmed.')
+end
