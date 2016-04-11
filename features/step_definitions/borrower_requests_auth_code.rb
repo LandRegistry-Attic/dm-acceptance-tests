@@ -16,6 +16,13 @@ Given(/^I enter the authentication code for the borrower$/) do
   click_button('Confirm mortgage')
 end
 
+# Retrieves and enters authentication code
+Given(/^I retrieve and enter the authentication code for the borrower$/) do
+  step %(I get auth code for the borrower)
+  fill_in 'auth_code', with: @auth_code
+  click_button('Confirm mortgage')
+end
+
 # Gets last 4 digits of the required borrower's phone number
 And(/^I get last 4 digits of phone number for borrower <(\d+)>$/) do |borrower|
   phone_number = @deed.borrowers[borrower.to_i - 1][:phone_number]
@@ -28,14 +35,4 @@ And(/^I set the authentication messages$/) do
   ' to your mobile number ending '
   @sent_auth = 'We have just sent your authentication code by text message'\
   ' to your mobile number ending '
-end
-
-And(/^The confirming in progress page is displayed$/) do
-  page.should have_css('h1', text: 'Confirming...')
-  page.should have_css('p', text: 'Your mortgage deed is now being confirmed. '\
-                                  'This process may take a few moments to '\
-                                  'complete.')
-  page.should have_css('p', text: 'Please do not refresh this page, you will '\
-                                  'be notified when the deed has been '\
-                                  'successfully confirmed.')
 end
