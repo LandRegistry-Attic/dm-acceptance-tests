@@ -6,7 +6,7 @@ Acceptance Criteria
     (US150) Need to provide a link to the Personal Information Charter
 
 Background:
-    Given I navigate to the borrower frontend "/sign-my-mortgage" page
+    Given I navigate to the borrower frontend "/" page
     Then information about the service and how to use it is displayed
 
 @us75
