@@ -9,6 +9,5 @@ followed by the words 'is your digital mortgage authentication code'.
 
 @us46
 Scenario: Sign my mortgage page tells borrower they need their mobile phone
-  Given I navigate to the borrower frontend "/sign-my-mortgage" page
+  Given I navigate to the borrower frontend "/" page
   Then the text "the mobile phone you registered with your conveyancer" is displayed on the page
-
