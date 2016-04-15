@@ -67,6 +67,7 @@ Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
     step %(I request an authentication code for borrower <#{borrower}>)
     sleep 30
     step %(I enter the authentication code for the borrower)
+    step %(The confirming in progress page is displayed)
   else
     click_button('Continue')
   end

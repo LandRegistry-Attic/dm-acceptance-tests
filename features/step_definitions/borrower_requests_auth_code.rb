@@ -16,6 +16,13 @@ Given(/^I enter the authentication code for the borrower$/) do
   click_button('Confirm mortgage')
 end
 
+# Retrieves and enters authentication code
+Given(/^I retrieve and enter the authentication code for the borrower$/) do
+  step %(I get auth code for the borrower)
+  fill_in 'auth_code', with: @auth_code
+  click_button('Confirm mortgage')
+end
+
 # Gets last 4 digits of the required borrower's phone number
 And(/^I get last 4 digits of phone number for borrower <(\d+)>$/) do |borrower|
   phone_number = @deed.borrowers[borrower.to_i - 1][:phone_number]
