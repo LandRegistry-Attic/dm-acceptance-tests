@@ -5,6 +5,7 @@ And(/^I request an authentication code for borrower <(\d+)>$/) do |borrower|
   step %(the text "Receiving your authentication code" is displayed on the page)
   step %(the text "#{@send_auth}#{@last_digits}" is displayed on the page)
   click_on('Send my code')
+  sleep 30
 end
 
 # Checks page for authentication code text,then enters the authentication code

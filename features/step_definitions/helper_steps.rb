@@ -65,7 +65,6 @@ Given(/^the deed is digitally signed by borrower <(\d+)>$/) do |borrower|
   # Conditional check to see if authentication code is to be sent or not
   if step %(the borrower <#{borrower}> signature element is present on page)
     step %(I request an authentication code for borrower <#{borrower}>)
-    sleep 30
     step %(I enter the authentication code for the borrower)
     step %(The confirming in progress page is displayed)
   else
