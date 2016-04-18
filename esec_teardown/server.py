@@ -53,7 +53,16 @@ def run_delete():
                 try:
                     if settings.confirm_delete == "True":
                         res = adminClient.service.removeUser(requestId, user["userId"])
-                        LOGGER.info("Remove user: %s - %s " % (user["userId"],str(res)))
+
+                        LOGGER.info(" EXAMPLE user x {uid=dm-38575625+cn=asdsad+serialNumber=dm-38575625,ou=users,"
+                                    "o=Digital Mortgage,o=1359.2.1,c=GB}")
+
+                        LOGGER.info("Setting AC Delete Logger")
+
+                        LOGGER.info("user x {uid=" + user["userId"] + "+cn=asdsad+serialNumber=" + user["userId"] +
+                                    ",ou=users,o=" + ORGANISATION_ID + ",o=1359.2.1,c=GB}")
+
+                        LOGGER.info("Remove user: %s - %s " % (user["userId"], str(res)))
                     else:
                         LOGGER.error("Remove user(TEST- NOT DELETED): %s - %s " % (user["userId"],0))
                 except:
