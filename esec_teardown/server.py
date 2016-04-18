@@ -57,10 +57,10 @@ def run_delete():
                         LOGGER.info(" EXAMPLE user x {uid=dm-38575625+cn=asdsad+serialNumber=dm-38575625,ou=users,"
                                     "o=Digital Mortgage,o=1359.2.1,c=GB}")
 
-                        LOGGER.info("Setting AC Delete Logger")
+                        print("Setting AC Delete Logger")
 
-                        LOGGER.info("user x {uid=" + user["userId"] + "+cn=asdsad+serialNumber=" + user["userId"] +
-                                    ",ou=users,o=" + ORGANISATION_ID + ",o=1359.2.1,c=GB}")
+                        print("user x {uid=" + user["userId"] + "+cn=asdsad+serialNumber=" + user["userId"] +
+                              ",ou=users,o=" + ORGANISATION_ID + ",o=1359.2.1,c=GB}")
 
                         LOGGER.info("Remove user: %s - %s " % (user["userId"], str(res)))
                     else:
