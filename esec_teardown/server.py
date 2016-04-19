@@ -56,8 +56,8 @@ def run_delete():
 
                         print("Setting AC Delete Command")
 
-                        print("user x {uid=" + user["userId"] + "+cn=asdsad+serialNumber=" + user["userId"] +
-                              ",ou=users,o=" + ORGANISATION_ID + ",o=1359.2.1,c=GB}")
+                        print("user x {uid=" + user["userId"] + "+cn=" + user["surname"] + "serialNumber=" +
+                              user["userId"] + ",ou=Users,o=" + ORGANISATION_ID + ",o=1359.2.1,c=GB}")
 
                         LOGGER.info("Remove user: %s - %s " % (user["userId"], str(res)))
                     else:
