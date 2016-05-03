@@ -27,8 +27,8 @@ Scenario: Single borrower views deed 3 times
   And borrower <1> views the deed
   And borrower <1> views the deed
   Then borrower <1> views the deed
-  
-@us2133 @us133f
+
+@us2133a @us133f
 Scenario: 2 Borrowers can view a deed.
   Given I create default deed with <2> borrowers
   And borrower <2> views the deed
