@@ -19,6 +19,7 @@ Acceptance Criteria
          Caution
          Developer
          Rentcharge
+         Commonhold
 
 Scenario: Create Deed against an Absolute Freehold title number
   Given I setup a deed with <1> borrowers
@@ -81,7 +82,7 @@ Scenario: Create Deed against a Good Leasehold title number
 
 Scenario: Create Deed against a Qualified Leasehold title number
   Given I setup a deed with <1> borrowers
-  And I amend "title_number" to "???"
+  And I amend "title_number" to "GR516921"
   And I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message "Title is not suitable for a Digital Mortgage as it is a Qualified Title" is returned
@@ -182,3 +183,17 @@ Scenario: Create Deed against a blank title number
   And I create the deed via the Deed API
   Then a status code of "404" is returned
   And a message "Title does not exist" is returned
+
+Scenario: Create Deed against a title number that has common parts in the title
+  Given I setup a deed with <1> borrowers
+  And I amend "title_number" to "DT58118"
+  And I create the deed via the Deed API
+  Then a status code of "404" is returned
+  And a message "Title number is not suitable for Digital Mortgage as it is a commonhold title" is returned
+
+Scenario: Create Deed against a title number that has common units in the title
+  Given I setup a deed with <1> borrowers
+  And I amend "title_number" to "CYM497"
+  And I create the deed via the Deed API
+  Then a status code of "404" is returned
+  And a message "Title number is not suitable for Digital Mortgage as it is a commonhold title" is returned
