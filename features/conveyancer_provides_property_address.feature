@@ -29,3 +29,10 @@ Scenario: Input property address formatted with commas
   And I enter the date of birth
   And when I click on the "Continue" link
   Then the mortgage deed is displayed
+
+@bug_fix_characters_in_property_address
+Scenario: Input property address formatted with non standard characters
+  Given I setup a deed with <1> borrowers
+  And I amend "property_address" to "Chalon-Sur-Saône, Westward Ho!, Страници во категоријата, Devon"
+  When I create the deed via the Deed API
+  Then a status code of "201" is returned
