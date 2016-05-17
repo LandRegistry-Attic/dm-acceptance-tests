@@ -15,7 +15,7 @@ class Deed
   end
 
   def generate_title_number
-    "DMA#{rand(0..999_99)}"
+    "GR515835"
   end
 
   def to_hash
