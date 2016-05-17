@@ -30,7 +30,6 @@ Then(/^a url link to retrieve the deed is returned$/) do
 end
 
 And(/^a message for failure is given "([^"]*)"$/) do |failure_reason|
-@response.body
   assert_match(failure_reason, @response)
 end
 
