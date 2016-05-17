@@ -21,10 +21,12 @@ Feature: Search for deed via title number and MD Refs
   @us152
   Scenario: Multiple deed ID's and Statuses are returned when searched using valid Title Number & MD Reference
     Given I setup a deed with <1> borrowers
+    And I amend "title_number" to "GR517730"
     And I create the deed via the Deed API
     And I setup a deed with <1> borrowers
+    And I amend "title_number" to "GR517730"
     And I create the deed via the Deed API
-    When I search the deed store with title_number "GR515835"
+    When I search the deed store with title_number "GR517730"
     Then I verify the returned deed information is "DRAFT"
 
   @us152
