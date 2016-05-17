@@ -156,7 +156,7 @@ Scenario: Create Deed against a developer title number
   Then a status code of "400" is returned
   And a message for failure is given "Title is not suitable for Digital Mortgage as it is a Developer Title"
 
-Scenario: Create Deed against a blank title number
+Scenario: I Create Deed against a blank title number
   Given I setup a deed with <1> borrowers
   And I amend "title_number" to ""
   And I create the deed via the Deed API
