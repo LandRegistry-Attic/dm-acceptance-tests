@@ -40,7 +40,7 @@ Scenario: Create Deed against a relating Franchise title number
   And I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Title is not suitable for a Digital Mortgage as it is a relating Franchise Title"
-
+                                      
 Scenario: Create Deed against a Profit of prendre in gross title number
   Given I setup a deed with <1> borrowers
   And I amend "title_number" to "GR528321"
@@ -92,7 +92,7 @@ Scenario: Create Deed against a Qualified Rentcharge title number
   And I amend "title_number" to "AV211374"
   And I create the deed via the Deed API
   Then a status code of "400" is returned
-  And a message for failure is given "Title is not suitable for a Digital Mortgage as it is a Rentcharge Title"
+  And a message for failure is given "Title is not suitable for a Digital Mortgage as it is a Qualified Title"
 
 Scenario: Create Deed against a Possessory Leasehold title number
   Given I setup a deed with <1> borrowers
@@ -130,10 +130,10 @@ Scenario: Create Deed against a Closed title number
 
 Scenario: Create Deed against a Closed and Continued title number
   Given I setup a deed with <1> borrowers
-  And I amend "title_number" to "GR518006"
+  And I amend "title_number" to "GR518327"
   And I create the deed via the Deed API
   Then a status code of "400" is returned
-  And a message for failure is given "Title Closed and Continued under GR518327"
+  And a message for failure is given "Title Closed and Continued under GR518006"
 
 Scenario: Create Deed against a title number that is valid format but does not exist
   Given I setup a deed with <1> borrowers
@@ -147,14 +147,14 @@ Scenario: Create Deed against a Scheme Leasehold title number
   And I amend "title_number" to "BK257662"
   And I create the deed via the Deed API
   Then a status code of "400" is returned
-  And a message for failure is given "Title is not suitable Digital Mortgage as it is a Scheme Title"
+  And a message for failure is given "Title is not suitable for a Digital Mortgage as it is a Scheme Title"
 
 Scenario: Create Deed against a developer title number
   Given I setup a deed with <1> borrowers
   And I amend "title_number" to "GR146463"
   And I create the deed via the Deed API
   Then a status code of "400" is returned
-  And a message for failure is given "Title is not suitable for Digital Mortgage as it is a Developer Title"
+  And a message for failure is given "Title is not suitable for a Digital Mortgage as it is a Developer Title"
 
 Scenario: I Create Deed against a blank title number
   Given I setup a deed with <1> borrowers
