@@ -40,7 +40,7 @@ Scenario: Create Deed against a relating Franchise title number
   And I create the deed via the Deed API
   Then a status code of "400" is returned
   And a message for failure is given "Title is not suitable for a Digital Mortgage as it is a relating Franchise Title"
-                                      
+
 Scenario: Create Deed against a Profit of prendre in gross title number
   Given I setup a deed with <1> borrowers
   And I amend "title_number" to "GR528321"
