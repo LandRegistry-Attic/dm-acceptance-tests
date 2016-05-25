@@ -1,5 +1,4 @@
 And(/^I get auth code for the borrower$/) do
-
   # Txtlocal has been removed from here
 
   @auth_code = 'DM1234'

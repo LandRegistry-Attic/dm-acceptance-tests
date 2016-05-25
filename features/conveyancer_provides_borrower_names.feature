@@ -33,3 +33,13 @@ Scenario: Create Deed with Invalid Borrower
   Then a status code of "400" is returned
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['surname']:"
   And a message for failure is given "Failed validating 'pattern' in schema['properties']['borrowers']['items']['properties']['forename']:"
+
+@hotfix-allow-spec-char-names
+Scenario: Create Deed with a Borrower with more than one forename, middle name, surname which also contains special characters
+    Given I setup a deed with <1> borrowers
+    And I amend "forename" to "Ann-Marie" for borrower <1>
+    And I amend "middle_name" to "Stacey Jane -Jones66" for borrower <1>
+    And I amend "surname" to "A'thénaïs* de Ligne de la Trémoïlle" for borrower <1>
+    And I create the deed
+    Then a status code of "201" is returned
+    And a url link to retrieve the deed is returned
