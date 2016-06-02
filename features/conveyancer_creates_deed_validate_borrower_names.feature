@@ -14,7 +14,7 @@ Acceptance Criteria
 
 Scenario: Name on deed is on register but more names on register than are on the deed. Deed is not created.
   Given I setup a deed with <1> borrowers
-  And I amend "title_number" to "CYM515835"
+  And I amend "title_number" to "GR314108"
   And I amend "forename" to "Ann"
   And I amend "surname" to "Smith"
   When I create the deed via the Deed API
@@ -23,7 +23,7 @@ Scenario: Name on deed is on register but more names on register than are on the
 
 Scenario: Name on deed is on register, single name on register and deed. Deed is created.
   Given I setup a deed with <1> borrowers
-  And I amend "title_number" to "CYM515836"
+  And I amend "title_number" to "GR515835"
   And I amend "forename" to "Ann"
   And I amend "surname" to "Smith"
   When I create the deed via the Deed API
@@ -31,7 +31,7 @@ Scenario: Name on deed is on register, single name on register and deed. Deed is
 
 Scenario: Names on deed appear on register, two names on register and three on deed, deed names are mixed case. Deed is created.
   Given I setup a deed with <3> borrowers
-  And I amend "title_number" to "CYM515837"
+  And I amend "title_number" to "GR517788"
   And I amend "forename" to "Ann" for borrower <1>
   And I amend "middle_name" to "Marie-JONES" for borrower <1>
   And I amend "surname" to "SMITH" for borrower <1>
@@ -45,7 +45,7 @@ Scenario: Names on deed appear on register, two names on register and three on d
 
 Scenario: Name on deed is on register but more names on register than are on the deed. Deed is not created as more names on register than deed.
   Given I setup a deed with <1> borrowers
-  And I amend "title_number" to "CYM515838"
+  And I amend "title_number" to "AV182773"
   And I amend "forename" to "Lisa"
   And I amend "surname" to "I'anson"
   When I create the deed via the Deed API
@@ -54,7 +54,7 @@ Scenario: Name on deed is on register but more names on register than are on the
 
 Scenario: Name on deed includes special characters, deed is not created as names do not match exactly.
   Given I setup a deed with <1> borrowers
-  And I amend "title_number" to "CYM515839"
+  And I amend "title_number" to "GR517730"
   And I amend "forename" to "Liam"
   And I amend "surname" to "Trémoïlle"
   When I create the deed via the Deed API
