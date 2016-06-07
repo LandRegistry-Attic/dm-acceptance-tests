@@ -65,6 +65,7 @@ Scenario: Create a deed without a mobile phone number
 @us13
 Scenario: Create a deed where both borrowers have the same mobile phone number
   Given I setup a deed with <2> borrowers
+  And I amend "title_number" to "CYM123458"
   And I amend "phone_number" to "07507154077" for borrower <1>
   And I amend "phone_number" to "07507154077" for borrower <2>
   When I create the deed via the Deed API

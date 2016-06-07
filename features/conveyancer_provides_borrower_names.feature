@@ -10,14 +10,6 @@ Acceptance Criteria
   Successful and unsuccessful response must be returned
 
 @us5
-Scenario: Create Deed with a Borrower with a Middle Name
-  Given I setup a deed with <1> borrowers
-  And I amend "middle_name" to "Middle" for borrower <1>
-  And I create the deed
-  Then a status code of "201" is returned
-  And a url link to retrieve the deed is returned
-
-@us5
 Scenario: Create Deed with No Borrowers
   Given I have valid deed data with <0> borrowers
   When I create the deed via the Deed API
@@ -37,6 +29,7 @@ Scenario: Create Deed with Invalid Borrower
 @hotfix-allow-spec-char-names
 Scenario: Create Deed with a Borrower with more than one forename, middle name, surname which also contains special characters
     Given I setup a deed with <1> borrowers
+    And I amend "title_number" to "CYM123461"
     And I amend "forename" to "Ann-Marie" for borrower <1>
     And I amend "middle_name" to "Stacey Jane -Jones66" for borrower <1>
     And I amend "surname" to "A'thénaïs* de Ligne de la Trémoïlle" for borrower <1>
