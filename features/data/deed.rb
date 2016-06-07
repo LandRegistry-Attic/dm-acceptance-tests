@@ -35,8 +35,8 @@ class Deed
     # Sets up the borrower data
     borrower_data = []
     borrower_data.push(
-      forename: 'Jayne',
-      surname: 'Cobb',
+      forename: 'Ann',
+      surname: 'Smith',
       gender: 'Female',
       address: '1B Borrower Street, Plymouth, PL3 2PP',
       dob: generate_random_date,
